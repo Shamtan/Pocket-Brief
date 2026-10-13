@@ -117,7 +117,11 @@ fields marked *judgement* are IREO assessment and are styled as such.
               license, license_url, caption, w, h } ],      // freely licensed only (CC0 / PD / CC BY / CC BY-SA)
 "hero_photo": "<photo key>",
 
-// 1 · Frame — judgement
+// 1 · Frame — the 3-minute layer comes first, then the framing (judgement)
+"overview": { "as_of": "YYYY-MM-DD",
+              "items": [ Claim + { headline, when } ] },   // "what's happening": 5-6 sourced points
+"talking_points": { "context": string,                    // who the points are for (judgement)
+                    "points": [ { kind: "open"|"ask"|"offer"|"avoid", text, why?, sourceIds? } ] },
 "frame": { "question": string, "want": string[], "dont_want": string[] },
 
 // 2 · Collect
@@ -158,6 +162,9 @@ engagement += {
 }
 "gaps": [ { part, text } ]                                   // known research gaps, shown in the app
 ```
+
+The app derives the reading time of the 3-minute layer (bottom line, so-what, overview, talking
+points) from word count, so the layer stays honest about its length as the data changes.
 
 ### Privacy rule for people (leaders, scholars)
 

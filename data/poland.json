@@ -5178,5 +5178,169 @@
       "part": "scholars",
       "text": "Zbiam and Dziennik Zbrojny are not added yet; bylines on several publications are unconfirmed."
     }
-  ]
+  ],
+  "overview": {
+    "as_of": "2026-10-13",
+    "items": [
+      {
+        "text": "Defence spending has roughly doubled since 2022 to about 4.5–4.8% of GDP, the highest share in NATO. The 2026 budget is a record ~200 billion złoty (~$55B).",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s1",
+          "s2",
+          "s23",
+          "s27"
+        ],
+        "headline": "Rearming at record pace",
+        "when": "Since 2022"
+      },
+      {
+        "text": "Strength has grown from about 205,000 to more than 220,000 and is aimed at 300,000. Gen. Kukuła declared 2026 the 'year of reserves', with a reserve model of up to ~500,000.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s12",
+          "s213",
+          "s21",
+          "s50",
+          "s54"
+        ],
+        "headline": "Building a mass army",
+        "when": "2024–2026"
+      },
+      {
+        "text": "Russian drones crossed into Polish airspace in September 2025. Poland is building the ~€2B Eastern Shield barrier and buying 18 counter-drone batteries, and its top general warns that Russia is building the capacity for war with NATO.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s11",
+          "s13",
+          "s214",
+          "s50",
+          "s53"
+        ],
+        "headline": "A live threat on the border",
+        "when": "Since Sep 2025"
+      },
+      {
+        "text": "Heavy equipment comes mainly from the US (Abrams, HIMARS, Apache, F-35) and South Korea (K2, FA-50). Buying from Polish firms has roughly quadrupled since 2022 to about $8.2B a year.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s5",
+          "s6",
+          "s7",
+          "s8",
+          "s21"
+        ],
+        "headline": "Two suppliers and a growing home industry",
+        "when": "Since 2022"
+      },
+      {
+        "text": "Gen. Kukuła was reappointed Chief of the General Staff for three more years from October 2026. Maj Gen Ireneusz Nowak became Operational Commander in June 2026, and Bartosz Grodecki took over the President's National Security Bureau in May 2026.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s47",
+          "s101",
+          "s121"
+        ],
+        "headline": "Steady at the top, new hands below",
+        "when": "2026"
+      },
+      {
+        "text": "There is no defence agreement, staff talks or joint exercise. President Duda's June 2025 state visit, the first in over 20 years, touched on defence innovation, and Poland's deputy defence minister came to the Shangri-La Dialogue in 2025 and 2026.",
+        "confidence": "assessed",
+        "sourceIds": [
+          "s125",
+          "s126",
+          "s86",
+          "s135"
+        ],
+        "headline": "Ties with Singapore: thin but opening",
+        "when": "2025–2026"
+      }
+    ]
+  },
+  "talking_points": {
+    "context": "For a first conversation with a Polish defence counterpart, for example on the sidelines of the Shangri-La Dialogue or during a visit to Warsaw.",
+    "points": [
+      {
+        "kind": "open",
+        "text": "Congratulate Gen. Kukuła on his reappointment, and recognise Poland's lead in NATO defence spending.",
+        "why": "Opens on current news and a point of national pride.",
+        "sourceIds": [
+          "s47",
+          "s23"
+        ]
+      },
+      {
+        "kind": "open",
+        "text": "Acknowledge how fast Poland moved after the September 2025 drone incursion.",
+        "why": "Shows we follow their situation closely, without taking a political line.",
+        "sourceIds": [
+          "s13",
+          "s214"
+        ]
+      },
+      {
+        "kind": "ask",
+        "text": "How do you train and hold reserves at the scale you are planning? What has the 'year of reserves' taught you so far?",
+        "why": "Mobilisation is our biggest learning area and their current priority.",
+        "sourceIds": [
+          "s50",
+          "s54"
+        ]
+      },
+      {
+        "kind": "ask",
+        "text": "What does counter-drone defence cost you per kill across SAN, Narew and Wisła, and what would you do differently?",
+        "why": "Draws out the lessons the SAF's new counter-UAS group needs.",
+        "sourceIds": [
+          "s13",
+          "s17"
+        ]
+      },
+      {
+        "kind": "ask",
+        "text": "How do JATEC's lessons from Ukraine reach your units, and could a partner outside NATO learn from them?",
+        "why": "Tests whether a door is open to a non-NATO partner.",
+        "sourceIds": [
+          "s144",
+          "s12"
+        ]
+      },
+      {
+        "kind": "offer",
+        "text": "A peer conversation on National Service: Singapore's long experience of managing conscripts, reservists and Total Defence.",
+        "why": "Our strongest offer on their top priority.",
+        "sourceIds": [
+          "s194",
+          "s177"
+        ]
+      },
+      {
+        "kind": "offer",
+        "text": "A low-cost first step: a counter-UAS expert exchange, or a Polish speaker at the Goh Keng Swee Command and Staff College.",
+        "why": "Concrete, cheap and easy to say yes to.",
+        "sourceIds": [
+          "s181"
+        ]
+      },
+      {
+        "kind": "avoid",
+        "text": "Pitching or asking about equipment purchases. Keep it to methods, not materiel.",
+        "why": "Their equipment answers a different threat, terrain and budget."
+      },
+      {
+        "kind": "avoid",
+        "text": "Framing cooperation as alignment against any third country.",
+        "why": "Keeps the conversation professional and easy to defend."
+      },
+      {
+        "kind": "avoid",
+        "text": "Overstating today's ties. There is no defence agreement yet, so present this as a first step.",
+        "why": "Credibility with a partner who knows how thin the ties are.",
+        "sourceIds": [
+          "s125"
+        ]
+      }
+    ]
+  }
 }
