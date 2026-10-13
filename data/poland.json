@@ -1,0 +1,617 @@
+{
+  "iso3": "pol",
+  "name": "Poland",
+  "status": "draft",
+  "reviewed_by": null,
+  "last_reviewed": null,
+  "last_refresh": "2026-10-13",
+  "sources": [
+    {
+      "id": "s1",
+      "title": "Poland plans record defence spending of 4.8% GDP in 2026 budget",
+      "url": "https://notesfrompoland.com/2025/08/29/poland-plans-record-defence-spending-of-4-8-gdp-in-2026-budget-along-with-lower-deficit/",
+      "tier": "press",
+      "publisher": "Notes from Poland",
+      "date": "2025-08-29"
+    },
+    {
+      "id": "s2",
+      "title": "Poland Military Spending 2026: 4.8% of GDP",
+      "url": "https://www.defensebudget.org/en/country/poland",
+      "tier": "reference",
+      "publisher": "defensebudget.org"
+    },
+    {
+      "id": "s3",
+      "title": "Operational structure of the Polish Land Forces",
+      "url": "https://en.wikipedia.org/wiki/Operational_structure_of_the_Polish_Land_Forces",
+      "tier": "reference",
+      "publisher": "Wikipedia"
+    },
+    {
+      "id": "s4",
+      "title": "Polish Army Equipment 2026",
+      "url": "https://www.globalmilitary.net/armies/pol/",
+      "tier": "reference",
+      "publisher": "globalmilitary.net"
+    },
+    {
+      "id": "s5",
+      "title": "Poland reinforces mechanised forces with new batch of 35 M1A2 SEPv3 Abrams",
+      "url": "https://www.armyrecognition.com/news/army-news/2026/poland-reinforces-its-mechanised-forces-with-new-batch-of-35-m1a2sepv3-abrams-tanks",
+      "tier": "press",
+      "publisher": "Army Recognition",
+      "date": "2026"
+    },
+    {
+      "id": "s6",
+      "title": "Poland to have more tanks than UK, Germany, France and Italy combined after new K2 deal",
+      "url": "https://notesfrompoland.com/2025/08/01/poland-to-have-more-tanks-than-uk-germany-france-and-italy-combined-after-signing-new-k2-deal/",
+      "tier": "press",
+      "publisher": "Notes from Poland",
+      "date": "2025-08-01"
+    },
+    {
+      "id": "s7",
+      "title": "Poland's armed forces modernisation: SITREP",
+      "url": "https://euro-sd.com/2025/09/articles/armed-forces/46030/polands-armed-forces-modernisation-sitrep/",
+      "tier": "press",
+      "publisher": "European Security & Defence",
+      "date": "2025-09"
+    },
+    {
+      "id": "s8",
+      "title": "Modernization of the Polish Armed Forces",
+      "url": "https://en.wikipedia.org/wiki/Modernization_of_the_Polish_Armed_Forces",
+      "tier": "reference",
+      "publisher": "Wikipedia"
+    },
+    {
+      "id": "s9",
+      "title": "Wiesław Kukuła",
+      "url": "https://en.wikipedia.org/wiki/Wies%C5%82aw_Kuku%C5%82a",
+      "tier": "reference",
+      "publisher": "Wikipedia"
+    },
+    {
+      "id": "s10",
+      "title": "Polish Military Structure & Defence Strategy",
+      "url": "https://www.c4defence.com/en/polish-military-structure-defense-strategy/",
+      "tier": "press",
+      "publisher": "C4Defence"
+    },
+    {
+      "id": "s11",
+      "title": "Poland confirms 2 billion euro anti-drone fortifications along Belarus border",
+      "url": "https://www.armyrecognition.com/news/army-news/2025/poland-confirms-2-billion-euro-anti-drone-fortifications-along-belarus-border",
+      "tier": "press",
+      "publisher": "Army Recognition",
+      "date": "2025"
+    },
+    {
+      "id": "s12",
+      "title": "Polish Armed Forces Modernization (RRA2971-1)",
+      "url": "https://www.rand.org/content/dam/rand/pubs/research_reports/RRA2900/RRA2971-1/RAND_RRA2971-1.pdf",
+      "tier": "think-tank",
+      "publisher": "RAND"
+    },
+    {
+      "id": "s13",
+      "title": "Poland to deploy 18 SAN counter-drone batteries to defend NATO's eastern flank",
+      "url": "https://www.armyrecognition.com/news/army-news/2026/poland-to-deploy-18-san-counter-drone-batteries-to-defend-natos-eastern-flank",
+      "tier": "press",
+      "publisher": "Army Recognition",
+      "date": "2026"
+    },
+    {
+      "id": "s14",
+      "title": "NATO allies demonstrate counter-UAS capability during live-fire demonstration in Poland",
+      "url": "https://www.army.mil/article/289094/",
+      "tier": "official",
+      "publisher": "U.S. Army"
+    },
+    {
+      "id": "s15",
+      "title": "Ukraine's drone war lesson for Europe: technology is nothing without training",
+      "url": "https://www.atlanticcouncil.org/blogs/ukrainealert/ukraines-drone-war-lesson-for-europe-technology-is-nothing-without-training/",
+      "tier": "think-tank",
+      "publisher": "Atlantic Council"
+    },
+    {
+      "id": "s16",
+      "title": "OSW Commentary No. 694 — Ukraine's drone imports",
+      "url": "https://www.osw.waw.pl/sites/default/files/OSW_Commentary_694.pdf",
+      "tier": "think-tank",
+      "publisher": "OSW (Centre for Eastern Studies)"
+    },
+    {
+      "id": "s17",
+      "title": "Countering Drones: Five Lessons from Ukraine for NATO's Northeastern Flank",
+      "url": "https://www.heritage.org/defense/report/countering-drones-five-lessons-ukraine-natos-northeastern-flank",
+      "tier": "think-tank",
+      "publisher": "Heritage Foundation"
+    },
+    {
+      "id": "s18",
+      "title": "Italian-Polish Defence & Dual Use Forum 2026 (opening, 28 Oct 2026)",
+      "url": "https://italianpolishdefenceforum.com/",
+      "tier": "official",
+      "publisher": "Italian-Polish Defence Forum",
+      "date": "2026-10-28"
+    },
+    {
+      "id": "s19",
+      "title": "Gen Kukuła for Defence24.pl: drones and anti-drone systems are a tactical priority",
+      "url": "https://poland.co.pl/gen-kukula-dla-defence24-pl-drony-i-systemy-antydronowe-to-taktyczny-priorytet-33373648.html",
+      "tier": "press",
+      "publisher": "Defence24.pl",
+      "date": "2025"
+    },
+    {
+      "id": "s20",
+      "title": "Poland–Singapore relations",
+      "url": "https://en.wikipedia.org/wiki/Poland%E2%80%93Singapore_relations",
+      "tier": "reference",
+      "publisher": "Wikipedia"
+    },
+    {
+      "id": "s21",
+      "title": "Poland wants to turn its weapons-buying spree into an arsenal for NATO",
+      "url": "https://www.washingtontimes.com/news/2026/sep/17/poland-wants-turn-weapons-buying-spree-arsenal-nato/",
+      "tier": "press",
+      "publisher": "Washington Times",
+      "date": "2026-09-17"
+    },
+    {
+      "id": "s22",
+      "title": "Poland prepares to stand its ground with massive new civil defence programme",
+      "url": "https://www.france24.com/en/europe/20260611-poland-prepares-stand-ground-against-potential-threats",
+      "tier": "press",
+      "publisher": "France 24",
+      "date": "2026-06-11"
+    }
+  ],
+  "snapshot": {
+    "bluf": {
+      "text": "Poland is building the largest land army in the EU, funded at a record ~4.8% of GDP, postured for homeland and forward defence of NATO's eastern flank and absorbing Western and South Korean kit at exceptional speed.",
+      "confidence": "assessed",
+      "sourceIds": [
+        "s1",
+        "s6",
+        "s10"
+      ]
+    },
+    "key_facts": [
+      {
+        "text": "Armed forces have grown to more than 220,000 personnel, with a planned expansion toward ~500,000 (active + reserves) by the late 2030s.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s21"
+        ]
+      },
+      {
+        "text": "2026 defence budget is a record ~200 billion złoty (~$53–55B), ~4.8% of GDP — approaching the NATO 5% goal.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s1",
+          "s2"
+        ]
+      },
+      {
+        "text": "Tank fleet heading toward ~1,100 (250 M1A2 SEPv3 Abrams, 116 M1A1, ~180+ K2 with more to follow) once deals complete by 2030.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s5",
+          "s6"
+        ]
+      },
+      {
+        "text": "Doctrine centres on territorial and forward defence of 'every inch', anchored on NATO Article 5 and US presence.",
+        "confidence": "assessed",
+        "sourceIds": [
+          "s10"
+        ]
+      }
+    ],
+    "so_what_saf": "Poland is the clearest live laboratory for high-intensity land war, counter-UAS and mass mobilisation in Europe — a cold-start, learn-from partner where the value is method, not materiel."
+  },
+  "force": {
+    "summary": {
+      "text": "Land Forces built around four standing armoured/mechanised divisions plus two divisions forming, with airborne and air-cavalry brigades.",
+      "confidence": "assessed",
+      "sourceIds": [
+        "s3"
+      ]
+    },
+    "active_personnel": {
+      "text": "~220,000+ active personnel (all services); land forces the bulk.",
+      "confidence": "claimed",
+      "sourceIds": [
+        "s21"
+      ]
+    },
+    "orbat": [
+      {
+        "name": "11th Armoured Cavalry Division",
+        "type": "division",
+        "hq": "Żagań"
+      },
+      {
+        "name": "12th Mechanized Division",
+        "type": "division",
+        "hq": "Szczecin"
+      },
+      {
+        "name": "16th Mechanized Division",
+        "type": "division",
+        "hq": "Olsztyn"
+      },
+      {
+        "name": "18th Mechanized Division",
+        "type": "division",
+        "hq": "Siedlce"
+      },
+      {
+        "name": "1st Legions Infantry Division (forming)",
+        "type": "division",
+        "hq": "Ciechanów",
+        "note": {
+          "text": "Reactivated Jan 2023; to be the largest Polish formation, Polish + South Korean equipment, FOC ~end of decade.",
+          "confidence": "claimed",
+          "sourceIds": [
+            "s3"
+          ]
+        }
+      },
+      {
+        "name": "8th Home Army Infantry Division (forming)",
+        "type": "division"
+      },
+      {
+        "name": "6th Airborne Brigade",
+        "type": "brigade",
+        "hq": "Kraków"
+      },
+      {
+        "name": "25th Air Cavalry Brigade",
+        "type": "brigade",
+        "hq": "Tomaszów Mazowiecki"
+      }
+    ],
+    "budget": {
+      "year": 2026,
+      "local": {
+        "text": "~200 billion złoty (record).",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s1"
+        ]
+      },
+      "usd": {
+        "text": "~$53–55B (varies by source/FX).",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s1",
+          "s2"
+        ]
+      },
+      "pct_gdp": {
+        "text": "~4.8% of GDP.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s1",
+          "s2"
+        ]
+      },
+      "trend": [
+        {
+          "year": 2022,
+          "pct_gdp": 2.4
+        },
+        {
+          "year": 2023,
+          "pct_gdp": 3.9
+        },
+        {
+          "year": 2024,
+          "pct_gdp": 4.1
+        },
+        {
+          "year": 2025,
+          "pct_gdp": 4.7
+        },
+        {
+          "year": 2026,
+          "pct_gdp": 4.8
+        }
+      ],
+      "notes": [
+        {
+          "text": "Fiscal strain is real — public-finance deficit could be among the EU's largest; watch the enacted budget law vs the draft.",
+          "confidence": "assessed",
+          "sourceIds": [
+            "s1"
+          ]
+        }
+      ]
+    }
+  },
+  "conops": {
+    "posture": {
+      "text": "Homeland + forward defence along the eastern border — 'defend every inch', explicitly rejecting trading space for time; deterrence rests on NATO Article 5 and US presence.",
+      "confidence": "assessed",
+      "sourceIds": [
+        "s10"
+      ]
+    },
+    "doctrine": [
+      {
+        "text": "Shift since 2014 away from post-Cold-War expeditionary posture back to territorial defence.",
+        "confidence": "assessed",
+        "sourceIds": [
+          "s10"
+        ]
+      },
+      {
+        "text": "Analysts note doctrine still catching up to the new force structure; Poland well placed to adapt Ukrainian combat lessons (hosts NATO-Ukraine JATEC).",
+        "confidence": "assessed",
+        "sourceIds": [
+          "s12"
+        ]
+      }
+    ],
+    "programmes": [
+      {
+        "text": "Eastern Shield (Tarcza Wschód): ~€2B fortification/barrier belt along the Belarus/Kaliningrad border — anti-tank ditches, bunkers, sensors and EW to slow the enemy and keep own forces moving.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s11"
+        ]
+      }
+    ]
+  },
+  "capabilities": {
+    "current": [
+      {
+        "text": "Abrams: 250 M1A2 SEPv3 (deliveries through 2026) plus 116 M1A1.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s5"
+        ]
+      },
+      {
+        "text": "K2 Black Panther: ~180 delivered/ordered under Wilk, with a second batch — toward ~1,100 total tanks by 2030.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s6"
+        ]
+      },
+      {
+        "text": "HIMARS/Homar: framework for ~486 launcher kits (figures vary; treat large totals as ceilings).",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s8"
+        ]
+      },
+      {
+        "text": "FA-50 light combat aircraft: 48 ordered (GF delivered 2023; PL variant 2025–2028).",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s7"
+        ]
+      },
+      {
+        "text": "AH-64E Apache attack helicopters and 32 F-35A on order.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s8"
+        ]
+      }
+    ],
+    "emerging": [
+      {
+        "text": "Counter-UAS: 18 SAN very-short-range batteries from Kongsberg (~$1.6B), radar + layered effectors, built around Ukraine lessons.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s13"
+        ]
+      },
+      {
+        "text": "Three-track air defence: Wisła (medium), Narew (short), SAN (very-short) — layered, with low-cost interceptors.",
+        "confidence": "assessed",
+        "sourceIds": [
+          "s13",
+          "s17"
+        ]
+      },
+      {
+        "text": "EW and GNSS-jamming resistance embedded in the Eastern Shield belt; nationwide counter-drone expansion intended.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s11"
+        ]
+      },
+      {
+        "text": "Fast-growing domestic defence industry — procurement from Polish firms ~quadrupled since 2022 to ~$8.2B/yr.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s21"
+        ]
+      }
+    ]
+  },
+  "leadership": [
+    {
+      "name": "Gen. Wiesław Kukuła",
+      "appointment": "Chief of the General Staff of the Polish Armed Forces",
+      "since": "2023-10-10",
+      "bio": {
+        "text": "Former first commander of the Territorial Defence Forces (WOT); Chief of the General Staff since 10 Oct 2023.",
+        "confidence": "claimed",
+        "sourceIds": [
+          "s9"
+        ]
+      },
+      "media": [
+        {
+          "type": "keynote",
+          "title": "Opening, Italian-Polish Defence & Dual Use Forum 2026 (listed speaker)",
+          "url": "https://italianpolishdefenceforum.com/",
+          "date": "2026-10-28",
+          "venue": "Rome/Warsaw forum",
+          "sourceTier": "official",
+          "note": "Panel 2: 'Land Warfare after Ukraine: Drones, Counter-UAS, Fires, C2, MDI'."
+        },
+        {
+          "type": "interview",
+          "title": "Drones and anti-drone systems are a tactical priority (Defence24.pl, Kielce MSPO)",
+          "url": "https://poland.co.pl/gen-kukula-dla-defence24-pl-drony-i-systemy-antydronowe-to-taktyczny-priorytet-33373648.html",
+          "date": "2025",
+          "venue": "MSPO Kielce",
+          "sourceTier": "press"
+        }
+      ]
+    }
+  ],
+  "outlets": [
+    {
+      "name": "Ministry of National Defence (MON)",
+      "url": "https://www.gov.pl/web/obrona-narodowa",
+      "kind": "official"
+    },
+    {
+      "name": "Polska Zbrojna",
+      "url": "https://www.polska-zbrojna.pl/",
+      "kind": "mil-site",
+      "note": "Official armed-forces magazine."
+    },
+    {
+      "name": "Defence24.pl",
+      "url": "https://defence24.pl/",
+      "kind": "unofficial",
+      "note": "Leading independent Polish defence outlet."
+    },
+    {
+      "name": "OSW — Centre for Eastern Studies",
+      "url": "https://www.osw.waw.pl/",
+      "kind": "unofficial",
+      "note": "Govt-linked think tank; strong on Russia/Ukraine."
+    },
+    {
+      "name": "PISM — Polish Institute of International Affairs",
+      "url": "https://pism.pl/",
+      "kind": "unofficial",
+      "note": "Check directly for strategy/doctrine publications."
+    }
+  ],
+  "scholarship": [
+    {
+      "title": "Polish Armed Forces Modernization",
+      "author": "Marcinek & Boston",
+      "org": "RAND",
+      "url": "https://www.rand.org/content/dam/rand/pubs/research_reports/RRA2900/RRA2971-1/RAND_RRA2971-1.pdf",
+      "takeaway": "Force structure has outrun doctrine; Poland positioned to adapt Ukrainian lessons via JATEC.",
+      "tier": "think-tank"
+    },
+    {
+      "title": "OSW Commentary No. 694 — Ukraine's drone imports",
+      "org": "OSW",
+      "url": "https://www.osw.waw.pl/sites/default/files/OSW_Commentary_694.pdf",
+      "takeaway": "Drones' front-line weight keeps rising; Poland a significant drone exporter to Ukraine.",
+      "tier": "think-tank"
+    },
+    {
+      "title": "Countering Drones: Five Lessons from Ukraine for NATO's Northeastern Flank",
+      "org": "Heritage Foundation",
+      "url": "https://www.heritage.org/defense/report/countering-drones-five-lessons-ukraine-natos-northeastern-flank",
+      "takeaway": "Sensors, EW, data-sharing, layered protection, low-cost interceptors — cost-per-kill matters.",
+      "tier": "think-tank"
+    }
+  ],
+  "learn_from": [
+    {
+      "domain": "Counter-UAS & layered air defence",
+      "why": {
+        "text": "Poland faces live Russian drone incursions (19 crossed in on 10 Sep 2025) and is fielding combat-tested, cost-aware counter-drone systems.",
+        "confidence": "assessed",
+        "sourceIds": [
+          "s13",
+          "s17"
+        ]
+      },
+      "what": "Layered VSHORAD (Wisła/Narew/SAN), expendable low-cost interceptors, and a 'cost-per-kill' engagement doctrine.",
+      "confidence": "assessed"
+    },
+    {
+      "domain": "Mass mobilisation & whole-of-society resilience",
+      "why": {
+        "text": "Scaling from ~220k toward ~500k with reserve flexibility and the civilian 'Always Ready' programme.",
+        "confidence": "assessed",
+        "sourceIds": [
+          "s21",
+          "s22"
+        ]
+      },
+      "what": "Reserve generation at scale, short recurring reservist training, and national resilience/civil-defence design.",
+      "confidence": "assessed"
+    },
+    {
+      "domain": "Drone-focused training & Ukraine feedback loops",
+      "why": {
+        "text": "Hosts the NATO-Ukraine JATEC; Ukrainian trainers coaching Polish (and allied) forces; US-coached drone drills.",
+        "confidence": "assessed",
+        "sourceIds": [
+          "s15",
+          "s12"
+        ]
+      },
+      "what": "Fast battlefield-feedback training design and rapid scenario refresh.",
+      "confidence": "assessed"
+    },
+    {
+      "domain": "Rapid large-scale procurement & absorption",
+      "why": {
+        "text": "Absorbing Abrams, K2, HIMARS, Apache, F-35 and FA-50 simultaneously at unusual speed.",
+        "confidence": "assessed",
+        "sourceIds": [
+          "s5",
+          "s6",
+          "s7"
+        ]
+      },
+      "what": "FMS + Korean-style offset/localisation and high fielding tempo without breaking readiness.",
+      "confidence": "assessed"
+    }
+  ],
+  "engagement": {
+    "relationship": {
+      "text": "Thin on defence: no known SG-Poland defence agreement, exercise or MND visit; ties are mainly economic (President Duda's June 2025 state visit covered ports/logistics/agri-food/energy/digital, not defence).",
+      "confidence": "assessed",
+      "sourceIds": [
+        "s20"
+      ]
+    },
+    "angle": "Cold-start, learn-from relationship — approach Poland as a method partner on territorial defence, counter-UAS and mobilisation rather than a materiel or exercise partner.",
+    "we_want": [
+      "Counter-UAS / layered air-defence lessons and cost-per-kill doctrine",
+      "Mass-mobilisation and reserve-generation model",
+      "Drone-training methodology and Ukraine feedback-loop practices",
+      "Access to JATEC-derived lessons on high-intensity land war"
+    ],
+    "we_offer": [
+      "Dense-urban and amphibious-constrained operating expertise",
+      "Changi logistics/air hub and regional access for transiting forces",
+      "Professional military education exchange and staff-college ties",
+      "Defence-technology familiarisation (C4I, smart-nation/sensor integration)"
+    ]
+  },
+  "signals": [
+    {
+      "date": "2026-10",
+      "headline": "Gen. Kukuła listed to open the Italian-Polish Defence & Dual Use Forum (28 Oct 2026), themed on land warfare after Ukraine.",
+      "sowhat": "A fresh primary-voice source on Polish counter-UAS/MDI thinking is imminent — refresh the leadership rail after the event.",
+      "url": "https://italianpolishdefenceforum.com/",
+      "auto": true
+    }
+  ]
+}
