@@ -2296,7 +2296,8 @@
           "date": "2026-01-28"
         }
       ],
-      "role_short": "Minister of National Defence"
+      "role_short": "Minister of National Defence",
+      "photo": "kdl-kosiniak-kamysz"
     },
     {
       "name": "Gen. Wiesław Kukuła",
@@ -2542,7 +2543,8 @@
         }
       ],
       "note": "Second term from Oct 2026",
-      "role_short": "Chief of the General Staff"
+      "role_short": "Chief of the General Staff",
+      "photo": "kdl-kukula"
     },
     {
       "name": "Lt Gen Marek Sokołowski",
@@ -2687,7 +2689,8 @@
         }
       ],
       "note": "Verify still in post",
-      "role_short": "General Commander"
+      "role_short": "General Commander",
+      "photo": "kdl-sokolowski"
     },
     {
       "name": "Maj Gen Ireneusz Nowak",
@@ -2806,7 +2809,8 @@
         }
       ],
       "note": "New in post, Jun 2026",
-      "role_short": "Operational Commander"
+      "role_short": "Operational Commander",
+      "photo": "kdl-nowak"
     },
     {
       "name": "Maj Gen Krzysztof Stańczyk",
@@ -2939,7 +2943,8 @@
           "venue": "Akademia Wojsk Lądowych, Wrocław"
         }
       ],
-      "role_short": "Territorial Defence Forces"
+      "role_short": "Territorial Defence Forces",
+      "photo": "kdl-stanczyk"
     },
     {
       "name": "Bartosz Grodecki",
@@ -3049,7 +3054,8 @@
           "date": "2026-10"
         }
       ],
-      "role_short": "National Security Bureau"
+      "role_short": "National Security Bureau",
+      "photo": "kdl-grodecki"
     }
   ],
   "outlets": [
@@ -4715,6 +4721,86 @@
           "s18"
         ]
       }
+    }
+  ],
+  "photos": [
+    {
+      "key": "kdl-kosiniak-kamysz",
+      "subject": "Władysław Kosiniak-Kamysz",
+      "kind": "kdl",
+      "file_page": "https://commons.wikimedia.org/wiki/File:W%C5%82adys%C5%82aw_Kosiniak-Kamysz_at_the_Pentagon%2C_Washington%2C_D.C.%2C_Aug_29%2C_2024_%28cropped%29.jpg",
+      "author": "MC1 Alexander Kubitza, U.S. Navy (U.S. Department of Defense)",
+      "license": "Public domain",
+      "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "caption": "Władysław Kosiniak-Kamysz at the Pentagon, 29 Aug 2024",
+      "src": "img/kdl-kosiniak-kamysz.jpg",
+      "w": 500,
+      "h": 668
+    },
+    {
+      "key": "kdl-kukula",
+      "subject": "Gen. Wiesław Kukuła",
+      "kind": "kdl",
+      "file_page": "https://commons.wikimedia.org/wiki/File:General_Wies%C5%82aw_Kuku%C5%82a%2C_Chief_of_the_General_Staff_of_the_Polish_Armed_Forces%2C_in_Warsaw%2C_Poland%2C_January_19%2C_2024_%28cropped%29.jpg",
+      "author": "CMC James Mullen, U.S. Navy (Office of the Chairman of the Joint Chiefs of Staff)",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "caption": "Gen. Wiesław Kukuła in Warsaw, 19 Jan 2024",
+      "src": "img/kdl-kukula.jpg",
+      "w": 500,
+      "h": 663
+    },
+    {
+      "key": "kdl-sokolowski",
+      "subject": "Lt Gen Marek Sokołowski",
+      "kind": "kdl",
+      "file_page": "https://commons.wikimedia.org/wiki/File:2026_General_Commander_of_the_Polish_Armed_Forces_Lt._General_Marek_Sokolowski_%28cropped%29.jpg",
+      "author": "Arlington National Cemetery (U.S. Army)",
+      "license": "Public domain",
+      "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "caption": "Lt Gen Marek Sokołowski, General Commander, 2026",
+      "src": "img/kdl-sokolowski.jpg",
+      "w": 500,
+      "h": 667
+    },
+    {
+      "key": "kdl-nowak",
+      "subject": "Maj Gen Ireneusz Nowak",
+      "kind": "kdl",
+      "file_page": "https://commons.wikimedia.org/wiki/File:Ireneusz_Nowak_IMG_5625_%28cropped_3x4%29.jpg",
+      "author": "W2k2, Wikimedia Commons",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "caption": "Maj Gen Ireneusz Nowak, Armed Forces Day, Warsaw, 15 Aug 2026",
+      "src": "img/kdl-nowak.jpg",
+      "w": 500,
+      "h": 668
+    },
+    {
+      "key": "kdl-stanczyk",
+      "subject": "Maj Gen Krzysztof Stańczyk",
+      "kind": "kdl",
+      "file_page": "https://commons.wikimedia.org/wiki/File:Krzysztof_Sta%C5%84czyk_IMG_5626.jpg",
+      "author": "W2k2, Wikimedia Commons",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "caption": "Maj Gen Krzysztof Stańczyk, Armed Forces Day, Warsaw, 15 Aug 2026",
+      "src": "img/kdl-stanczyk.jpg",
+      "w": 500,
+      "h": 590
+    },
+    {
+      "key": "kdl-grodecki",
+      "subject": "Bartosz Grodecki",
+      "kind": "kdl",
+      "file_page": "https://commons.wikimedia.org/wiki/File:Bartosz_Grodecki_Karol_Nawrocki_IMG_1343_%28Grodecki_cropped2%29.jpg",
+      "author": "W2k2, Wikimedia Commons",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "caption": "Bartosz Grodecki on his appointment as head of the National Security Bureau, 8 May 2026",
+      "src": "img/kdl-grodecki.jpg",
+      "w": 500,
+      "h": 666
     }
   ],
   "scholars": [
