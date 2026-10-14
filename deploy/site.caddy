@@ -1,0 +1,26 @@
+# Shared site block for both Caddyfiles: static files, security headers and caching.
+(site) {
+	root * /srv
+	encode zstd gzip
+
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+		Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+		# A defence brief should not turn up in search engines.
+		X-Robots-Tag "noindex, nofollow"
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
+		-Server
+	}
+
+	# Data changes with every research sweep, so always revalidate it; photos change rarely.
+	@data path /data/*.json /data/geo/*
+	header @data Cache-Control "no-cache"
+	@img path /data/img/*
+	header @img Cache-Control "public, max-age=604800"
+	@page path / /index.html
+	header @page Cache-Control "no-cache"
+
+	file_server
+}

@@ -47,10 +47,14 @@ These were hard-won in the prototype. Keep them conceptually even though the cod
 - Every claim in the data has `source` + `confidence`. The UI must surface both.
 - Responsive is a requirement, not a nice-to-have: every screen works one-handed on a phone.
 - No secrets in the repo. Deploy config and tokens stay out of git.
+- People: public role information only. No family names, children, addresses or private accounts (see
+  `schema/` privacy rule). The app is published on the open internet, so treat every field as public.
+- The app follows IREO's research stages: **Frame → Collect → Analyse → Present**, then Sources.
 
 ## Stack (see HANDOVER.md for the full spec)
 
-React + Vite + TypeScript + Tailwind, data as typed JSON, deploy to Netlify. Full rationale, the data
+React + Vite + TypeScript + Tailwind, data as typed JSON, deploy to **Railway** (Docker image serving the static
+build with Caddy). Changed from Netlify at the owner's request. Full rationale, the data
 schema, the design brief and the build milestones are in `HANDOVER.md`, `schema/ireo-country-schema.md`
 and `DESIGN-BRIEF.md`.
 

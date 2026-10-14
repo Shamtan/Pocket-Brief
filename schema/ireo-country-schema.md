@@ -103,3 +103,71 @@ Claim       = { text: string, confidence: Confidence, sourceIds: string[], asOf?
 - `flagged: true` sources (state media) must be visibly flagged and never the only source for a claim.
 - `last_refresh` drives freshness; `last_reviewed` is validation age — keep them separate in code and UI.
 - Keep it ISO3-keyed and country-agnostic so `data/aus.json` drops in with no code change.
+
+## v2 additions (research stages: Frame → Collect → Analyse → Present)
+
+All additive and optional, so a v1 file still loads. Every factual node keeps `source` + `confidence`;
+fields marked *judgement* are IREO assessment and are styled as such.
+
+```
+"schema": "ireo-country/2",
+"geo": "geo/<iso3>.geo.json",              // pre-projected outline (Natural Earth, public domain) for the ORBAT map
+"places": [ { name, lat, lon, kind: "capital" } ],
+"photos": [ { key, subject, kind: "portrait"|"equipment"|"hero", src: "img/<file>", file_page, author,
+              license, license_url, caption, w, h } ],      // freely licensed only (CC0 / PD / CC BY / CC BY-SA)
+"hero_photo": "<photo key>",
+
+// 1 · Frame — the 3-minute layer comes first, then the framing (judgement)
+"overview": { "as_of": "YYYY-MM-DD",
+              "items": [ Claim + { headline, when } ] },   // "what's happening": 5-6 sourced points
+"talking_points": { "context": string,                    // who the points are for (judgement)
+                    "points": [ { kind: "open"|"ask"|"offer"|"avoid", text, why?, sourceIds? } ] },
+"frame": { "question": string, "want": string[], "dont_want": string[] },
+
+// 2 · Collect
+force.orbat[].hq_geo: [lat, lon]                             // city centre, WGS84 (GeoNames)
+force.budget.trend[]: { year, pct_gdp?, usd_bn?, estimate: bool, basis?: "NATO"|"SIPRI", note?, sourceIds }
+Claim.photo?: "<photo key>"                                  // e.g. capability cards
+leadership[] += { role_short?, name_local?, born?,                 // role_short: "Chief of the General Staff" career: [{years, role}], careerSourceIds, education: Claim[],
+                  positions: Claim[], social: [{platform, handle, url}],   // official accounts only
+                  interests: Claim[], family: Claim|null,                  // see privacy rule below
+                  hooks: Claim[],                                          // engagement hooks, assessed
+                  photo?: "<photo key>", note? }        // photo only when a freely licensed file is in data/img
+"partners": [ { country, iso3, types: ("alliance"|"strategic-partner"|"major-supplier"|"industrial-partner"|
+               "exercise-partner"|"regional-group")[], depth: 1|2|3 /* judgement */, relation: Claim,
+               agreements?: [{ name, year }] } ],
+"scholars": [ { name, affiliation, country, focus[], works: [{title, url, date, publisher}], takeaway, tier } ],
+"institutions": [ { name, url, kind, note, gov_linked } ],
+outlets[].lang?: "pl"|"en"|"pl/en"
+
+// 3 · Analyse
+"trends": {
+  "personnel": [ { year, value, counts, estimate?, sourceIds } ],
+  "personnel_targets": Claim[] (+ value?, year?),
+  "conops": Event[], "relations": Event[],                   // Event = Claim + { date, headline }
+  "supplier_mix": { window, shares: [{country, iso3, pct}], sourceIds } | null,
+  "direction": { budget, personnel, conops, relations: Claim }   // direction of travel, assessed
+}
+
+// 4 · Present
+engagement += {
+  "sg_ties": Event[],                                        // what exists between Singapore and the country
+  "venues": [ { name, kind: "pme"|"nato-body"|"exercise"|"conference", url, note,
+               partner_access: "stated"|"unclear"|"NATO-only", sourceIds } ],
+  "saf_units": [ { id, name, short, service, role, url, sourceIds } ],   // public roles only
+  "ladder": [ { level: 0..6, label, short } ],               // engagement ladder definition
+  "lines": [ { name, objective, basis: Claim, activities: [{kind, text}], level_now, level_target,
+              saf_units: unitId[], pl_counterparts[], we_offer[], horizon } ],   // judgement
+  "precedents": Event[] (+ partner)                          // how the SAF engages comparable militaries
+}
+"gaps": [ { part, text } ]                                   // known research gaps, shown in the app
+```
+
+The app derives the reading time of the 3-minute layer (bottom line, so-what, overview, talking
+points) from word count, so the layer stays honest about its length as the data changes.
+
+### Privacy rule for people (leaders, scholars)
+
+Public role information only. `interests` must be self-disclosed or reported by reputable press.
+`family` only as stated in an official biography, summarised (e.g. "Married, two sons"): no names of
+family members, nothing about children beyond a count, no addresses, no private or unverified accounts.
