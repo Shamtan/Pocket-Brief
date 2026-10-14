@@ -113,9 +113,15 @@ fields marked *judgement* are IREO assessment and are styled as such.
 "schema": "ireo-country/2",
 "geo": "geo/<iso3>.geo.json",              // pre-projected outline (Natural Earth, public domain) for the ORBAT map
 "places": [ { name, lat, lon, kind: "capital" } ],
-"photos": [ { key, subject, kind: "portrait"|"equipment"|"hero", src: "img/<file>", file_page, author,
+"photos": [ { key, subject, kind: "portrait"|"equipment"|"hero"|"symbol", src: "img/<file>", file_page, author,
               license, license_url, caption, w, h } ],      // freely licensed only (CC0 / PD / CC BY / CC BY-SA)
 "hero_photo": "<photo key>",
+"symbols": [ { key: "<photo key>",                          // the image and its credit live in photos[]
+               role: "flag"|"forces",                       // flag = national flag (header, contents, tab icon);
+                                                            // forces = the armed forces' flags and emblems
+               type: "flag"|"emblem", label, name, name_local?, lang?,
+               part?: "<part id>" } ],                      // also shown at the top of that part, e.g. "force"
+                                                            // SVG symbols must contain no script, event handlers or external links
 
 // 1 · Frame — the 3-minute layer comes first, then the framing (judgement)
 "overview": { "as_of": "YYYY-MM-DD",

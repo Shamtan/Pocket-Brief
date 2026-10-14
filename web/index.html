@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="IREO Pocket Brief: an open-source commander's brief on a foreign military.">
 <meta name="theme-color" content="#10161c">
+<link rel="icon" href="data:,">
 <title>Pocket Brief</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,6 +101,8 @@ img { max-width: 100%; }
 .hdr-in { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "id act" "state state"; gap: 10px 12px; padding: 10px var(--gutter) 12px; align-items: center; }
 .hdr-id { grid-area: id; display: flex; align-items: center; gap: 10px; min-width: 0; text-decoration: none; }
 .iso { font: 700 12.5px/1 var(--font-display); letter-spacing: .1em; padding: 6px 6px 5px 7px; border: 1.5px solid var(--fg); border-radius: 3px; flex: none; }
+/* National flag in place of the ISO badge: a hairline keeps a white band visible on a light page. */
+.flag { flex: none; display: block; width: 36px; height: auto; aspect-ratio: 8 / 5; object-fit: cover; border-radius: 3px; box-shadow: 0 0 0 1px var(--line-strong); background: var(--bg-sunk); }
 .hdr-name { min-width: 0; }
 .hdr-name .eyebrow { display: block; font: 500 11px/1.2 var(--font-body); color: var(--fg-3); }
 .hdr-name strong { display: block; font: 700 22px/1.05 var(--font-display); letter-spacing: .01em; }
@@ -284,6 +287,26 @@ img { max-width: 100%; }
 .hero-map h1 { font: 700 50px/1 var(--font-display); margin: 4px 0 0; }
 .hero-map span { font-size: 13.5px; color: var(--fg-3); }
 .hero-map svg { width: 112px; height: auto; display: block; }
+/* Insignia: national flag and the forces' flag/emblems, each credited to its source file. Three across; text beside the image from 640px. */
+.insig { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 14px 0 20px; padding: 0; list-style: none; }
+.insig li { display: flex; flex-direction: column; align-items: center; gap: 7px; min-width: 0; padding: 10px 6px 9px; text-align: center; border-radius: 12px; background: var(--bg-raised); box-shadow: 0 0 0 1px var(--line); }
+.insig .im { flex: none; width: 54px; height: 36px; display: grid; place-items: center; }
+.insig .im img { max-width: 54px; max-height: 36px; width: auto; height: auto; display: block; }
+.insig .im img.flag { width: 54px; max-height: none; }
+.insig .im img.fl { box-shadow: 0 0 0 1px var(--line-strong); border-radius: 2px; }
+.insig .tx { min-width: 0; }
+.insig b { display: block; font: 600 12.5px/1.2 var(--font-body); color: var(--fg); }
+.insig small { display: block; font-size: 11.5px; line-height: 1.3; color: var(--fg-3); margin-top: 2px; }
+.insig small a { color: inherit; }
+.insig .loc { display: none; }
+@media (min-width: 640px) {
+  .insig li { flex-direction: row; text-align: left; gap: 11px; padding: 9px 12px 9px 9px; }
+  .insig b { font-size: 13.5px; } .insig small { font-size: 12px; } .insig .loc { display: inline; }
+}
+.sym-badge { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; font-size: 13px; color: var(--fg-3); }
+.sym-badge img { height: 40px; width: auto; max-width: 56px; object-fit: contain; }
+.sym-badge b { display: block; color: var(--fg); font: 600 14px/1.2 var(--font-body); }
+.sym-badge a { color: inherit; }
 
 /* ---------- the 3-minute layer ---------- */
 .quick { display: grid; gap: 10px; padding: 14px 16px; border-radius: var(--radius); background: var(--accent-wash); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent); margin: 0 0 14px; }
@@ -733,6 +756,8 @@ table.mx { border-collapse: collapse; width: 100%; min-width: 330px; font-size: 
 .rail-country div { display: flex; flex-direction: column; gap: 2px; }
 .rail-country strong { font: 700 17px/1 var(--font-display); }
 .rail-country small { font-size: 12px; color: var(--fg-3); }
+.rail-country .flag { width: 40px; }
+.rail-country .emb { margin-left: auto; height: 34px; width: auto; max-width: 44px; object-fit: contain; flex: none; }
 .toc { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
 .toc > li > a { display: grid; grid-template-columns: 26px minmax(0, 1fr); align-items: center; gap: 10px; padding: 8px; border-radius: 9px; text-decoration: none; font-size: 15px; font-weight: 600; color: var(--fg-2); }
 .toc > li > a .n { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font: 600 11.5px/1 var(--font-mono); box-shadow: inset 0 0 0 1.5px var(--line-strong); }
@@ -932,6 +957,8 @@ table.mx { border-collapse: collapse; width: 100%; min-width: 330px; font-size: 
 
   function prepare(d) {
     SRC = new Map(d.sources.map(s => [s.id, s])); PHOTOS = new Map((d.photos || []).map(p => [p.key, p]));
+    const flag = (d.symbols || []).find(s => s.role === 'flag' && PHOTOS.has(s.key));
+    if (flag) { let ic = document.querySelector('link[rel="icon"]'); if (!ic) { ic = document.createElement('link'); ic.rel = 'icon'; document.head.appendChild(ic); } ic.href = 'data/' + PHOTOS.get(flag.key).src; }
     CITES = new Map(); PART_CLAIMS = {}; PART_REFS = {};
     const problems = []; let total = 0;
     const check = (ids, where) => (ids || []).forEach(sid => { if (!SRC.has(sid)) problems.push(`${where}: unknown source “${sid}”`); });
@@ -1048,6 +1075,23 @@ table.mx { border-collapse: collapse; width: 100%; min-width: 330px; font-size: 
     const credit = `${p.author ? esc(p.author) + ' · ' : ''}${esc(p.license || '')}`;
     return `<figure class="ph${o.cls ? ' ' + o.cls : ''}"><img src="data/${esc(p.src)}" alt="${esc(p.caption || p.subject || '')}" ${p.w && p.h ? `width="${p.w}" height="${p.h}"` : ''}${p.focus ? ` style="object-position:${esc(p.focus)}"` : ''} loading="${o.eager ? 'eager' : 'lazy'}" decoding="async" onerror="this.parentNode.classList.add('broken')">${o.fallback ? `<div class="fb">${o.fallback}</div>` : ''}${o.noCredit ? '' : p.file_page ? ext(p.file_page, credit, 'cr') : `<span class="cr">${credit}</span>`}</figure>`;
   }
+  /* Insignia (data.symbols): role flag = national flag, forces = the armed forces' flag and emblems; `part` also shows a symbol atop that part. */
+  const symbols = role => (S.d.symbols || []).filter(s => s.role === role && PHOTOS.has(s.key));
+  function symImg(s, cls, alt) {
+    const p = PHOTOS.get(s.key);
+    return `<img${cls ? ` class="${cls}"` : ''} src="data/${esc(p.src)}" alt="${esc(alt == null ? `${s.label}: ${s.name}` : alt)}"${p.w && p.h ? ` width="${p.w}" height="${p.h}"` : ''} decoding="async">`;
+  }
+  const symCredit = s => { const p = PHOTOS.get(s.key), t = esc(p.license || 'Source'); return p.file_page ? ext(p.file_page, `${t} · Commons`) : t; };
+  const flagMark = (cls, decorative) => { const f = symbols('flag')[0]; return f ? symImg(f, `flag${cls ? ' ' + cls : ''}`, decorative ? '' : null) : `<span class="iso"${decorative ? ' aria-hidden="true"' : ''}>${esc(S.d.iso3.toUpperCase())}</span>`; };
+  function insignia() {
+    const list = [...symbols('flag'), ...symbols('forces')];
+    if (!list.length) return '';
+    return `<ul class="insig" aria-label="Flag and insignia">${list.map(s => `<li><span class="im">${symImg(s, s.role === 'flag' ? 'flag' : s.type === 'flag' ? 'fl' : '')}</span><span class="tx"><b>${esc(s.name)}</b><small>${esc(s.label)}${s.name_local ? `<span class="loc"> · <span${s.lang ? ` lang="${esc(s.lang)}"` : ''}>${esc(s.name_local)}</span></span>` : ''}</small><small>${symCredit(s)}</small></span></li>`).join('')}</ul>`;
+  }
+  function symBadge(part) {
+    const s = (S.d.symbols || []).find(x => x.part === part && PHOTOS.has(x.key));
+    return s ? `<div class="sym-badge">${symImg(s, '')}<span><b>${esc(s.name)}${s.name_local ? ` · <span${s.lang ? ` lang="${esc(s.lang)}"` : ''}>${esc(s.name_local)}</span>` : ''}</b>${esc(s.label)} · ${symCredit(s)}</span></div>` : '';
+  }
   function spark(vals) {
     if (vals.length < 2) return '';
     const w = 100, h = 26, min = Math.min(...vals), max = Math.max(...vals);
@@ -1084,7 +1128,7 @@ table.mx { border-collapse: collapse; width: 100%; min-width: 330px; font-size: 
     if (S.explain === 'currency') ex = `<div class="explain"><b>Currency</b> is how recently open sources were swept: last sweep <b>${esc(fmtDate(c.last_refresh))}</b>, ${ago(f.age)}. Fresh up to ${FRESH_DAYS} days, aging up to ${AGING_DAYS}, stale after that. Officer sign-off never changes it.</div>`;
     if (S.explain === 'validation') ex = v.state === 'validated' ? `<div class="explain"><b>Validation</b> is officer sign-off. Signed by <b>${esc(v.by)}</b> on <b>${esc(fmtDate(v.on))}</b>, ${ago(v.age)}. A newer sweep never changes it, so check currency separately.</div>` : `<div class="explain"><b>Validation</b> is officer sign-off. This brief was drafted by AI from open sources and <b>no officer has signed it off yet</b>. Treat every line as draft. A newer sweep never changes this.</div>`;
     $('#hdr').innerHTML = `<div class="osbar"><b>Open sources only</b> · Public information<span class="osx"> · Interactive prototype</span></div>
-      <div class="hdr-in"><a class="hdr-id" href="#brief" data-act="stage" data-id="brief" data-top="1"><span class="iso" aria-hidden="true">${esc(c.iso3.toUpperCase())}</span><span class="hdr-name"><span class="eyebrow"><span class="lng">IREO Pocket Brief</span><span class="sht">IREO · open sources only</span></span><strong>${esc(c.name)}</strong></span></a>
+      <div class="hdr-in"><a class="hdr-id" href="#brief" data-act="stage" data-id="brief" data-top="1">${flagMark('', true)}<span class="hdr-name"><span class="eyebrow"><span class="lng">IREO Pocket Brief</span><span class="sht">IREO · open sources only</span></span><strong>${esc(c.name)}</strong></span></a>
         <div class="hdr-state">
           <button class="state" data-act="explain" data-k="currency" aria-expanded="${S.explain === 'currency'}"><span class="state-k">${icon('refresh')}Currency</span><span class="chip st-${f.level}">${icon('clock')}${fl} · swept ${ago(f.age)}</span></button>
           <button class="state" data-act="explain" data-k="validation" aria-expanded="${S.explain === 'validation'}"><span class="state-k">${icon('badge')}Validation</span>${vChip}</button></div>
@@ -1100,7 +1144,7 @@ table.mx { border-collapse: collapse; width: 100%; min-width: 330px; font-size: 
   function renderRail() {
     const c = S.d;
     $('#rail').innerHTML = `<div class="rail-brand"><b>Pocket Brief</b><span>International Research &amp; Engagement Office</span></div>
-      <div class="rail-country"><span class="iso">${esc(c.iso3.toUpperCase())}</span><div><strong>${esc(c.name)}</strong><small>${plural(c.sources.length, 'open source')}</small></div></div>
+      <div class="rail-country">${flagMark('', true)}<div><strong>${esc(c.name)}</strong><small>${plural(c.sources.length, 'open source')}</small></div>${symbols('forces').slice(-1).map(s => symImg(s, 'emb')).join('')}</div>
       <ol class="toc">${STAGES.map(st => `<li><a href="#${st.id}" data-act="stage" data-id="${st.id}" data-top="1"${S.stage === st.id ? ' aria-current="page"' : ''}><span class="n">${st.n || icon('book')}</span><span>${esc(st.title)}</span></a>
         ${stageParts(st).length ? `<ol>${stageParts(st).map(p => `<li><a href="#${p.id}" data-act="part" data-part="${p.id}"${S.stage === st.id && S.part === p.id ? ' aria-current="true"' : ''}>${esc(p.title)}</a></li>`).join('')}</ol>` : ''}</li>`).join('')}</ol>
       <div class="rail-foot"><div class="rail-keys"><span class="kbd">1</span>–<span class="kbd">5</span> stages · <span class="kbd">/</span> search</div><button class="pbtn" data-act="proto">${icon('sliders')}Prototype controls</button></div>`;
@@ -1151,8 +1195,8 @@ table.mx { border-collapse: collapse; width: 100%; min-width: 330px; font-size: 
   }
   function heroBlock() {
     const d = S.d, key = d.hero_photo;
-    if (key && PHOTOS.has(key)) return `<div class="hero">${photo(key, { eager: true })}<div class="hero-over"><span>IREO country brief · ${esc(d.iso3.toUpperCase())}</span><h1>${esc(d.name)}</h1></div></div>`;
-    return `<div class="hero-map"><div><span>IREO country brief · open sources</span><h1>${esc(d.name)}</h1></div>${S.geo ? miniMap() : ''}</div>`;
+    if (key && PHOTOS.has(key)) return `<div class="hero">${photo(key, { eager: true })}<div class="hero-over"><span>IREO country brief · ${esc(d.iso3.toUpperCase())}</span><h1>${esc(d.name)}</h1></div></div>${insignia()}`;
+    return `<div class="hero-map"><div><span>IREO country brief · open sources</span><h1>${esc(d.name)}</h1></div>${S.geo ? miniMap() : ''}</div>${insignia()}`;
   }
   function stageFoot(st) {
     const i = STAGES.indexOf(st), prev = STAGES[i - 1], next = STAGES[i + 1];
@@ -1240,7 +1284,7 @@ table.mx { border-collapse: collapse; width: 100%; min-width: 330px; font-size: 
   }
   R.force = d => {
     const f = d.force, b = f.budget, types = UNIT_ORDER.filter(t => f.orbat.some(n => n.type === t)), shown = f.orbat.map((n, i) => ({ n, i })).filter(x => S.orbatType === 'all' || x.n.type === S.orbatType);
-    return `<div class="blocks"><div class="two">${claimEl(f.active_personnel, 'force.personnel', { variant: 'card', label: 'Active personnel', emph: true })}${claimEl(f.summary, 'force.summary', { variant: 'card', label: 'Structure', emph: true })}</div>
+    return `<div class="blocks">${symBadge('force')}<div class="two">${claimEl(f.active_personnel, 'force.personnel', { variant: 'card', label: 'Active personnel', emph: true })}${claimEl(f.summary, 'force.summary', { variant: 'card', label: 'Structure', emph: true })}</div>
       <div>${blkH('Order of battle', f.orbat.length)}<div class="ob">${orbatMap(d)}<div class="orbat"><div class="orbat-tools"><button class="fchip" data-act="orbat-type" data-v="all" aria-pressed="${S.orbatType === 'all'}">All <span class="c">${f.orbat.length}</span></button>
         ${types.map(t => `<button class="fchip" data-act="orbat-type" data-v="${t}" aria-pressed="${S.orbatType === t}">${UNIT_TYPE[t].plural} <span class="c">${f.orbat.filter(n => n.type === t).length}</span></button>`).join('')}
         <span class="end"><button class="tbtn" data-act="orbat-all" data-v="1" aria-label="Expand all">${icon('expand')}</button><button class="tbtn" data-act="orbat-all" data-v="0" aria-label="Collapse all">${icon('collapse')}</button></span></div>

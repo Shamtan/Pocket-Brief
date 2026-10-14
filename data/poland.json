@@ -4801,6 +4801,75 @@
       "src": "img/kdl-grodecki.jpg",
       "w": 500,
       "h": 666
+    },
+    {
+      "key": "sym-flag-pol",
+      "subject": "Republic of Poland",
+      "kind": "symbol",
+      "file_page": "https://commons.wikimedia.org/wiki/File:Flag_of_Poland.svg",
+      "author": "Wikimedia Commons",
+      "license": "Public domain",
+      "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "caption": "Flag of Poland",
+      "src": "img/sym-flag-pol.svg",
+      "w": 640,
+      "h": 400
+    },
+    {
+      "key": "sym-armed-forces-colour",
+      "subject": "Polish Armed Forces",
+      "kind": "symbol",
+      "file_page": "https://commons.wikimedia.org/wiki/File:Chor%C4%85giew_Wojska_Polskiego.svg",
+      "author": "Poznaniak, after Mboro (Wikimedia Commons)",
+      "license": "CC BY-SA 2.5",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+      "caption": "Colour of the Polish Armed Forces (Chorągiew Wojska Polskiego). A Polish state symbol, public domain under Polish law; this drawing is CC BY-SA 2.5.",
+      "src": "img/sym-armed-forces-colour.png",
+      "w": 330,
+      "h": 330
+    },
+    {
+      "key": "sym-land-forces-eagle",
+      "subject": "Polish Land Forces",
+      "kind": "symbol",
+      "file_page": "https://commons.wikimedia.org/wiki/File:POL_Wojska_L%C4%85dowe.svg",
+      "author": "Poznaniak (Wikimedia Commons)",
+      "license": "Public domain",
+      "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "caption": "Eagle of the Polish Land Forces (Orzeł Wojsk Lądowych)",
+      "src": "img/sym-land-forces-eagle.png",
+      "w": 250,
+      "h": 354
+    }
+  ],
+  "symbols": [
+    {
+      "key": "sym-flag-pol",
+      "role": "flag",
+      "type": "flag",
+      "label": "National flag",
+      "name": "Republic of Poland",
+      "name_local": "Flaga Rzeczypospolitej Polskiej",
+      "lang": "pl"
+    },
+    {
+      "key": "sym-armed-forces-colour",
+      "role": "forces",
+      "type": "flag",
+      "label": "Armed Forces colour",
+      "name": "Polish Armed Forces",
+      "name_local": "Chorągiew Wojska Polskiego",
+      "lang": "pl"
+    },
+    {
+      "key": "sym-land-forces-eagle",
+      "role": "forces",
+      "type": "emblem",
+      "label": "Land Forces eagle",
+      "name": "Polish Land Forces",
+      "name_local": "Wojska Lądowe",
+      "lang": "pl",
+      "part": "force"
     }
   ],
   "scholars": [
