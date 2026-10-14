@@ -1,0 +1,14 @@
+{
+  "default": "pol",
+  "countries": [
+    {
+      "iso3": "pol",
+      "name": "Poland",
+      "file": "pol.json",
+      "flag": "img/sym-flag-pol.svg",
+      "status": "draft",
+      "last_refresh": "2026-10-13",
+      "sources": 214
+    }
+  ]
+}

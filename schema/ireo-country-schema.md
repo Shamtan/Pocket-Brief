@@ -1,5 +1,9 @@
 # IREO Country Schema (Pocket Brief data contract)
 
+`data/countries.json` lists the briefs the app offers: `{ default: "<iso3>", countries: [ { iso3, name, file,
+flag?, status, last_refresh, sources } ] }`. It is generated from the country files, so it never holds facts of
+its own. The app opens `?c=<iso3>`, else the last country the reader opened, else `default`.
+
 One JSON object per country at `data/<iso3>.json`. Generate Zod types from this and validate at load.
 Every factual node carries `source` + `confidence`. Dates are ISO `YYYY-MM-DD`.
 
@@ -111,7 +115,9 @@ fields marked *judgement* are IREO assessment and are styled as such.
 
 ```
 "schema": "ireo-country/2",
-"geo": "geo/<iso3>.geo.json",              // pre-projected outline (Natural Earth, public domain) for the ORBAT map
+"demonym": "Polish",                        // adjective for labels, e.g. "Polish counterparts"
+"geo": "geo/<iso3>.geo.json",              // pre-projected outline (Natural Earth, public domain) for the ORBAT map;
+                                            // the geo file carries its projection and may carry a boundaries `note`
 "places": [ { name, lat, lon, kind: "capital" } ],
 "photos": [ { key, subject, kind: "portrait"|"equipment"|"hero"|"symbol", src: "img/<file>", file_page, author,
               license, license_url, caption, w, h } ],      // freely licensed only (CC0 / PD / CC BY / CC BY-SA)
@@ -132,6 +138,7 @@ fields marked *judgement* are IREO assessment and are styled as such.
 
 // 2 · Collect
 force.orbat[].hq_geo: [lat, lon]                             // city centre, WGS84 (GeoNames)
+force.orbat[].parent?: string                                // parent formation when the list is flat, e.g. "Northern Army"
 force.budget.trend[]: { year, pct_gdp?, usd_bn?, estimate: bool, basis?: "NATO"|"SIPRI", note?, sourceIds }
 Claim.photo?: "<photo key>"                                  // e.g. capability cards
 leadership[] += { role_short?, name_local?, born?,                 // role_short: "Chief of the General Staff" career: [{years, role}], careerSourceIds, education: Claim[],
@@ -144,7 +151,7 @@ leadership[] += { role_short?, name_local?, born?,                 // role_short
                agreements?: [{ name, year }] } ],
 "scholars": [ { name, affiliation, country, focus[], works: [{title, url, date, publisher}], takeaway, tier } ],
 "institutions": [ { name, url, kind, note, gov_linked } ],
-outlets[].lang?: "pl"|"en"|"pl/en"
+outlets[].lang?: string                                      // e.g. "pl", "ja", "en", "ja/en"
 
 // 3 · Analyse
 "trends": {
@@ -163,7 +170,7 @@ engagement += {
   "saf_units": [ { id, name, short, service, role, url, sourceIds } ],   // public roles only
   "ladder": [ { level: 0..6, label, short } ],               // engagement ladder definition
   "lines": [ { name, objective, basis: Claim, activities: [{kind, text}], level_now, level_target,
-              saf_units: unitId[], pl_counterparts[], we_offer[], horizon } ],   // judgement
+              saf_units: unitId[], counterparts[], we_offer[], horizon } ],   // judgement
   "precedents": Event[] (+ partner)                          // how the SAF engages comparable militaries
 }
 "gaps": [ { part, text } ]                                   // known research gaps, shown in the app
