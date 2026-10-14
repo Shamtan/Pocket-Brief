@@ -5504,5 +5504,9 @@
       }
     ]
   },
-  "demonym": "Polish"
+  "demonym": "Polish",
+  "name_local": "Polska",
+  "lang": "pl",
+  "region": "Europe",
+  "sub_region": "Central Europe"
 }
