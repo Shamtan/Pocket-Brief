@@ -10,7 +10,8 @@
 		Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
 		# A defence brief should not turn up in search engines.
 		X-Robots-Tag "noindex, nofollow"
-		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
+		# '?' = default only: the stricter SVG policy below wins for SVG files.
+		?Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
 		-Server
 	}
 
@@ -21,6 +22,9 @@
 	header @img Cache-Control "public, max-age=604800"
 	@page path / /index.html
 	header @page Cache-Control "no-cache"
+	# Flags and emblems are SVG files: if one is opened directly, nothing in it may run or load.
+	@svg path *.svg
+	header @svg Content-Security-Policy "default-src 'none'; style-src 'unsafe-inline'; img-src data:; frame-ancestors 'none'"
 
 	file_server
 }
