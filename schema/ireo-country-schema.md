@@ -128,11 +128,11 @@ fields marked *judgement* are IREO assessment and are styled as such.
 force.orbat[].hq_geo: [lat, lon]                             // city centre, WGS84 (GeoNames)
 force.budget.trend[]: { year, pct_gdp?, usd_bn?, estimate: bool, basis?: "NATO"|"SIPRI", note?, sourceIds }
 Claim.photo?: "<photo key>"                                  // e.g. capability cards
-leadership[] += { name_local?, born?, career: [{years, role}], careerSourceIds, education: Claim[],
+leadership[] += { role_short?, name_local?, born?,                 // role_short: "Chief of the General Staff" career: [{years, role}], careerSourceIds, education: Claim[],
                   positions: Claim[], social: [{platform, handle, url}],   // official accounts only
                   interests: Claim[], family: Claim|null,                  // see privacy rule below
                   hooks: Claim[],                                          // engagement hooks, assessed
-                  photo?: "<photo key>", note? }
+                  photo?: "<photo key>", note? }        // photo only when a freely licensed file is in data/img
 "partners": [ { country, iso3, types: ("alliance"|"strategic-partner"|"major-supplier"|"industrial-partner"|
                "exercise-partner"|"regional-group")[], depth: 1|2|3 /* judgement */, relation: Claim,
                agreements?: [{ name, year }] } ],

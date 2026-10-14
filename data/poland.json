@@ -2295,7 +2295,8 @@
           "note": "Mirror of Polish MoND release.",
           "date": "2026-01-28"
         }
-      ]
+      ],
+      "role_short": "Minister of National Defence"
     },
     {
       "name": "Gen. Wiesław Kukuła",
@@ -2540,7 +2541,8 @@
           "sourceTier": "press"
         }
       ],
-      "note": "Second term from Oct 2026"
+      "note": "Second term from Oct 2026",
+      "role_short": "Chief of the General Staff"
     },
     {
       "name": "Lt Gen Marek Sokołowski",
@@ -2684,7 +2686,8 @@
           "note": "Date not captured."
         }
       ],
-      "note": "Verify still in post"
+      "note": "Verify still in post",
+      "role_short": "General Commander"
     },
     {
       "name": "Maj Gen Ireneusz Nowak",
@@ -2802,7 +2805,8 @@
           "date": "2026-06"
         }
       ],
-      "note": "New in post, Jun 2026"
+      "note": "New in post, Jun 2026",
+      "role_short": "Operational Commander"
     },
     {
       "name": "Maj Gen Krzysztof Stańczyk",
@@ -2934,7 +2938,8 @@
           "sourceTier": "official",
           "venue": "Akademia Wojsk Lądowych, Wrocław"
         }
-      ]
+      ],
+      "role_short": "Territorial Defence Forces"
     },
     {
       "name": "Bartosz Grodecki",
@@ -3043,7 +3048,8 @@
           "note": "Grodecki publicly confirmed the President's reappointment decision.",
           "date": "2026-10"
         }
-      ]
+      ],
+      "role_short": "National Security Bureau"
     }
   ],
   "outlets": [
