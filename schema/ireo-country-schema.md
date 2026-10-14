@@ -1,8 +1,17 @@
 # IREO Country Schema (Pocket Brief data contract)
 
-`data/countries.json` lists the briefs the app offers: `{ default: "<iso3>", countries: [ { iso3, name, file,
-flag?, status, last_refresh, sources } ] }`. It is generated from the country files, so it never holds facts of
-its own. The app opens `?c=<iso3>`, else the last country the reader opened, else `default`.
+`data/countries.json` lists the briefs the app offers: `{ default: "<iso3>", countries: [ { iso3, name, name_local?,
+lang?, region?, sub_region?, file, flag?, status, last_refresh, last_reviewed?, sources, coverage, engagement?, bluf? } ] }`.
+It is generated from the country files, so it never holds facts of its own:
+- `coverage` counts the nine IREO areas the file covers: structure and organisation, budget, concept of operations,
+  capabilities and emerging tech, key leadership and their words, news outlets and scholarship, how the SAF can learn,
+  the engagement angle, and what we want and offer.
+- `engagement` is the highest `level_now` across `engagement.lines`, with its ladder label.
+- `bluf` is `snapshot.bluf.text`.
+
+The app opens `?c=<iso3>`, else the last country the reader opened, else `default`. Readers switch from the country
+card (desktop), the header (phone), the `C` key or search; "Keep my place" opens the same section in the next country,
+and the library ("All briefs") shows every brief with its status, currency, coverage and engagement level.
 
 One JSON object per country at `data/<iso3>.json`. Generate Zod types from this and validate at load.
 Every factual node carries `source` + `confidence`. Dates are ISO `YYYY-MM-DD`.
@@ -116,6 +125,8 @@ fields marked *judgement* are IREO assessment and are styled as such.
 ```
 "schema": "ireo-country/2",
 "demonym": "Polish",                        // adjective for labels, e.g. "Polish counterparts"
+"name_local": "Polska", "lang": "pl",        // the country's own name and language tag
+"region": "Europe", "sub_region": "Central Europe",   // groups the country switcher and library
 "geo": "geo/<iso3>.geo.json",              // pre-projected outline (Natural Earth, public domain) for the ORBAT map;
                                             // the geo file carries its projection and may carry a boundaries `note`
 "places": [ { name, lat, lon, kind: "capital" } ],

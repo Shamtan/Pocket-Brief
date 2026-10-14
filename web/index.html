@@ -401,6 +401,8 @@ img { max-width: 100%; }
 .lg-brig { width: 11px; height: 11px; border-radius: 50%; box-shadow: inset 0 0 0 2.5px var(--accent); }
 .lg-cap { width: 9px; height: 9px; background: var(--fg); }
 .lg-cmd { width: 9px; height: 9px; background: var(--fg); transform: rotate(45deg); }
+.map-isle { font: italic 500 13px var(--font-body); fill: var(--fg-3); }
+.map-isle-dot { fill: var(--fg-3); }
 .map-note { margin: 4px 0 0; font-size: 11.5px; line-height: 1.4; color: var(--fg-3); text-align: center; }
 .orbat { border-radius: var(--radius); background: var(--bg-raised); box-shadow: 0 0 0 1px var(--line); overflow: hidden; }
 .orbat-tools { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px; box-shadow: 0 1px 0 var(--line); align-items: center; }
@@ -678,17 +680,104 @@ table.mx { border-collapse: collapse; width: 100%; min-width: 330px; font-size: 
 .aside-hint { font-size: 13px; color: var(--fg-3); margin: 0 0 4px; }
 .aside-hint b { color: var(--fg-2); font-weight: 600; }
 .palette { position: fixed; z-index: 41; left: 0; right: 0; margin-inline: auto; top: calc(env(safe-area-inset-top, 0px) + 10px); width: min(660px, calc(100% - 20px)); max-height: min(78vh, 640px); display: flex; flex-direction: column; background: var(--bg-raised); box-shadow: var(--shadow), 0 0 0 1px var(--line-strong); border-radius: 16px; overflow: hidden; animation: up .18s cubic-bezier(.2, .8, .2, 1); }
-.cpick { position: fixed; z-index: 41; left: 0; right: 0; margin-inline: auto; top: calc(env(safe-area-inset-top, 0px) + 10px); width: min(440px, calc(100% - 20px)); max-height: min(78vh, 640px); overflow: auto; padding: 14px; background: var(--bg-raised); box-shadow: var(--shadow), 0 0 0 1px var(--line-strong); border-radius: 16px; animation: up .18s cubic-bezier(.2, .8, .2, 1); }
-.cpick ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
-.cp-item { width: 100%; display: flex; align-items: center; gap: 12px; padding: 12px; min-height: 56px; border: 0; border-radius: 12px; background: var(--bg-raised-2); color: var(--fg); font: inherit; text-align: left; cursor: pointer; }
-.cp-item:hover { background: var(--bg-hover); }
-.cp-item[aria-current] { box-shadow: 0 0 0 1.5px var(--accent); }
-.cp-item .flag { width: 40px; }
-.cp-t { flex: 1; min-width: 0; }
-.cp-t b { display: block; font: 700 17px/1.1 var(--font-display); }
-.cp-t small { display: block; margin-top: 3px; font-size: 12.5px; color: var(--fg-3); }
-.cp-item > svg { width: 18px; height: 18px; color: var(--fg-3); flex: none; }
-.cp-cur { font-size: 12px; font-weight: 600; color: var(--accent); flex: none; }
+/* Country switcher: a popover under the rail card on desktop, a bottom sheet on phones. */
+.scrim.clear { background: transparent; animation: none; }
+.csw { position: fixed; z-index: 41; display: flex; flex-direction: column; background: var(--bg-raised); box-shadow: var(--shadow), 0 0 0 1px var(--line-strong); overflow: hidden; }
+.csw.pop { width: 440px; max-height: min(640px, calc(100vh - 140px)); border-radius: 16px; animation: fadeIn .16s ease-out; }
+.csw.sheet { left: 0; right: 0; bottom: 0; max-height: calc(100vh - 56px); border-radius: 22px 22px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); animation: up .2s cubic-bezier(.2, .8, .2, 1); }
+.csw .grab { width: 40px; height: 5px; border-radius: 3px; background: var(--line-strong); margin: 8px auto 0; flex: none; }
+.csw-h { display: flex; align-items: center; justify-content: space-between; padding: 6px 12px 0 16px; }
+.csw-h b { font: 700 22px/1 var(--font-display); }
+.csw-top { padding: 12px 14px 10px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 1px 0 var(--line); flex: none; }
+.csw-search { display: flex; align-items: center; gap: 10px; height: 46px; padding: 0 12px; border-radius: 12px; background: var(--bg-sunk); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.csw-search:focus-within { box-shadow: inset 0 0 0 1.5px var(--accent); }
+.csw-search svg { width: 18px; height: 18px; color: var(--fg-3); flex: none; }
+.csw-search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--fg); font: 500 16px var(--font-body); }
+.csw-search input::placeholder { color: var(--fg-3); }
+.csw-reg { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.csw-list { flex: 1; min-height: 0; overflow: auto; padding: 4px 8px 10px; overscroll-behavior: contain; }
+.csw-g { display: flex; justify-content: space-between; padding: 12px 8px 6px; font: 600 11.5px/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-3); }
+.csw-rec { display: flex; gap: 6px; flex-wrap: wrap; padding: 0 6px 4px; }
+.csw-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 14px 0 10px; border: 0; border-radius: 999px; background: var(--bg-raised-2); box-shadow: inset 0 0 0 1px var(--line-strong); color: var(--fg); font: 600 14px var(--font-body); cursor: pointer; }
+.csw-chip[aria-current="true"] { box-shadow: inset 0 0 0 1.5px var(--accent); background: var(--accent-wash); }
+.csw-chip .flag { width: 24px; }
+.csw-row { width: 100%; display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 10px; border: 0; border-radius: 14px; background: transparent; color: var(--fg); font: inherit; text-align: left; cursor: pointer; }
+.csw-row:hover { background: var(--bg-hover); }
+.csw-row[aria-current="true"] { background: var(--accent-wash); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.csw-row .flag, .csw-row .iso { width: 38px; }
+.csw-t { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.csw-n { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.csw-n b { font: 700 17px/1.1 var(--font-display); }
+.csw-n span { font-size: 12.5px; color: var(--fg-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.csw-m { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.csw-sub { font-size: 12px; color: var(--fg-3); }
+.csw-cov { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.csw-cov small { font-size: 11px; color: var(--fg-3); }
+.csw-cur { flex: none; font-size: 12px; font-weight: 600; color: var(--accent); }
+.csw-go { flex: none; display: grid; color: var(--fg-3); } .csw-go svg { width: 18px; height: 18px; }
+.csw-empty { margin: 16px 8px; font-size: 14px; line-height: 1.5; color: var(--fg-2); }
+.linkbtn { border: 0; padding: 0; background: none; color: var(--accent); font: inherit; text-decoration: underline; cursor: pointer; }
+.csw-foot { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; padding: 10px 14px 12px; box-shadow: 0 -1px 0 var(--line); }
+.csw-keep { display: flex; align-items: center; gap: 10px; font-size: 14px; cursor: pointer; min-height: 44px; }
+.csw-keep input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
+.csw-keep small { display: block; font-size: 12px; color: var(--fg-3); }
+.meter { display: inline-flex; gap: 2px; }
+.meter i { width: 6px; height: 14px; border-radius: 2px; background: var(--line-strong); }
+.meter i.on { background: var(--accent); }
+.meter.eng i.on { background: var(--warn); }
+@media (max-width: 1023px) { .csw-cov { display: none; } .csw.sheet .csw-foot { flex-direction: column; align-items: stretch; } .csw.sheet .csw-foot .pbtn { justify-content: center; min-height: 46px; } }
+.hdr-sw { border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; padding: 4px 8px 4px 4px; margin: -4px 0 -4px -4px; border-radius: 12px; }
+.hdr-sw[aria-expanded="true"] { background: var(--accent-wash); }
+.hdr-sw strong { display: flex !important; align-items: center; gap: 4px; }
+.hdr-sw strong svg { width: 18px; height: 18px; color: var(--fg-3); flex: none; }
+@media (max-width: 1023px) { .hdr-id.has-sw { display: none !important; } }
+@media (min-width: 1024px) { .hdr-sw { display: none !important; } }
+button.rail-country[aria-expanded="true"] { box-shadow: 0 0 0 1.5px var(--accent); }
+/* Library of all briefs */
+.lib { position: fixed; inset: 0; z-index: 42; overflow: auto; background: var(--bg); animation: fadeIn .16s ease-out; overscroll-behavior: contain; }
+.lib-bar { position: sticky; top: 0; z-index: 1; background: var(--bg); box-shadow: 0 1px 0 var(--line); }
+.lib-bar-in { max-width: 1240px; margin: 0 auto; padding: 10px var(--gutter); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.lib-t { display: flex; flex-direction: column; margin-right: auto; }
+.lib-t span { font-size: 11.5px; color: var(--fg-3); }
+.lib-t b { font: 700 24px/1.05 var(--font-display); }
+.lib-search { flex: 1 1 260px; max-width: 420px; }
+.lib-in { max-width: 1240px; margin: 0 auto; padding: 20px var(--gutter) 48px; display: flex; flex-direction: column; gap: 18px; }
+.lib-lede { margin: 0; max-width: 760px; font-size: 16px; line-height: 1.55; color: var(--fg-2); }
+.lib-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.lib-stat { padding: 14px 16px; border-radius: 14px; background: var(--bg-raised); box-shadow: inset 0 0 0 1px var(--line); display: flex; flex-direction: column; gap: 4px; }
+.lib-stat b { font: 700 30px/1 var(--font-display); }
+.lib-stat span { font-size: 13px; color: var(--fg-2); }
+.lib-filters { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.lib-filters [role="group"] { display: flex; gap: 6px; flex-wrap: wrap; }
+.lib-sort { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--fg-2); }
+.lib-sort select { height: 40px; padding: 0 10px; border-radius: 10px; border: 0; background: var(--bg-raised-2); color: var(--fg); font: inherit; box-shadow: inset 0 0 0 1px var(--line-strong); }
+.lib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 14px; }
+.lib-card { display: flex; flex-direction: column; gap: 14px; padding: 18px; border-radius: 16px; background: var(--bg-raised); box-shadow: inset 0 0 0 1px var(--line); }
+.lib-card.cur { box-shadow: inset 0 0 0 1.5px var(--accent); }
+.lib-h { display: flex; align-items: center; gap: 12px; }
+.lib-h .flag, .lib-h .iso { width: 46px; }
+.lib-h h2 { margin: 0; font: 700 22px/1.05 var(--font-display); }
+.lib-h h2 span { font: 500 14px var(--font-body); color: var(--fg-3); }
+.lib-h > div > span { font-size: 13px; color: var(--fg-3); }
+.lib-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.lib-card p { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--fg-2); }
+.lib-m { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-top: 12px; box-shadow: 0 -1px 0 var(--line); }
+.lib-m > div { display: flex; flex-direction: column; gap: 6px; }
+.lib-m span { font-size: 12px; color: var(--fg-3); }
+.lib-m b { font-size: 13px; font-weight: 500; color: var(--fg); }
+.lib-m .meter i { width: 9px; height: 16px; }
+.lib-open { justify-content: center; min-height: 46px; margin-top: auto; }
+.lib-note { margin: 0; font-size: 13px; color: var(--fg-3); }
+@media (max-width: 639px) { .lib-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .lib-sort { margin-left: 0; } .lib-bar-in { gap: 8px; } }
+.toast { position: fixed; z-index: 45; left: 50%; bottom: calc(var(--tab-h) + 14px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 12px); max-width: min(520px, calc(100vw - 32px)); padding: 11px 16px; border-radius: 12px; background: var(--solid-bg); color: var(--solid-fg); font: 500 14px/1.4 var(--font-body); box-shadow: var(--shadow); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
+.toast.on { opacity: 1; transform: translate(-50%, 0); }
+@media (min-width: 1024px) { .toast { bottom: 24px; } }
+.gap-more { margin-top: 8px; }
+.gap-more > summary { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border-radius: 10px; cursor: pointer; list-style: none; font-size: 13.5px; font-weight: 600; color: var(--warn); background: var(--warn-wash); }
+.gap-more > summary::-webkit-details-marker { display: none; }
+.gap-more > summary svg { width: 16px; height: 16px; }
+.gap-more[open] > summary { margin-bottom: 8px; }
+.gap-more .gap { margin-top: 8px; }
 .pal-in { display: flex; align-items: center; gap: 10px; padding: 6px 8px 6px 14px; box-shadow: 0 1px 0 var(--line); }
 .pal-in .ic { color: var(--fg-3); }
 .pal-in input { flex: 1; min-width: 0; height: 44px; font: 400 16px/1 var(--font-body); background: none; border: 0; color: var(--fg); outline: none; }
@@ -1141,7 +1230,11 @@ button.rail-country:hover { background: var(--bg-hover); }
     const years = []; sorted.forEach(x => { const y = yearOf(x.c.date); let g = years.find(z => z.y === y); if (!g) years.push(g = { y, items: [] }); g.items.push(x); });
     return `<ol class="tl">${years.map(g => `<li><div class="tl-year">${g.y}</div><div class="tl-items">${g.items.map(x => claimEl(x.c, `${prefix}.${x.i}`, { variant: 'row', label: fmtDate(x.c.date) + (x.c.partner ? ' · ' + x.c.partner : '') })).join('')}</div></li>`).join('')}</ol>`;
   }
-  const gapNotes = id => (S.d.gaps || []).filter(g => g.part === id).map(g => `<div class="gap">${icon('alert')}<span><b>Coverage gap.</b> ${esc(g.text)}</span></div>`).join('');
+  // Known research gaps for a part: the first shows in full; the rest fold away so a long list never buries the content.
+  const gapNotes = id => {
+    const gs = (S.d.gaps || []).filter(g => g.part === id), one = g => `<div class="gap">${icon('alert')}<span><b>Coverage gap.</b> ${esc(g.text)}</span></div>`;
+    return gs.length <= 2 ? gs.map(one).join('') : `${one(gs[0])}<details class="gap-more"><summary>${icon('alert')}${plural(gs.length - 1, 'more coverage gap')}</summary>${gs.slice(1).map(one).join('')}</details>`;
+  };
 
   /* ===== header ===== */
   function renderHeader() {
@@ -1151,12 +1244,12 @@ button.rail-country:hover { background: var(--bg-hover); }
     if (S.explain === 'currency') ex = `<div class="explain"><b>Currency</b> is how recently open sources were swept: last sweep <b>${esc(fmtDate(c.last_refresh))}</b>, ${ago(f.age)}. Fresh up to ${FRESH_DAYS} days, aging up to ${AGING_DAYS}, stale after that. Officer sign-off never changes it.</div>`;
     if (S.explain === 'validation') ex = v.state === 'validated' ? `<div class="explain"><b>Validation</b> is officer sign-off. Signed by <b>${esc(v.by)}</b> on <b>${esc(fmtDate(v.on))}</b>, ${ago(v.age)}. A newer sweep never changes it, so check currency separately.</div>` : `<div class="explain"><b>Validation</b> is officer sign-off. This brief was drafted by AI from open sources and <b>no officer has signed it off yet</b>. Treat every line as draft. A newer sweep never changes this.</div>`;
     $('#hdr').innerHTML = `<div class="osbar"><b>Open sources only</b> · Public information<span class="osx"> · Interactive prototype</span></div>
-      <div class="hdr-in"><a class="hdr-id" href="#brief" data-act="stage" data-id="brief" data-top="1">${flagMark('', true)}<span class="hdr-name"><span class="eyebrow"><span class="lng">IREO Pocket Brief</span><span class="sht">IREO · open sources only</span></span><strong>${esc(c.name)}</strong></span></a>
+      <div class="hdr-in"><a class="hdr-id${MANIFEST.countries.length > 1 ? ' has-sw' : ''}" href="#brief" data-act="stage" data-id="brief" data-top="1">${flagMark('', true)}<span class="hdr-name"><span class="eyebrow"><span class="lng">IREO Pocket Brief</span><span class="sht">IREO · open sources only</span></span><strong>${esc(c.name)}</strong></span></a>${MANIFEST.countries.length > 1 ? `<button class="hdr-id hdr-sw" data-act="countries" aria-haspopup="dialog" aria-expanded="false" aria-label="${esc(c.name)}: switch country">${flagMark('', true)}<span class="hdr-name"><span class="eyebrow">IREO · open sources only</span><strong>${esc(c.name)}${icon('chevDown')}</strong></span></button>` : ''}
         <div class="hdr-state">
           <button class="state" data-act="explain" data-k="currency" aria-expanded="${S.explain === 'currency'}"><span class="state-k">${icon('refresh')}Currency</span><span class="chip st-${f.level}">${icon('clock')}${fl} · swept ${ago(f.age)}</span></button>
           <button class="state" data-act="explain" data-k="validation" aria-expanded="${S.explain === 'validation'}"><span class="state-k">${icon('badge')}Validation</span>${vChip}</button></div>
         <div class="hdr-act"><button class="ibtn" data-act="search" aria-label="Search this brief">${icon('search')}<span class="lbl">Search</span><span class="kbd">/</span></button>
-          ${MANIFEST.countries.length > 1 ? `<button class="ibtn only-m" data-act="countries" aria-haspopup="dialog" aria-label="Switch country">${icon('globe')}</button>` : ''}<button class="ibtn only-m" data-act="proto" aria-label="Prototype controls">${icon('sliders')}</button>
+          <button class="ibtn only-m" data-act="proto" aria-label="Prototype controls">${icon('sliders')}</button>
           <button class="ibtn" data-act="theme" aria-label="Switch to ${isDark() ? 'light' : 'dark'} mode">${icon(isDark() ? 'sun' : 'moon')}</button></div></div>${ex}<div class="hdr-prog" aria-hidden="true"><i></i></div>`;
     measureHeader();
   }
@@ -1167,10 +1260,10 @@ button.rail-country:hover { background: var(--bg-hover); }
   function renderRail() {
     const c = S.d;
     $('#rail').innerHTML = `<div class="rail-brand"><b>Pocket Brief</b><span>International Research &amp; Engagement Office</span></div>
-      ${(() => { const inner = `${flagMark('', true)}<div><strong>${esc(c.name)}</strong><small>${plural(c.sources.length, 'open source')}</small></div>${symbols('forces').slice(-1).map(s => symImg(s, 'emb')).join('')}`; return MANIFEST.countries.length > 1 ? `<button class="rail-country" data-act="countries" aria-haspopup="dialog" aria-label="${esc(c.name)}: switch country">${inner}<span class="rc-chev">${icon('chevDown')}</span></button>` : `<div class="rail-country">${inner}</div>`; })()}
+      ${(() => { const inner = `${flagMark('', true)}<div><strong>${esc(c.name)}</strong><small>${plural(c.sources.length, 'open source')}</small></div>${symbols('forces').slice(-1).map(s => symImg(s, 'emb')).join('')}`; return MANIFEST.countries.length > 1 ? `<button class="rail-country" data-act="countries" aria-haspopup="dialog" aria-expanded="false" aria-label="${esc(c.name)}: switch country (C)">${inner}<span class="rc-chev">${icon('chevDown')}</span></button>` : `<div class="rail-country">${inner}</div>`; })()}
       <ol class="toc">${STAGES.map(st => `<li><a href="#${st.id}" data-act="stage" data-id="${st.id}" data-top="1"${S.stage === st.id ? ' aria-current="page"' : ''}><span class="n">${st.n || icon('book')}</span><span>${esc(st.title)}</span></a>
         ${stageParts(st).length ? `<ol>${stageParts(st).map(p => `<li><a href="#${p.id}" data-act="part" data-part="${p.id}"${S.stage === st.id && S.part === p.id ? ' aria-current="true"' : ''}>${esc(p.title)}</a></li>`).join('')}</ol>` : ''}</li>`).join('')}</ol>
-      <div class="rail-foot"><div class="rail-keys"><span class="kbd">1</span>–<span class="kbd">5</span> stages · <span class="kbd">/</span> search</div><button class="pbtn" data-act="proto">${icon('sliders')}Prototype controls</button></div>`;
+      <div class="rail-foot"><div class="rail-keys"><span class="kbd">1</span>–<span class="kbd">5</span> stages · <span class="kbd">/</span> search${MANIFEST.countries.length > 1 ? ' · <span class="kbd">C</span> country' : ''}</div><button class="pbtn" data-act="proto">${icon('sliders')}Prototype controls</button></div>`;
   }
   function renderTabbar() { $('#tabbar').innerHTML = STAGES.map(st => `<a class="tab" href="#${st.id}" data-act="stage" data-id="${st.id}"${S.stage === st.id ? ' aria-current="page"' : ''}>${icon(st.icon)}<span>${esc(st.tab)}</span></a>`).join(''); }
   function setHash(h) { try { history.replaceState(null, '', '#' + h); } catch (e) { /* sandboxed frame */ } }
@@ -1293,17 +1386,19 @@ button.rail-country:hover { background: var(--bg-hover); }
   function orbatMap(d) {
     if (!S.geo) return '';
     const g = S.geo, W = g.viewBox[2], H = g.viewBox[3], units = []; walkOrbat(d.force.orbat, (n, p) => { if (n.hq_geo) units.push({ n, p }); });
-    const places = (d.places || []).map(pl => { const [x, y] = proj(pl.lat, pl.lon); return `<rect class="map-cap" x="${(x - 6).toFixed(1)}" y="${(y - 6).toFixed(1)}" width="12" height="12"/><text class="map-city" x="${(x - 12).toFixed(1)}" y="${(y + 6).toFixed(1)}" text-anchor="end">${esc(pl.name)}</text>`; }).join('');
+    const caps = (d.places || []).filter(pl => (pl.kind || 'capital') === 'capital'), isles = (d.places || []).filter(pl => pl.kind === 'island');
+    const places = caps.map(pl => { const [x, y] = proj(pl.lat, pl.lon); return `<rect class="map-cap" x="${(x - 6).toFixed(1)}" y="${(y - 6).toFixed(1)}" width="12" height="12"/><text class="map-city" x="${(x - 12).toFixed(1)}" y="${(y + 6).toFixed(1)}" text-anchor="end">${esc(pl.name)}</text>`; }).join('');
     // Label placement: capital and neighbour labels first, then commands, divisions, brigades; a label that would overlap is dropped (the dot keeps its name for screen readers and on tap).
     const boxes = [], CH = 8.6, LH = 18, hit = bx => boxes.some(o => bx[0] < o[2] && bx[2] > o[0] && bx[1] < o[3] && bx[3] > o[1]);
     const nbLabels = g.labels.filter(l => l.x > 40 && l.x < W - 40 && l.y > 24 && l.y < H - 20);
     nbLabels.forEach(l => { const w = l.name.length * 9.4; boxes.push([l.x - w / 2, l.y - 15, l.x + w / 2, l.y + 4]); });
-    (d.places || []).forEach(pl => { const [x, y] = proj(pl.lat, pl.lon), w = pl.name.length * CH; boxes.push([x - 12 - w, y - 12, x + 7, y + 7]); });
+    caps.forEach(pl => { const [x, y] = proj(pl.lat, pl.lon), w = pl.name.length * CH; boxes.push([x - 12 - w, y - 12, x + 7, y + 7]); });
+    const shortHq = t => String(t).split(/[,(]/)[0].trim();
     const RANK = { command: 0, division: 1, brigade: 2 }, placed = {};
     units.map(u => Object.assign(u, { xy: proj(u.n.hq_geo[0], u.n.hq_geo[1]) })).forEach(u => boxes.push([u.xy[0] - 11, u.xy[1] - 11, u.xy[0] + 11, u.xy[1] + 11]));
     units.slice().sort((x, y) => (RANK[x.n.type] ?? 3) - (RANK[y.n.type] ?? 3)).forEach(u => {
-      const t = u.n.hq, [x, y] = u.xy; if (!t) return;
-      if (units.some(o => o !== u && placed[o.p] && o.n.hq === t && Math.hypot(o.xy[0] - x, o.xy[1] - y) < 30)) return;   // same town already labelled
+      const t = u.n.hq && shortHq(u.n.hq), [x, y] = u.xy; if (!t) return;
+      if (units.some(o => o !== u && placed[o.p] && shortHq(o.n.hq) === t && Math.hypot(o.xy[0] - x, o.xy[1] - y) < 30)) return;   // same town already labelled
       const w = t.length * CH, r = [x + 15, y - 12, x + 15 + w, y - 12 + LH], l = [x - 15 - w, y - 12, x - 15, y - 12 + LH];
       const fits = bx => bx[0] >= 2 && bx[2] <= W - 2 && !hit(bx);
       const side = fits(r) ? 'r' : fits(l) ? 'l' : null; if (!side) return;
@@ -1311,10 +1406,11 @@ button.rail-country:hover { background: var(--bg-hover); }
     });
     const dots = units.map(({ n, p, xy }) => { const [x, y] = xy, side = placed[p], cls = n.type === 'brigade' ? ' brig' : n.type === 'command' ? ' cmd' : '';
       const mark = n.type === 'command' ? `<rect class="d" x="${(x - 8).toFixed(1)}" y="${(y - 8).toFixed(1)}" width="16" height="16" transform="rotate(45 ${x.toFixed(1)} ${y.toFixed(1)})"/>` : `<circle class="d" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${n.type === 'brigade' ? 9 : 11}"/>`;
-      return `<g class="map-dot${cls}${S.obSel === p ? ' sel' : ''}" data-act="ob-dot" data-path="${p}" role="button" tabindex="0" aria-label="${esc(n.name)}${n.hq ? ', ' + esc(n.hq) : ''}"><circle class="halo" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="26"/>${mark}${side ? `<text class="map-city" x="${(side === 'r' ? x + 16 : x - 16).toFixed(1)}" y="${(y + 6).toFixed(1)}" text-anchor="${side === 'r' ? 'start' : 'end'}">${esc(n.hq)}</text>` : ''}</g>`; }).join('');
+      return `<g class="map-dot${cls}${S.obSel === p ? ' sel' : ''}" data-act="ob-dot" data-path="${p}" role="button" tabindex="0" aria-label="${esc(n.name)}${n.hq ? ', ' + esc(n.hq) : ''}"><circle class="halo" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="26"/>${mark}${side ? `<text class="map-city" x="${(side === 'r' ? x + 16 : x - 16).toFixed(1)}" y="${(y + 6).toFixed(1)}" text-anchor="${side === 'r' ? 'start' : 'end'}">${esc(shortHq(n.hq))}</text>` : ''}</g>`; }).join('');
+    const isleLbl = isles.map(pl => { const [x, y] = proj(pl.lat, pl.lon), w = pl.name.length * 7.6, bx = [x - w / 2, y + 2, x + w / 2, y + 18]; if (bx[0] < 2 || bx[2] > W - 2 || hit(bx)) return ''; boxes.push(bx); return `<text class="map-isle" x="${x.toFixed(1)}" y="${(y + 15).toFixed(1)}" text-anchor="middle">${esc(pl.name)}</text><circle class="map-isle-dot" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3"/>`; }).join('');
     const labels = nbLabels.map(l => `<text class="map-lbl" x="${l.x}" y="${l.y}" text-anchor="middle">${esc(l.name)}</text>`).join('');
-    return `<div class="ob-map"><svg viewBox="${g.viewBox.join(' ')}" role="img" aria-label="Map of ${esc(d.name)} with formation headquarters">${g.shapes.filter(s => s.role !== 'focus').map(s => `<path class="map-n" d="${s.d}"/>`).join('')}${g.shapes.filter(s => s.role === 'focus').map(s => `<path class="map-f" d="${s.d}"/>`).join('')}${labels}${places}${dots}</svg>
-      <div class="map-legend">${units.some(u => u.n.type === 'command') ? '<span><i class="lg-cmd"></i>Command HQ</span>' : ''}<span><i class="lg-div"></i>Division HQ</span><span><i class="lg-brig"></i>Brigade HQ</span>${(d.places || []).length ? '<span><i class="lg-cap"></i>Capital</span>' : ''}<span class="muted">Tap a dot</span></div>${g.note ? `<p class="map-note">${esc(g.note)}</p>` : ''}</div>`;
+    return `<div class="ob-map"><svg viewBox="${g.viewBox.join(' ')}" role="img" aria-label="Map of ${esc(d.name)} with formation headquarters">${g.shapes.filter(s => s.role !== 'focus').map(s => `<path class="map-n" d="${s.d}"/>`).join('')}${g.shapes.filter(s => s.role === 'focus').map(s => `<path class="map-f" d="${s.d}"/>`).join('')}${labels}${isleLbl}${places}${dots}</svg>
+      <div class="map-legend">${units.some(u => u.n.type === 'command') ? '<span><i class="lg-cmd"></i>Command HQ</span>' : ''}<span><i class="lg-div"></i>Division HQ</span><span><i class="lg-brig"></i>Brigade HQ</span>${caps.length ? '<span><i class="lg-cap"></i>Capital</span>' : ''}<span class="muted">Tap a dot</span></div>${g.note ? `<p class="map-note">${esc(g.note)}</p>` : ''}</div>`;
   }
   function unitEl(n, path) {
     const open = S.orbatOpen.has(path), kids = n.children || [], ut = UNIT_TYPE[n.type] || UNIT_TYPE.other;
@@ -1505,7 +1601,7 @@ button.rail-country:hover { background: var(--bg-hover); }
   }
 
   /* ===== overlays ===== */
-  function closeOverlay() { S.overlay = null; $('#overlay').innerHTML = ''; document.body.style.overflow = ''; }
+  function closeOverlay() { const was = S.overlay; S.overlay = null; $('#overlay').innerHTML = ''; document.body.style.overflow = ''; $$('[data-act="countries"]').forEach(b => b.setAttribute('aria-expanded', 'false')); if ((was === 'countries' || was === 'library') && RET_FOCUS && document.contains(RET_FOCUS)) RET_FOCUS.focus({ preventScroll: true }); RET_FOCUS = null; }
   let PAL = [];
   function openPalette() {
     S.overlay = 'palette'; S.palQ = ''; S.palSel = 0; document.body.style.overflow = 'hidden';
@@ -1517,12 +1613,14 @@ button.rail-country:hover { background: var(--bg-hover); }
   }
   function renderPal(keep) {
     const box = $('#palRes'); if (!box) return;
-    PAL = !S.palQ.trim() ? STAGES.map(st => ({ stage: st.id, kind: st.n ? `Stage ${st.n}` : 'Reference', html: esc(st.title) })) : search(S.palQ).map(it => ({ it, kind: `${it.kind}${it.part ? ' · ' + PART_TITLE[it.part] : ''}`, html: snippet(it, S.palQ) }));
+    const pq = S.palQ.trim().toLowerCase(), cmatch = pq ? MANIFEST.countries.filter(c => c.iso3 !== S.d.iso3 && cMatch(c, pq)).map(c => ({ country: c.iso3, kind: 'Country brief', html: `Open the ${esc(c.name)} brief` })) : [];
+    PAL = !S.palQ.trim() ? STAGES.map(st => ({ stage: st.id, kind: st.n ? `Stage ${st.n}` : 'Reference', html: esc(st.title) })) : cmatch.concat(search(S.palQ).map(it => ({ it, kind: `${it.kind}${it.part ? ' · ' + PART_TITLE[it.part] : ''}`, html: snippet(it, S.palQ) })));
     box.innerHTML = PAL.length ? PAL.map((r, i) => `<button class="pal-item" role="option" data-act="pal" data-v="${i}" aria-selected="${i === S.palSel}"><span class="pal-k">${esc(r.kind)}</span><span class="pal-t">${r.html}</span></button>`).join('') : `<div class="pal-empty">Nothing in this brief matches “${esc(S.palQ)}”. Names work without accents, e.g. kukula, zagan.</div>`;
     if (keep) { const el = $$('.pal-item')[S.palSel]; if (el) el.scrollIntoView({ block: 'nearest' }); }
   }
   function choosePal(i) {
     const r = PAL[i]; if (!r) return; closeOverlay();
+    if (r.country) { loadCountry(r.country); return; }
     if (r.stage) { goStage(r.stage, { top: true }); return; }
     const it = r.it;
     if (!it.part) { S.srcTier = 'all'; goStage('sources', { rerender: true }); requestAnimationFrame(() => focusAnchor(it.id)); return; }
@@ -1535,12 +1633,89 @@ button.rail-country:hover { background: var(--bg-hover); }
     if (it.leader != null || /^lead\.\d+\./.test(it.id)) { const li = it.leader != null ? it.leader : +it.id.split('.')[1]; goStage(PART_STAGE[it.part], { part: it.part, rerender: true }); setTimeout(() => { openLeader(li); if (it.claim) setTimeout(() => focusAnchor(it.id, $('.drawer')), 300); }, 80); return; }
     goStage(PART_STAGE[it.part], { part: it.part, anchor: it.id, rerender: true });
   }
+  /* ===== country switcher (rail card on desktop, header on phone) and the library of all briefs ===== */
+  const LS = { get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* storage blocked */ } } };
+  const keepPlace = () => LS.get('pb-keep', true) !== false;
+  const recentList = () => (LS.get('pb-recent', []) || []).filter(id => MANIFEST.countries.some(c => c.iso3 === id));
+  const cFlag = (c, cls) => (c.flag ? `<img class="flag${cls ? ' ' + cls : ''}" src="data/${esc(c.flag)}" alt="">` : `<span class="iso${cls ? ' ' + cls : ''}" aria-hidden="true">${esc(c.iso3.toUpperCase())}</span>`);
+  const cMatch = (c, q) => !q || [c.name, c.name_local, c.iso3, c.region, c.sub_region].some(x => String(x || '').toLowerCase().includes(q));
+  const cStatus = c => (c.status === 'validated' ? `<span class="chip sm st-valid">Validated</span>` : `<span class="chip sm st-draft">Draft</span>`);
+  function cCurrency(c, long) {
+    if (!c.last_refresh) return '';
+    const f = freshness(c.last_refresh, today()), fl = { fresh: 'Fresh', aging: 'Aging', stale: 'Stale' }[f.level];
+    return `<span class="chip sm st-${f.level}">${fl} · ${long ? 'swept ' : ''}${ago(f.age)}</span>`;
+  }
+  const meter = (n, max, cls) => `<span class="meter${cls ? ' ' + cls : ''}" aria-hidden="true">${Array.from({ length: max }, (_, i) => `<i${i < n ? ' class="on"' : ''}></i>`).join('')}</span>`;
+  const REGION_ORDER = ['Indo-Pacific', 'Europe', 'Middle East', 'Africa', 'Americas'];
+  const regionsOf = list => [...new Set(list.map(c => c.region || 'Other'))].sort((a, b) => (REGION_ORDER.indexOf(a) + 99) % 99 - (REGION_ORDER.indexOf(b) + 99) % 99 || a.localeCompare(b));
+  let RET_FOCUS = null;
   function openCountries() {
-    S.overlay = 'countries'; document.body.style.overflow = 'hidden';
-    const cur = S.d.iso3;
-    $('#overlay').innerHTML = `<div class="scrim" data-act="close"></div><div class="cpick" role="dialog" aria-modal="true" aria-label="Choose a country brief"><div class="panel-h"><b>Country briefs</b><button class="ibtn" data-act="close" aria-label="Close">${icon('x')}</button></div>
-      <ul>${MANIFEST.countries.map(c => `<li><button class="cp-item" data-act="country" data-v="${esc(c.iso3)}"${c.iso3 === cur ? ' aria-current="true"' : ''}>${c.flag ? `<img class="flag" src="data/${esc(c.flag)}" alt="">` : `<span class="iso">${esc(c.iso3.toUpperCase())}</span>`}<span class="cp-t"><b>${esc(c.name)}</b><small>${[c.status === 'validated' ? 'Validated' : 'Draft', c.sources ? plural(c.sources, 'source') : '', c.last_refresh ? `swept ${fmtDate(c.last_refresh)}` : ''].filter(Boolean).map(esc).join(' · ')}</small></span>${c.iso3 === cur ? '<span class="cp-cur">Open</span>' : icon('chevRight')}</button></li>`).join('')}</ul></div>`;
-    setTimeout(() => { const b = $('.cp-item[aria-current]') || $('.cp-item'); if (b) b.focus(); }, 30);
+    if (MANIFEST.countries.length < 2) return;
+    RET_FOCUS = document.activeElement; S.overlay = 'countries'; S.cswQ = ''; S.cswRegion = 'all';
+    const desk = isDesktop(); if (!desk) document.body.style.overflow = 'hidden';
+    $$('[data-act="countries"]').forEach(b => b.setAttribute('aria-expanded', 'true'));
+    $('#overlay').innerHTML = `<div class="scrim${desk ? ' clear' : ''}" data-act="close"></div><div class="csw ${desk ? 'pop' : 'sheet'}" role="dialog" aria-modal="true" aria-label="Choose a country brief">
+      ${desk ? '' : `<div class="grab" aria-hidden="true"></div><div class="csw-h"><b>Country briefs</b><button class="ibtn" data-act="close" aria-label="Close">${icon('x')}</button></div>`}
+      <div class="csw-top"><label class="csw-search">${icon('search')}<span class="sr">Search country briefs</span><input id="cswInput" type="text" inputmode="search" enterkeyhint="search" autocomplete="off" placeholder="Country, local name, ISO code or region"></label><div class="csw-reg" id="cswReg" role="group" aria-label="Region"></div></div>
+      <div class="csw-list" id="cswList"></div>
+      <div class="csw-foot"><label class="csw-keep"><input type="checkbox" id="cswKeep"${keepPlace() ? ' checked' : ''}><span>Keep my place<small>Open the same section in the next country</small></span></label><button class="pbtn" data-act="library">All briefs ${icon('arrowRight')}</button></div></div>`;
+    if (desk) { const card = $('button.rail-country'), pop = $('.csw.pop'); if (card && pop) { const r = card.getBoundingClientRect(), top = Math.min(Math.max(12, r.bottom + 8), Math.max(12, innerHeight - 420)); pop.style.top = `${Math.round(top)}px`; pop.style.left = `${Math.round(Math.max(12, r.left))}px`; pop.style.maxHeight = `${Math.round(innerHeight - top - 16)}px`; } }
+    const inp = $('#cswInput');
+    inp.addEventListener('input', () => { S.cswQ = inp.value; renderCsw(); });
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') { const first = $('.csw-row'); if (first) { e.preventDefault(); first.click(); } } });
+    $('#cswKeep').addEventListener('change', e => LS.set('pb-keep', e.target.checked));
+    renderCsw();
+    setTimeout(() => { if (desk) inp.focus(); else { const cur = $('.csw-row[aria-current="true"]') || $('.csw-row'); if (cur) cur.focus({ preventScroll: true }); } }, 30);
+  }
+  function renderCsw() {
+    const q = (S.cswQ || '').trim().toLowerCase(), all = MANIFEST.countries, cur = S.d.iso3;
+    const regs = regionsOf(all), inReg = c => S.cswRegion === 'all' || (c.region || 'Other') === S.cswRegion;
+    $('#cswReg').innerHTML = [['all', 'All'], ...regs.map(r => [r, r])].map(([id, label]) => `<button class="fchip" data-act="csw-region" data-v="${esc(id)}" aria-pressed="${S.cswRegion === id}">${esc(label)} <span class="c">${all.filter(c => cMatch(c, q) && (id === 'all' || (c.region || 'Other') === id)).length}</span></button>`).join('');
+    const shown = all.filter(c => cMatch(c, q) && inReg(c));
+    const row = c => `<button class="csw-row" data-act="country" data-v="${esc(c.iso3)}" aria-current="${c.iso3 === cur}">${cFlag(c)}<span class="csw-t"><span class="csw-n"><b>${esc(c.name)}</b>${c.name_local ? `<span lang="${esc(c.lang || '')}">${esc(c.name_local)}</span>` : ''}</span><span class="csw-m">${cStatus(c)}${cCurrency(c)}<span class="csw-sub">${esc(c.sub_region || c.region || '')}</span></span></span>${c.coverage != null ? `<span class="csw-cov" title="Research areas covered">${meter(c.coverage, 9)}<small>${c.coverage}/9 areas</small></span>` : ''}${c.iso3 === cur ? '<span class="csw-cur">Open</span>' : `<span class="csw-go">${icon('chevRight')}</span>`}</button>`;
+    const rec = !q && S.cswRegion === 'all' ? recentList().map(id => all.find(c => c.iso3 === id)).filter(Boolean) : [];
+    const groups = regionsOf(shown).map(r => ({ r, items: shown.filter(c => (c.region || 'Other') === r) }));
+    $('#cswList').innerHTML = (rec.length > 1 ? `<div class="csw-g"><span>Recent</span></div><div class="csw-rec">${rec.map(c => `<button class="csw-chip" data-act="country" data-v="${esc(c.iso3)}" aria-current="${c.iso3 === cur}">${cFlag(c)}${esc(c.name)}</button>`).join('')}</div>` : '')
+      + (groups.length ? groups.map(g => `<div class="csw-g"><span>${esc(g.r)}</span><span>${g.items.length}</span></div>${g.items.map(row).join('')}`).join('')
+        : `<p class="csw-empty">No brief matches “${esc(S.cswQ)}”. IREO covers ${plural(all.length, 'country', 'countries')} so far; see <button class="linkbtn" data-act="library">all briefs</button>.</p>`);
+  }
+  function openLibrary() {
+    if (S.overlay !== 'countries') RET_FOCUS = document.activeElement;
+    S.overlay = 'library'; S.libQ = ''; S.libRegion = 'all'; S.libStatus = 'all'; S.libSort = 'swept'; document.body.style.overflow = 'hidden';
+    $$('[data-act="countries"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+    $('#overlay').innerHTML = `<div class="lib" role="dialog" aria-modal="true" aria-label="All country briefs">
+      <div class="lib-bar"><div class="lib-bar-in"><button class="ibtn" data-act="close" aria-label="Back to the brief">${icon('arrowLeft')}</button><div class="lib-t"><span>IREO Pocket Brief · open sources only</span><b>Country briefs</b></div>
+        <label class="csw-search lib-search">${icon('search')}<span class="sr">Search country briefs</span><input id="libInput" type="text" inputmode="search" autocomplete="off" placeholder="Search by country, ISO code or region"></label></div></div>
+      <div class="lib-in"><p class="lib-lede">Each brief is one country, researched in depth across IREO's nine areas. Currency (when open sources were last swept) and validation (officer sign-off) are shown separately on every card.</p>
+        <div class="lib-stats" id="libStats"></div><div class="lib-filters" id="libFilters"></div><div class="lib-grid" id="libGrid"></div>
+        <p class="lib-note">Need a country that is not here? Ask IREO: a new brief is researched to the same depth before it appears.</p></div></div>`;
+    $('#libInput').addEventListener('input', e => { S.libQ = e.target.value; renderLib(); });
+    renderLib();
+    setTimeout(() => { const b = $('.lib .ibtn'); if (b) b.focus(); }, 30);
+  }
+  function renderLib() {
+    const all = MANIFEST.countries, q = (S.libQ || '').trim().toLowerCase(), now = today(), cur = S.d.iso3;
+    const fresh = all.filter(c => c.last_refresh && freshness(c.last_refresh, now).level === 'fresh').length;
+    $('#libStats').innerHTML = [[all.length, all.length === 1 ? 'Country brief' : 'Country briefs'], [all.filter(c => c.status === 'validated').length, 'Validated by an officer'], [all.filter(c => c.status !== 'validated').length, 'Draft, awaiting sign-off'], [fresh, `Swept in the last ${FRESH_DAYS} days`]]
+      .map(([v, k]) => `<div class="lib-stat"><b>${v}</b><span>${esc(k)}</span></div>`).join('');
+    const chip = (act, id, label, on) => `<button class="fchip" data-act="${act}" data-v="${esc(id)}" aria-pressed="${on}">${esc(label)}</button>`;
+    $('#libFilters').innerHTML = `<div role="group" aria-label="Region">${[['all', 'All regions'], ...regionsOf(all).map(r => [r, r])].map(([id, l]) => chip('lib-region', id, l, S.libRegion === id)).join('')}</div>
+      <div role="group" aria-label="Status">${[['all', 'Any status'], ['validated', 'Validated'], ['draft', 'Draft']].map(([id, l]) => chip('lib-status', id, l, S.libStatus === id)).join('')}</div>
+      <label class="lib-sort">Sort<select id="libSort">${[['swept', 'Recently swept'], ['az', 'A to Z'], ['engage', 'Engagement level']].map(([v, l]) => `<option value="${v}"${S.libSort === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>`;
+    $('#libSort').addEventListener('change', e => { S.libSort = e.target.value; renderLib(); });
+    const order = { swept: (a, b) => String(b.last_refresh || '').localeCompare(String(a.last_refresh || '')) || a.name.localeCompare(b.name), az: (a, b) => a.name.localeCompare(b.name), engage: (a, b) => ((b.engagement || {}).level ?? -1) - ((a.engagement || {}).level ?? -1) || a.name.localeCompare(b.name) };
+    const list = all.filter(c => cMatch(c, q) && (S.libRegion === 'all' || (c.region || 'Other') === S.libRegion) && (S.libStatus === 'all' || (S.libStatus === 'validated') === (c.status === 'validated'))).sort(order[S.libSort]);
+    $('#libGrid').innerHTML = list.length ? list.map(c => { const e = c.engagement || null; return `<article class="lib-card${c.iso3 === cur ? ' cur' : ''}">
+        <div class="lib-h">${cFlag(c)}<div><h2>${esc(c.name)}${c.name_local ? ` <span lang="${esc(c.lang || '')}">${esc(c.name_local)}</span>` : ''}</h2><span>${esc([c.region, c.sub_region].filter(Boolean).join(' · '))}</span></div></div>
+        <div class="lib-chips">${c.status === 'validated' ? '<span class="chip sm st-valid">Validated</span>' : '<span class="chip sm st-draft">Draft · not signed off</span>'}${cCurrency(c, true)}</div>
+        ${c.bluf ? `<p>${esc(c.bluf)}</p>` : ''}
+        <div class="lib-m"><div><span>Research areas</span>${meter(c.coverage || 0, 9)}<b>${c.coverage != null ? `${c.coverage} of 9 covered` : 'Not assessed'}</b></div><div><span>SAF engagement now</span>${meter(e ? e.level + 1 : 0, 7, 'eng')}<b>${e ? `Level ${e.level} · ${esc(e.label)}` : 'Not assessed yet'}</b></div></div>
+        <button class="pbtn lib-open" data-act="country" data-v="${esc(c.iso3)}">${c.iso3 === cur ? 'Back to this brief' : 'Open the brief'}</button></article>`; }).join('')
+      : `<p class="csw-empty">No brief matches these filters.</p>`;
+  }
+  function toast(msg) {
+    let t = $('#toast'); if (!t) { t = document.createElement('div'); t.id = 'toast'; t.className = 'toast'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
+    t.textContent = msg; t.classList.add('on'); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('on'), 4200);
   }
   function openProto() { S.overlay = 'proto'; $('#overlay').innerHTML = `<div class="proto" role="dialog" aria-label="Prototype controls" id="protoPanel"></div>`; renderProto(); }
   function renderProto() {
@@ -1603,6 +1778,7 @@ button.rail-country:hover { background: var(--bg-hover); }
     if (e.key === 'Escape' && S.explain) { S.explain = null; renderHeader(); return; }
     if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !typing)) { e.preventDefault(); if (S.overlay !== 'palette') openPalette(); return; }
     if (!typing && !S.overlay && !e.metaKey && !e.ctrlKey && !e.altKey && /^[1-5]$/.test(e.key)) goStage(STAGES[+e.key - 1].id, { top: true });
+    if (!typing && !S.overlay && !e.metaKey && !e.ctrlKey && !e.altKey && (e.key === 'c' || e.key === 'C') && MANIFEST.countries.length > 1) { e.preventDefault(); openCountries(); }
   });
   function handle(act, el, e) {
     const v = el.dataset.v;
@@ -1613,8 +1789,12 @@ button.rail-country:hover { background: var(--bg-hover); }
       case 'showall': S.showAll = !S.showAll; S.open.clear(); S.closed.clear(); $$('.switch[data-act="showall"]').forEach(x => x.setAttribute('aria-pressed', S.showAll)); $$('[data-claim]').forEach(c => { c.classList.toggle('is-open', S.showAll); const b = c.querySelector(':scope > .claim-meta'); if (b) b.setAttribute('aria-expanded', S.showAll); }); break;
       case 'explain': S.explain = S.explain === el.dataset.k ? null : el.dataset.k; renderHeader(); break;
       case 'search': openPalette(); break;
-      case 'countries': openCountries(); break;
+      case 'countries': if (S.overlay === 'countries') closeOverlay(); else { if (S.overlay) closeOverlay(); openCountries(); } break;
       case 'country': if (v === S.d.iso3) closeOverlay(); else loadCountry(v); break;
+      case 'csw-region': S.cswRegion = v; renderCsw(); break;
+      case 'library': openLibrary(); break;
+      case 'lib-region': S.libRegion = v; renderLib(); break;
+      case 'lib-status': S.libStatus = v; renderLib(); break;
       case 'close': closeOverlay(); break;
       case 'theme': setTheme(isDark() ? 'light' : 'dark'); break;
       case 'set-theme': setTheme(v); break;
@@ -1659,7 +1839,7 @@ button.rail-country:hover { background: var(--bg-hover); }
   function loadCountry(iso, first) {
     const entry = MANIFEST.countries.find(c => c.iso3 === iso);
     if (!entry) { bootError('The country list', new Error(`no country "${iso}"`)); return Promise.resolve(); }
-    const file = 'data/' + entry.file;
+    const file = 'data/' + entry.file, prev = first ? null : { stage: S.stage, part: S.part };
     return getJSON(file)
       .then(d => (d.geo ? getJSON('data/' + d.geo).catch(() => null) : Promise.resolve(null)).then(geo => [d, geo]))
       .then(([d, geo]) => {
@@ -1667,12 +1847,17 @@ button.rail-country:hover { background: var(--bg-hover); }
         if (!first) Object.assign(S, freshState(), { theme: S.theme });
         S.d = d; S.geo = geo; prepare(d);
         try { localStorage.setItem('pb-country', d.iso3); } catch (e) { /* storage blocked */ }
-        try { history.replaceState(null, '', `?c=${encodeURIComponent(d.iso3)}${first ? location.hash : '#brief'}`); } catch (e) { /* sandboxed frame */ }
+        LS.set('pb-recent', [d.iso3, ...recentList().filter(x => x !== d.iso3)].slice(0, 4));
+        // Keep my place: open the same stage and part in the next country when it has them
+        let h = first ? location.hash.slice(1) : '';
+        if (prev && keepPlace() && stageById(prev.stage)) h = prev.part && PART_STAGE[prev.part] === prev.stage && stageParts(stageById(prev.stage)).some(p => p.id === prev.part) ? prev.part : prev.stage;
+        if (stageById(h)) S.stage = h; else if (PART_STAGE[h]) S.stage = PART_STAGE[h];
+        S.part = PART_STAGE[h] ? h : (stageParts(stageById(S.stage))[0] ? stageParts(stageById(S.stage))[0].id : null); wasDesk = isDesktop();
+        try { history.replaceState(null, '', `?c=${encodeURIComponent(d.iso3)}#${encodeURIComponent(h || S.stage)}`); } catch (e) { /* sandboxed frame */ }
         document.title = `${d.name} · Pocket Brief`;
-        const h = first ? location.hash.slice(1) : ''; if (stageById(h)) S.stage = h; else if (PART_STAGE[h]) S.stage = PART_STAGE[h];
-        S.part = stageParts(stageById(S.stage))[0] ? stageParts(stageById(S.stage))[0].id : null; wasDesk = isDesktop();
         renderHeader(); renderRail(); renderTabbar(); renderStage(false); renderAside();
         if (PART_STAGE[h]) requestAnimationFrame(() => scrollToPart(h)); else if (!first) window.scrollTo({ top: 0, behavior: 'instant' });
+        if (!first) toast(`Opened ${d.name} at ${PART_STAGE[h] ? PART_TITLE[h] : (stageById(S.stage) || {}).title || 'the start'}.`);
       })
       .catch(err => bootError(file, err));
   }
