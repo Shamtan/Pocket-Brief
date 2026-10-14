@@ -1,0 +1,43 @@
+{
+  "default": "pol",
+  "countries": [
+    {
+      "iso3": "jpn",
+      "name": "Japan",
+      "name_local": "日本",
+      "lang": "ja",
+      "region": "Indo-Pacific",
+      "sub_region": "Northeast Asia",
+      "file": "jpn.json",
+      "flag": "img/sym-flag-jpn.svg",
+      "status": "draft",
+      "last_refresh": "2026-10-14",
+      "sources": 480,
+      "coverage": 9,
+      "engagement": {
+        "level": 6,
+        "label": "Exercise participant"
+      },
+      "bluf": "Japan is in its biggest military build-up since 1945: 2% of GDP reached two years early, its first long-range counterstrike missiles fielded in 2026, all three services under one joint command, and ground forces shifting to the Southwest Islands."
+    },
+    {
+      "iso3": "pol",
+      "name": "Poland",
+      "name_local": "Polska",
+      "lang": "pl",
+      "region": "Europe",
+      "sub_region": "Central Europe",
+      "file": "pol.json",
+      "flag": "img/sym-flag-pol.svg",
+      "status": "draft",
+      "last_refresh": "2026-10-13",
+      "sources": 214,
+      "coverage": 9,
+      "engagement": {
+        "level": 1,
+        "label": "Knowledge exchange"
+      },
+      "bluf": "Poland is building the largest land army in the EU, funded at a record ~4.8% of GDP, postured for homeland and forward defence of NATO's eastern flank and absorbing Western and South Korean kit at exceptional speed."
+    }
+  ]
+}

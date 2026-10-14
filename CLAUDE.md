@@ -12,6 +12,8 @@ Owner: Sham. Primary user: commanders (SAF). Built on **open sources only**.
 A **modern, responsive web app** (desktop-first that must read beautifully on a phone) covering **ONE
 country first: Poland**. Prove the experience and the data model on one country, then scale. Do NOT build
 the whole-world map/dashboard of the old prototype — depth on one country beats breadth.
+Japan was added in October 2026 at the owner's request, at the same depth; readers switch countries from the
+country card.
 
 The nine research areas IREO covers per country (this is the spine of the app):
 1. Army / Ground Forces **structure & organisation** — incl. annual **budget**
@@ -60,6 +62,7 @@ and `DESIGN-BRIEF.md`.
 
 ## Conventions
 
-- Country files keyed by ISO3 lowercase (`pol`).
+- Country files keyed by ISO3 lowercase (`data/pol.json`, `data/jpn.json`); `data/countries.json` lists them and is
+  generated from them. A new country is a new data file plus its map and images: no code change.
 - Dates ISO `YYYY-MM-DD`. Confidence is `claimed | assessed`. Status is `draft | validated`.
 - Keep commits small and labelled. Write tests for the data loader and the confidence/currency logic.

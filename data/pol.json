@@ -3928,7 +3928,7 @@
           "defence-policy-group-dpg",
           "defence-policy-office-dpo"
         ],
-        "pl_counterparts": [
+        "counterparts": [
           "Ministry of National Defence – Deputy Minister Paweł Zalewski (SLD interlocutor 2025–26)",
           "MoD Military Foreign Affairs Department",
           "General Staff of the Polish Armed Forces"
@@ -3980,7 +3980,7 @@
           "rsaf-uas-warfare-and-tactics-centre",
           "future-systems-and-technology-directorat"
         ],
-        "pl_counterparts": [
+        "counterparts": [
           "Inspectorate for Unmanned Aerial Systems Forces (General Command of the Polish Armed Forces)",
           "Armament Agency (SAN C-UAS programme)",
           "PGZ / APS (SAN C2 integration)"
@@ -4032,7 +4032,7 @@
           "goh-keng-swee-command-and-staff-college-",
           "hq-training-and-doctrine-command-tradoc-"
         ],
-        "pl_counterparts": [
+        "counterparts": [
           "War Studies University (Akademia Sztuki Wojennej)",
           "Doctrine and Training Centre of the Polish Armed Forces (Bydgoszcz)",
           "NATO Military Police Centre of Excellence (Bydgoszcz) – eligibility unverified"
@@ -4077,7 +4077,7 @@
           "defence-policy-group-dpg",
           "central-manpower-base-cmpb"
         ],
-        "pl_counterparts": [
+        "counterparts": [
           "Territorial Defence Forces (lead for the 'W Gotowości' pilot)",
           "Ministry of National Defence",
           "Ministry of Interior and Administration (civil-protection coordination)"
@@ -4137,7 +4137,7 @@
           "digital-and-intelligence-service-dis",
           "defence-cyber-command"
         ],
-        "pl_counterparts": [
+        "counterparts": [
           "Armament Agency (Agencja Uzbrojenia)",
           "Polska Grupa Zbrojeniowa (PGZ)",
           "Cyberspace Defence Forces Component Command (DKWOC)"
@@ -4191,7 +4191,7 @@
           "combat-service-support-command-csscom-si",
           "defence-policy-office-dpo"
         ],
-        "pl_counterparts": [
+        "counterparts": [
           "General Command of the Polish Armed Forces (runs IRON DEFENDER / CZARNY OBROŃCA)",
           "Operational Command of the Polish Armed Forces (ANAKONDA)",
           "General Staff of the Polish Armed Forces"
@@ -5503,5 +5503,10 @@
         ]
       }
     ]
-  }
+  },
+  "demonym": "Polish",
+  "name_local": "Polska",
+  "lang": "pl",
+  "region": "Europe",
+  "sub_region": "Central Europe"
 }
