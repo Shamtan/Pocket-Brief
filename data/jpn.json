@@ -5920,7 +5920,8 @@
           "note": "Captions give his name as 'Lt. Gen. Makoto Endo'. Use for a portrait check."
         }
       ],
-      "note": "In post since 3 Aug 2026; succeeded Lt. Gen. Kobayashi Hiroki"
+      "note": "In post since 3 Aug 2026; succeeded Lt. Gen. Kobayashi Hiroki",
+      "photo": "kdl-endo"
     },
     {
       "name": "Ichikawa Keiichi",
@@ -6150,7 +6151,8 @@
           "sourceTier": "press",
           "note": "Kyodo report. Relies on unnamed sources; no official readout found."
         }
-      ]
+      ],
+      "photo": "kdl-ichikawa"
     }
   ],
   "outlets": [
@@ -8400,6 +8402,32 @@
       "src": "img/kdl-tawara.jpg",
       "w": 615,
       "h": 820
+    },
+    {
+      "key": "kdl-ichikawa",
+      "subject": "Ichikawa",
+      "kind": "kdl",
+      "file_page": "https://commons.wikimedia.org/wiki/File:Keiichi_Ichikawa_20251023.jpg",
+      "author": "Cabinet Secretariat, Japan",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "caption": "Ichikawa Keiichi, Cabinet Secretariat official photo, 2025",
+      "src": "img/kdl-ichikawa.jpg",
+      "w": 200,
+      "h": 241
+    },
+    {
+      "key": "kdl-endo",
+      "subject": "Endo",
+      "kind": "kdl",
+      "file_page": "https://commons.wikimedia.org/wiki/File:Lieutenant_General_Makoto_Endo_and_leadership_visit_MCAS_Iwakuni_%289618309%29.jpg",
+      "author": "Lance Cpl. Siwan Lewis, U.S. Marine Corps",
+      "license": "Public domain",
+      "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "caption": "Lt. Gen. Endo Makoto at MCAS Iwakuni, 12 April 2026 (cropped)",
+      "src": "img/kdl-endo.jpg",
+      "w": 271,
+      "h": 361
     },
     {
       "key": "sym-flag-jpn",
