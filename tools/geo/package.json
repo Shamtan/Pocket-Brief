@@ -1,0 +1,12 @@
+{
+  "name": "pocket-brief-geo",
+  "private": true,
+  "description": "Builds the map files in data/geo from Natural Earth (public domain) via world-atlas.",
+  "type": "module",
+  "dependencies": {
+    "d3-geo": "3.1.1",
+    "i18n-iso-countries": "7.14.0",
+    "topojson-client": "3.1.0",
+    "world-atlas": "2.0.2"
+  }
+}
