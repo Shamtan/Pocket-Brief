@@ -5276,7 +5276,8 @@
           "sourceTier": "official",
           "note": "Discusses the five 'I's (Japanese transcript)."
         }
-      ]
+      ],
+      "photo": "kdl-uchikura"
     },
     {
       "name": "Adm. Tawara Tateki",
@@ -5758,7 +5759,8 @@
           "note": "Official career profile from his Western Army command (Japanese)."
         }
       ],
-      "born": "1967"
+      "born": "1967",
+      "photo": "kdl-arai"
     },
     {
       "name": "Lt. Gen. Endo Makoto",
@@ -8391,6 +8393,19 @@
       "h": 823
     },
     {
+      "key": "kdl-uchikura",
+      "subject": "Uchikura",
+      "kind": "kdl",
+      "file_page": "https://commons.wikimedia.org/wiki/File:2026_Hiroaki_Uchikura_%E5%86%85%E5%80%89%E6%B5%A9%E6%98%AD.jpg",
+      "author": "Joint Staff, Ministry of Defense, Japan",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "caption": "Gen. Uchikura Hiroaki, Chief of Staff, Joint Staff, official portrait, August 2025",
+      "src": "img/kdl-uchikura.jpg",
+      "w": 500,
+      "h": 663
+    },
+    {
       "key": "kdl-tawara",
       "subject": "Tawara",
       "kind": "kdl",
@@ -8402,6 +8417,19 @@
       "src": "img/kdl-tawara.jpg",
       "w": 615,
       "h": 820
+    },
+    {
+      "key": "kdl-arai",
+      "subject": "Arai",
+      "kind": "kdl",
+      "file_page": "https://commons.wikimedia.org/wiki/File:Chief_of_Staff%2C_GSDF_General_Arai_Masayoshi.jpg",
+      "author": "Japan Ground Self-Defense Force",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "caption": "Gen. Arai Masayoshi, Chief of Staff, GSDF, official portrait, 2025",
+      "src": "img/kdl-arai.jpg",
+      "w": 500,
+      "h": 500
     },
     {
       "key": "kdl-ichikawa",
