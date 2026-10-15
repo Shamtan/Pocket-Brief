@@ -13,8 +13,9 @@ Build **Pocket Brief**, the commander-facing app of the **International Research
 interactive brief on a foreign military: what it is, how it fights, who leads it, what the SAF can learn
 from it, and how to engage it.
 
-**v1 = one country done excellently: Poland.** Depth and interaction on one country, not breadth. Do not
-rebuild the old whole-world map dashboard.
+**v1 = one country done excellently: Poland.** Depth and interaction on one country, not breadth. (October 2026:
+Japan added, and the owner asked for a whole-world map home page that lights up only researched countries; see
+CLAUDE.md. Other countries are still not to be added until the owner asks.)
 
 This is a ground-up redesign that **succeeds the COMPASS / "Tiny Desk" static prototype**. You are not
 porting the old HTML. You are building a modern web app that keeps the prototype's *proven data logic*
