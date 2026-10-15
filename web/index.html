@@ -113,6 +113,7 @@ img { max-width: 100%; }
 .hdr-act { grid-area: act; display: flex; gap: 2px; }
 .ibtn { min-width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 9px; color: var(--fg-2); }
 .ibtn:hover { background: var(--bg-hover); color: var(--fg); }
+a.ibtn { text-decoration: none; }
 .ibtn .lbl, .ibtn .kbd { display: none; }
 .kbd { font: 500 11px/1 var(--font-mono); padding: 3px 5px; border: 1px solid var(--line-strong); border-radius: 4px; color: var(--fg-3); }
 .hdr-prog { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; overflow: hidden; pointer-events: none; }
@@ -881,6 +882,146 @@ button.rail-country:hover { background: var(--bg-hover); }
 .toc ol a[aria-current="true"] { color: var(--fg); box-shadow: inset 2px 0 0 var(--accent); background: var(--accent-wash); }
 .rail-foot { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
 .rail-keys { font-size: 12px; color: var(--fg-3); padding: 0 6px; line-height: 1.7; }
+.rail-home { display: flex; align-items: center; gap: 8px; padding: 8px; border-radius: 9px; text-decoration: none; font-size: 14px; font-weight: 600; color: var(--fg-2); }
+.rail-home:hover { background: var(--bg-hover); color: var(--fg); }
+.rail-home .ic { width: 16px; height: 16px; color: var(--accent); }
+
+/* ---------- home: world map → region → brief. Dots and colours read theme tokens. ---------- */
+:root { --dot-none: #1c262e; --dot: #283440; --dot-has: #3d566e; --dot-hi: #82a6cc; --dot-hi-dim: #506477; --home: #e3b052; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --dot-none: #e0e6eb; --dot: #d2dae1; --dot-has: #a9bccd; --dot-hi: #4f7fb5; --dot-hi-dim: #93a6b8; --home: #9a6200; } }
+:root[data-theme="light"] { --dot-none: #e0e6eb; --dot: #d2dae1; --dot-has: #a9bccd; --dot-hi: #4f7fb5; --dot-hi-dim: #93a6b8; --home: #9a6200; }
+.home { min-height: 100vh; min-height: 100dvh; }
+.hm-hdr { position: sticky; top: 0; z-index: 30; padding-top: env(safe-area-inset-top, 0px); background: color-mix(in srgb, var(--bg) 90%, transparent); -webkit-backdrop-filter: saturate(1.2) blur(14px); backdrop-filter: saturate(1.2) blur(14px); border-bottom: 1px solid var(--line); }
+.hm-hdr-in { max-width: 1320px; margin: 0 auto; padding: 10px var(--gutter); display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; }
+.hm-brand { display: flex; align-items: center; gap: 10px; min-width: 0; margin-right: auto; text-decoration: none; }
+.hm-brand svg { width: 34px; height: 34px; flex: none; }
+.hm-brand b { display: block; font: 700 22px/1 var(--font-display); letter-spacing: .01em; }
+.hm-brand small { display: block; font: 500 11px/1.4 var(--font-body); color: var(--fg-3); }
+.hm-crumbs { order: 3; width: 100%; display: flex; align-items: center; gap: 2px; font-size: 14px; font-weight: 600; }
+.hm-crumbs a, .hm-crumbs span { padding: 6px 8px; border-radius: 8px; text-decoration: none; }
+.hm-crumbs a { color: var(--accent); } .hm-crumbs a:hover { background: var(--bg-hover); }
+.hm-crumbs .ic { width: 14px; height: 14px; color: var(--fg-3); }
+.hm-act { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+.hm-resume { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 10px 0 8px; border-radius: 10px; box-shadow: inset 0 0 0 1px var(--line-strong); font-size: 14px; font-weight: 600; }
+.hm-resume:hover { background: var(--bg-hover); }
+.hm-resume .flag { width: 26px; } .hm-resume .ic { width: 16px; height: 16px; color: var(--accent); }
+.hm-resume span { display: none; }
+.hm-main { max-width: 1320px; margin: 0 auto; padding: 14px var(--gutter) 48px; display: flex; flex-direction: column; gap: 14px; }
+.hm-main:focus { outline: none; }
+.hm-k { margin: 0; font: 600 11.5px/1.2 var(--font-body); letter-spacing: .16em; text-transform: uppercase; color: var(--fg-2); }
+.hm-top { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px; }
+.hm-top .hm-k { margin-right: auto; }
+.hm-leg { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--fg-2); }
+.hm-leg i { flex: none; display: block; }
+.hm-leg .lv-live { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-wash); }
+.hm-leg .lv-home { width: 9px; height: 9px; transform: rotate(45deg); background: var(--home); }
+.hm-leg svg { width: 40px; height: 10px; }
+.hm-leg .lv-past { width: 14px; height: 10px; border-radius: 3px; background: var(--bg-raised-2); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.hm-leg .lv-up { width: 14px; height: 10px; border-radius: 3px; box-shadow: inset 0 0 0 1.5px var(--warn); }
+.hm-map { border-radius: 20px; background: var(--bg-sunk); box-shadow: inset 0 0 0 1px var(--line); padding: 14px 16px 10px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.hm-pan { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; }
+.hm-pan::-webkit-scrollbar { display: none; }
+.hm-canvas { position: relative; overflow: hidden; }
+.hm-canvas > svg { display: block; width: 100%; height: auto; }
+.dots { fill: none; stroke: var(--dot); stroke-linecap: round; transition: stroke .2s; }
+.dots.none { stroke: var(--dot-none); } .dots.has { stroke: var(--dot-has); }
+.dots.hi { stroke: var(--dot-hi-dim); } .dots.has.hi { stroke: var(--dot-hi); }
+.dots.live { stroke: var(--accent); }
+.arc { fill: none; stroke: var(--accent); stroke-linecap: round; vector-effect: non-scaling-stroke; opacity: .9; }
+.arc.thin { stroke-dasharray: 4 5; }
+.hm-halo { position: absolute; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; background: color-mix(in srgb, var(--accent) 16%, transparent); box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 55%, transparent), 0 0 0 10px color-mix(in srgb, var(--accent) 6%, transparent); pointer-events: none; }
+.hm-pin { position: absolute; transform: translate(20px, -50%); display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 11px 0 7px; border-radius: 999px; background: color-mix(in srgb, var(--bg) 94%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 60%, transparent); font: 700 13px/1 var(--font-display); letter-spacing: .08em; white-space: nowrap; }
+.hm-pin.l { transform: translate(calc(-100% - 20px), -50%); }
+.hm-pin:hover { background: var(--bg-raised); }
+.hm-pin .flag { width: 20px; }
+.hm-pin .lv { font: 600 11px/1 var(--font-mono); letter-spacing: 0; color: var(--accent); }
+.hm-pin.big { height: 40px; padding: 0 14px 0 9px; gap: 8px; font-size: 17px; letter-spacing: .01em; }
+.hm-pin.big .flag { width: 27px; }
+.hm-halo.big { width: 52px; height: 52px; margin: -26px 0 0 -26px; }
+.hm-sgp { position: absolute; width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; transform: rotate(45deg); background: var(--home); box-shadow: 0 0 0 4px color-mix(in srgb, var(--home) 22%, transparent); pointer-events: none; }
+.hm-sgp-l { position: absolute; transform: translate(-50%, 12px); font: 600 11px/1 var(--font-mono); letter-spacing: .06em; color: var(--home); pointer-events: none; }
+.hm-edge { position: absolute; display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px; border-radius: 8px; background: color-mix(in srgb, var(--bg) 92%, transparent); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--home) 50%, transparent); font: 600 12px/1 var(--font-mono); color: var(--home); white-space: nowrap; pointer-events: none; }
+.hm-edge i { width: 8px; height: 8px; transform: rotate(45deg); background: var(--home); }
+.hm-note { margin: 0; font-size: 11.5px; color: var(--fg-3); }
+.hm-regions { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.hm-rt { display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 16px; background: var(--bg-raised); box-shadow: inset 0 0 0 1px var(--line); text-align: left; transition: box-shadow .2s; }
+.hm-rt:hover, .hm-rt:focus-visible { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--accent) 70%, transparent); }
+.hm-rt.empty { background: transparent; }
+.hm-rt .t { display: flex; align-items: center; gap: 8px; width: 100%; }
+.hm-rt .t > span { margin-right: auto; font: 600 11.5px/1.2 var(--font-body); letter-spacing: .13em; text-transform: uppercase; color: var(--fg-2); }
+.hm-rt .t .ic { width: 16px; height: 16px; color: var(--accent); }
+.hm-rt.empty .t .ic { color: var(--fg-3); }
+.hm-rt .sw { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--dot-has); }
+.hm-rt.empty .sw { background: var(--dot); }
+.hm-rt .n { display: flex; align-items: flex-end; gap: 8px; }
+.hm-rt .n b { font: 700 34px/1 var(--font-display); }
+.hm-rt.empty .n b { color: var(--fg-3); }
+.hm-rt .n small { padding-bottom: 3px; font-size: 12.5px; color: var(--fg-3); }
+.hm-rt .fl { display: flex; gap: 6px; min-height: 16px; } .hm-rt .flag { width: 24px; }
+.hm-pulse { padding: 14px 16px 16px; border-radius: 20px; background: var(--bg-raised); box-shadow: inset 0 0 0 1px var(--line); display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.hm-pg-w { position: relative; overflow-x: auto; overscroll-behavior-x: contain; }
+.hm-pg { --rh: 112px; display: grid; grid-template-columns: var(--rh) repeat(var(--cols), minmax(150px, 1fr)); gap: 6px; min-width: calc(var(--rh) + var(--cols) * 156px); }
+.hm-pg > .hm-rh, .hm-pg > .hm-corner { position: sticky; left: 0; z-index: 1; background: var(--bg-raised); }
+.hm-mh { padding: 6px 8px; border-radius: 8px; font: 600 11.5px/1 var(--font-body); letter-spacing: .13em; text-transform: uppercase; color: var(--fg-3); }
+.hm-mh.now { color: var(--fg); background: var(--accent-wash); }
+.hm-rh { display: flex; align-items: center; gap: 8px; padding: 0 4px; font: 700 16px/1.1 var(--font-display); text-align: left; border-radius: 8px; }
+.hm-rh:hover { color: var(--accent); } .hm-rh .flag { width: 27px; }
+.hm-cell { display: flex; flex-direction: column; gap: 6px; min-height: 52px; padding: 6px; border-radius: 12px; background: color-mix(in srgb, var(--fg) 3%, transparent); }
+.hm-cell.now { background: var(--accent-wash); }
+.hm-sig { position: relative; display: flex; align-items: flex-start; gap: 8px; width: 100%; padding: 8px 10px; border-radius: 10px; background: var(--bg-raised-2); box-shadow: inset 0 0 0 1px var(--line); text-align: left; }
+.hm-sig:hover { background: var(--bg-hover); }
+.hm-sig > i { flex: none; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: var(--accent); }
+.hm-sig.up { background: transparent; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--warn) 65%, transparent); }
+.hm-sig.up > i { background: transparent; box-shadow: inset 0 0 0 2px var(--warn); }
+.hm-sig > span { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.hm-sig b { font-size: 13px; font-weight: 600; line-height: 1.25; }
+.hm-sig small { font: 500 11px/1.2 var(--font-mono); color: var(--fg-3); }
+.hm-sigs { display: flex; flex-direction: column; gap: 6px; }
+.hm-pl { display: none; flex-direction: column; gap: 6px; }
+.hm-pl .hm-mh { margin-top: 6px; } .hm-pl .hm-mh:first-child { margin-top: 0; }
+.hm-pl .hm-sig .flag { width: 24px; margin-top: 1px; }
+.hm-sigs .hm-sig > span { flex-direction: row; justify-content: space-between; align-items: baseline; gap: 10px; flex: 1; }
+.hm-title { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; }
+.hm-title h1 { margin: 0 auto 0 0; font: 700 36px/1 var(--font-display); }
+.hm-back { display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 14px 0 10px; border-radius: 12px; box-shadow: inset 0 0 0 1px var(--line-strong); font-size: 14px; font-weight: 600; text-decoration: none; }
+.hm-back:hover { background: var(--bg-hover); }
+.hm-count { display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px; border-radius: 999px; background: var(--accent-wash); font-size: 13px; }
+.hm-count i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.hm-reg { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+.hm-reg > .hm-map { flex: 1 1 560px; }
+.hm-side { flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.hm-card { display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background: var(--bg-raised); box-shadow: inset 0 0 0 1px var(--line); }
+.hm-ph { position: relative; aspect-ratio: 16 / 7; background: var(--bg-sunk); }
+.hm-ph > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hm-badges { position: absolute; left: 12px; bottom: 12px; display: flex; align-items: center; gap: 8px; padding: 6px; border-radius: 12px; background: color-mix(in srgb, var(--bg) 88%, transparent); }
+.hm-badges .flag { width: 42px; } .hm-badges .emb { height: 30px; width: auto; max-width: 40px; object-fit: contain; }
+.hm-credit { position: absolute; right: 10px; top: 10px; max-width: 60%; padding: 3px 8px; border-radius: 6px; background: color-mix(in srgb, var(--bg) 85%, transparent); font-size: 11px; color: var(--fg-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hm-cb { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 14px; }
+.hm-ch { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; }
+.hm-ch h2 { margin: 0 auto 0 0; font: 700 28px/1 var(--font-display); }
+.hm-ch h2 span { font: 500 15px var(--font-body); color: var(--fg-3); }
+.hm-ch h2 small { display: block; font: 600 11px/1.9 var(--font-body); letter-spacing: .13em; text-transform: uppercase; color: var(--fg-3); }
+.hm-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.hm-stat { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 4px; padding: 12px 6px; border-radius: 12px; background: var(--bg-raised-2); box-shadow: inset 0 0 0 1px var(--line); text-align: center; }
+.hm-stat > svg { width: 58px; height: 34px; flex: none; }
+.hm-stat > svg.ic { width: 30px; height: 30px; stroke-width: 1.6; color: var(--accent); }
+.g-bg, .g-v { fill: none; stroke-width: 11; stroke-linecap: round; } .g-bg { stroke: var(--line-strong); } .g-v { stroke: var(--accent); }
+.hm-stat b { font: 700 22px/1 var(--font-display); } .hm-stat b span { font: 600 13px var(--font-body); color: var(--warn); }
+.hm-stat small { font-size: 11.5px; line-height: 1.3; color: var(--fg-3); }
+.hm-bars { display: flex; align-items: flex-end; gap: 3px; height: 34px; }
+.hm-bars i { width: 6px; border-radius: 2px; background: var(--line-strong); } .hm-bars i.on { background: var(--accent); } .hm-bars i.tg { box-shadow: inset 0 0 0 1.5px var(--warn); }
+.hm-faces { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+.hm-face { display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 0; padding: 4px 0; border-radius: 10px; }
+.hm-face:hover { background: var(--bg-hover); }
+.hm-face img, .hm-face .hm-mono { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; object-position: center 18%; box-shadow: 0 0 0 2px var(--bg-raised), 0 0 0 3px var(--line-strong); }
+.hm-face .hm-mono { display: grid; place-items: center; background: var(--bg-raised-2); font: 700 15px/1 var(--font-display); }
+.hm-face > span:last-child { max-width: 100%; font-size: 11.5px; color: var(--fg-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hm-open { display: flex; align-items: center; justify-content: center; gap: 8px; height: 48px; border-radius: 12px; background: var(--solid-bg); color: var(--solid-fg); font-size: 15px; font-weight: 700; }
+.hm-empty { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 22px; border-radius: 20px; outline: 1.5px dashed var(--line-strong); outline-offset: -1.5px; }
+.hm-empty b { font: 700 22px/1.1 var(--font-display); } .hm-empty p { margin: 0; color: var(--fg-2); font-size: 14.5px; }
+@media (min-width: 640px) { .hm-resume span { display: inline; } }
+@media (max-width: 639px) { .hm-pg-w { display: none; } .hm-pl { display: flex; } .hm-pan .hm-canvas { width: 780px; } .hm-map { padding: 12px 12px 8px; } .hm-title h1 { font-size: 30px; } .hm-pg { --rh: 92px; } .hm-rh { font-size: 15px; } }
+@media (min-width: 1024px) { .hm-brand { margin-right: 12px; } .hm-crumbs { order: 0; width: auto; margin-right: auto; } .hm-main { padding-top: 20px; gap: 16px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; } }
 @media (max-width: 639px) { .osx { display: none; } }
 @media (max-width: 420px) { .quick ol { grid-template-columns: 1fr; } .quick a { min-height: 0; flex-direction: row; align-items: baseline; gap: 8px; } }
@@ -889,10 +1030,11 @@ button.rail-country:hover { background: var(--bg-hover); }
 <style>[hidden] { display: none !important; }</style>
 </head>
 <body>
+<div class="home" id="home" hidden></div>
 <div class="app" id="app">
   <nav class="rail" id="rail" aria-label="Contents"></nav>
   <header class="hdr" id="hdr"></header>
-  <main class="main" id="main" tabindex="-1"><div class="boot"><b>Loading brief</b>Reading the country file…</div></main>
+  <main class="main" id="main" tabindex="-1"><div class="boot"><b>Loading</b>Reading the data files…</div></main>
   <aside class="aside" id="aside" aria-label="Sources"></aside>
 </div>
 <nav class="tabbar" id="tabbar" aria-label="Stages"></nav>
@@ -1012,6 +1154,8 @@ button.rail-country:hover { background: var(--bg-hover); }
   const freshState = () => ({ d: null, geo: null, stage: 'brief', part: null, scrollPos: {}, showAll: false, open: new Set(), closed: new Set(), active: null, simDays: 0, simValid: null, explain: null, theme: null, overlay: null, palQ: '', palSel: 0, year: null, pYear: null, measure: 'pct', obSel: null, orbatOpen: new Set(), orbatType: 'all', capTab: 'all', mediaType: 'all', learnDomain: 'all', tie: 0, unitSel: null, srcTier: 'all' });
   const S = freshState();
   let MANIFEST = { countries: [] };
+  let VIEW = 'brief', WORLD = null; // VIEW: 'home' (world or region overview) or 'brief'
+  const HOME = { region: null };
   let SRC = new Map(), CITES = new Map(), LINKED = new Set(), INDEX = [], PART_CLAIMS = {}, PART_REFS = {}, INTEGRITY = null, PHOTOS = new Map();
   const today = () => { const n = new Date(); return new Date(Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()) + S.simDays * 864e5); };
   const country = () => (S.simValid ? Object.assign({}, S.d, { status: 'validated', reviewed_by: 'Reviewing officer (demo)', last_reviewed: S.simValid }) : S.d);
@@ -1249,7 +1393,8 @@ button.rail-country:hover { background: var(--bg-hover); }
         <div class="hdr-state">
           <button class="state" data-act="explain" data-k="currency" aria-expanded="${S.explain === 'currency'}"><span class="state-k">${icon('refresh')}Currency</span><span class="chip st-${f.level}">${icon('clock')}${fl} · swept ${ago(f.age)}</span></button>
           <button class="state" data-act="explain" data-k="validation" aria-expanded="${S.explain === 'validation'}"><span class="state-k">${icon('badge')}Validation</span>${vChip}</button></div>
-        <div class="hdr-act"><button class="ibtn" data-act="search" aria-label="Search this brief">${icon('search')}<span class="lbl">Search</span><span class="kbd">/</span></button>
+        <div class="hdr-act"><a class="ibtn" href="./" data-act="home" aria-label="World overview">${icon('globe')}<span class="lbl">World</span></a>
+          <button class="ibtn" data-act="search" aria-label="Search this brief">${icon('search')}<span class="lbl">Search</span><span class="kbd">/</span></button>
           <button class="ibtn only-m" data-act="proto" aria-label="Prototype controls">${icon('sliders')}</button>
           <button class="ibtn" data-act="theme" aria-label="Switch to ${isDark() ? 'light' : 'dark'} mode">${icon(isDark() ? 'sun' : 'moon')}</button></div></div>${ex}<div class="hdr-prog" aria-hidden="true"><i></i></div>`;
     measureHeader();
@@ -1261,6 +1406,7 @@ button.rail-country:hover { background: var(--bg-hover); }
   function renderRail() {
     const c = S.d;
     $('#rail').innerHTML = `<div class="rail-brand"><b>Pocket Brief</b><span>International Research &amp; Engagement Office</span></div>
+      <a class="rail-home" href="./" data-act="home">${icon('globe')}World overview</a>
       ${(() => { const inner = `${flagMark('', true)}<div><strong>${esc(c.name)}</strong><small>${plural(c.sources.length, 'open source')}</small></div>${symbols('forces').slice(-1).map(s => symImg(s, 'emb')).join('')}`; return MANIFEST.countries.length > 1 ? `<button class="rail-country" data-act="countries" aria-haspopup="dialog" aria-expanded="false" aria-label="${esc(c.name)}: switch country (C)">${inner}<span class="rc-chev">${icon('chevDown')}</span></button>` : `<div class="rail-country">${inner}</div>`; })()}
       <ol class="toc">${STAGES.map(st => `<li><a href="#${st.id}" data-act="stage" data-id="${st.id}" data-top="1"${S.stage === st.id ? ' aria-current="page"' : ''}><span class="n">${st.n || icon('book')}</span><span>${esc(st.title)}</span></a>
         ${stageParts(st).length ? `<ol>${stageParts(st).map(p => `<li><a href="#${p.id}" data-act="part" data-part="${p.id}"${S.stage === st.id && S.part === p.id ? ' aria-current="true"' : ''}>${esc(p.title)}</a></li>`).join('')}</ol>` : ''}</li>`).join('')}</ol>
@@ -1669,7 +1815,7 @@ button.rail-country:hover { background: var(--bg-hover); }
     setTimeout(() => { if (desk) inp.focus(); else { const cur = $('.csw-row[aria-current="true"]') || $('.csw-row'); if (cur) cur.focus({ preventScroll: true }); } }, 30);
   }
   function renderCsw() {
-    const q = (S.cswQ || '').trim().toLowerCase(), all = MANIFEST.countries, cur = S.d.iso3;
+    const q = (S.cswQ || '').trim().toLowerCase(), all = MANIFEST.countries, cur = VIEW === 'brief' && S.d ? S.d.iso3 : null;
     const regs = regionsOf(all), inReg = c => S.cswRegion === 'all' || (c.region || 'Other') === S.cswRegion;
     $('#cswReg').innerHTML = [['all', 'All'], ...regs.map(r => [r, r])].map(([id, label]) => `<button class="fchip" data-act="csw-region" data-v="${esc(id)}" aria-pressed="${S.cswRegion === id}">${esc(label)} <span class="c">${all.filter(c => cMatch(c, q) && (id === 'all' || (c.region || 'Other') === id)).length}</span></button>`).join('');
     const shown = all.filter(c => cMatch(c, q) && inReg(c));
@@ -1685,7 +1831,7 @@ button.rail-country:hover { background: var(--bg-hover); }
     S.overlay = 'library'; S.libQ = ''; S.libRegion = 'all'; S.libStatus = 'all'; S.libSort = 'swept'; document.body.style.overflow = 'hidden';
     $$('[data-act="countries"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
     $('#overlay').innerHTML = `<div class="lib" role="dialog" aria-modal="true" aria-label="All country briefs">
-      <div class="lib-bar"><div class="lib-bar-in"><button class="ibtn" data-act="close" aria-label="Back to the brief">${icon('arrowLeft')}</button><div class="lib-t"><span>IREO Pocket Brief · open sources only</span><b>Country briefs</b></div>
+      <div class="lib-bar"><div class="lib-bar-in"><button class="ibtn" data-act="close" aria-label="${VIEW === 'home' ? 'Back to the overview' : 'Back to the brief'}">${icon('arrowLeft')}</button><div class="lib-t"><span>IREO Pocket Brief · open sources only</span><b>Country briefs</b></div>
         <label class="csw-search lib-search">${icon('search')}<span class="sr">Search country briefs</span><input id="libInput" type="text" inputmode="search" autocomplete="off" placeholder="Search by country, ISO code or region"></label></div></div>
       <div class="lib-in"><p class="lib-lede">Each brief is one country, researched in depth across IREO's nine areas. Currency (when open sources were last swept) and validation (officer sign-off) are shown separately on every card.</p>
         <div class="lib-stats" id="libStats"></div><div class="lib-filters" id="libFilters"></div><div class="lib-grid" id="libGrid"></div>
@@ -1695,7 +1841,7 @@ button.rail-country:hover { background: var(--bg-hover); }
     setTimeout(() => { const b = $('.lib .ibtn'); if (b) b.focus(); }, 30);
   }
   function renderLib() {
-    const all = MANIFEST.countries, q = (S.libQ || '').trim().toLowerCase(), now = today(), cur = S.d.iso3;
+    const all = MANIFEST.countries, q = (S.libQ || '').trim().toLowerCase(), now = today(), cur = VIEW === 'brief' && S.d ? S.d.iso3 : null;
     const fresh = all.filter(c => c.last_refresh && freshness(c.last_refresh, now).level === 'fresh').length;
     $('#libStats').innerHTML = [[all.length, all.length === 1 ? 'Country brief' : 'Country briefs'], [all.filter(c => c.status === 'validated').length, 'Validated by an officer'], [all.filter(c => c.status !== 'validated').length, 'Draft, awaiting sign-off'], [fresh, `Swept in the last ${FRESH_DAYS} days`]]
       .map(([v, k]) => `<div class="lib-stat"><b>${v}</b><span>${esc(k)}</span></div>`).join('');
@@ -1734,13 +1880,13 @@ button.rail-country:hover { background: var(--bg-hover); }
 
   /* ===== theme ===== */
   function isDark() { const t = document.documentElement.getAttribute('data-theme'); return t ? t === 'dark' : !matchMedia('(prefers-color-scheme: light)').matches; }
-  function setTheme(t) { S.theme = t || null; if (t) document.documentElement.setAttribute('data-theme', t); else document.documentElement.removeAttribute('data-theme'); try { if (t) localStorage.setItem('pb-theme', t); else localStorage.removeItem('pb-theme'); } catch (e) { /* storage blocked */ } renderHeader(); renderProto(); }
+  function setTheme(t) { S.theme = t || null; if (t) document.documentElement.setAttribute('data-theme', t); else document.documentElement.removeAttribute('data-theme'); try { if (t) localStorage.setItem('pb-theme', t); else localStorage.removeItem('pb-theme'); } catch (e) { /* storage blocked */ } if (S.d) renderHeader(); if (VIEW === 'home') renderHome(); renderProto(); }
 
   /* ===== scroll: progress, scrollspy, back-to-top ===== */
   let ticking = false;
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   function onScroll() {
-    ticking = false; if (!S.d) return;
+    ticking = false; if (!S.d || VIEW !== 'brief') return;
     const y = window.scrollY;
     const max = document.documentElement.scrollHeight - innerHeight, bar = $('.hdr-prog i'); if (bar) bar.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
     $('#totop').hidden = y < innerHeight * 1.4;
@@ -1777,7 +1923,8 @@ button.rail-country:hover { background: var(--bg-hover); }
     if ((e.key === 'Enter' || e.key === ' ') && t.getAttribute && t.getAttribute('role') === 'button' && t.dataset.act) { e.preventDefault(); handle(t.dataset.act, t, e); return; }
     if (e.key === 'Escape' && S.overlay) { closeOverlay(); return; }
     if (e.key === 'Escape' && S.explain) { S.explain = null; renderHeader(); return; }
-    if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !typing)) { e.preventDefault(); if (S.overlay !== 'palette') openPalette(); return; }
+    if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !typing)) { e.preventDefault(); if (VIEW === 'home') { if (S.overlay !== 'library') { openLibrary(); setTimeout(() => { const i = $('#libInput'); if (i) i.focus(); }, 40); } } else if (S.overlay !== 'palette') openPalette(); return; }
+    if (VIEW !== 'brief') return;
     if (!typing && !S.overlay && !e.metaKey && !e.ctrlKey && !e.altKey && /^[1-5]$/.test(e.key)) goStage(STAGES[+e.key - 1].id, { top: true });
     if (!typing && !S.overlay && !e.metaKey && !e.ctrlKey && !e.altKey && (e.key === 'c' || e.key === 'C') && MANIFEST.countries.length > 1) { e.preventDefault(); openCountries(); }
   });
@@ -1791,7 +1938,9 @@ button.rail-country:hover { background: var(--bg-hover); }
       case 'explain': S.explain = S.explain === el.dataset.k ? null : el.dataset.k; renderHeader(); break;
       case 'search': openPalette(); break;
       case 'countries': if (S.overlay === 'countries') closeOverlay(); else { if (S.overlay) closeOverlay(); openCountries(); } break;
-      case 'country': if (v === S.d.iso3) closeOverlay(); else loadCountry(v); break;
+      case 'country': if (VIEW !== 'brief') openBrief(v, { push: true }); else if (v === S.d.iso3) closeOverlay(); else loadCountry(v, false, { push: true }); break;
+      case 'home': if (e.preventDefault) e.preventDefault(); if (S.overlay) closeOverlay(); showHome(v || null, { push: true }); break;
+      case 'open-brief': if (S.overlay) closeOverlay(); openBrief(v, { push: true, at: el.dataset.part }); break;
       case 'csw-region': S.cswRegion = v; renderCsw(); break;
       case 'library': openLibrary(); break;
       case 'lib-region': S.libRegion = v; renderLib(); break;
@@ -1821,23 +1970,174 @@ button.rail-country:hover { background: var(--bg-hover); }
       case 'copy-tp': copyTalkingPoints(); break;
     }
   }
-  window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (stageById(h) && h !== S.stage) goStage(h); else if (PART_STAGE[h] && h !== S.part) goPart(h); });
+  window.addEventListener('hashchange', () => { if (VIEW !== 'brief') return; const h = location.hash.slice(1); if (stageById(h) && h !== S.stage) goStage(h); else if (PART_STAGE[h] && h !== S.part) goPart(h); });
   let wasDesk = null;
-  window.addEventListener('resize', () => { if (!S.d) return; measureHeader(); const dk = isDesktop(); if (dk !== wasDesk) { wasDesk = dk; syncOnlyDesktop(); } renderAside(); });
+  window.addEventListener('resize', () => { if (!S.d || VIEW !== 'brief') return; measureHeader(); const dk = isDesktop(); if (dk !== wasDesk) { wasDesk = dk; syncOnlyDesktop(); } renderAside(); });
   matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => { if (S.d) renderHeader(); });
 
   /* ===== boot: data/countries.json lists the briefs; each renders only from its own file (and the map file it names) ===== */
   try { const t = localStorage.getItem('pb-theme'); if (t === 'dark' || t === 'light') { S.theme = t; document.documentElement.setAttribute('data-theme', t); } } catch (e) { /* storage blocked */ }
   const getJSON = u => fetch(u, { cache: 'no-cache' }).then(r => { if (!r.ok) throw new Error(`${u} returned HTTP ${r.status}`); return r.json(); });
-  function pickCountry() {
-    const has = id => MANIFEST.countries.some(c => c.iso3 === id);
-    let q = null, saved = null;
-    try { q = new URLSearchParams(location.search).get('c'); } catch (e) { /* no URL access */ }
-    try { saved = localStorage.getItem('pb-country'); } catch (e) { /* storage blocked */ }
-    return [q, saved, MANIFEST.default].find(x => x && has(x)) || (MANIFEST.countries[0] || {}).iso3;
+  /* ===== home: world overview → region → brief. Reads only data/countries.json and data/geo/world.json ===== */
+  // ?c=<iso3> opens a brief, ?r=<region id> a region, anything else the world overview.
+  function routeFromURL() {
+    let q = null; try { q = new URLSearchParams(location.search); } catch (e) { /* no URL access */ }
+    const c = q && q.get('c'), r = q && q.get('r');
+    return c && MANIFEST.countries.some(x => x.iso3 === c) ? { view: 'brief', iso: c } : { view: 'home', region: r };
   }
+  function showBriefChrome() { VIEW = 'brief'; $('#home').hidden = true; $('#home').innerHTML = ''; $('#app').hidden = false; $('#tabbar').hidden = false; }
+  function openBrief(iso, o = {}) {
+    if (!MANIFEST.countries.some(c => c.iso3 === iso)) return Promise.resolve();
+    if (!S.d || S.d.iso3 !== iso) return loadCountry(iso, !S.d, Object.assign({ fromHome: true }, o));
+    showBriefChrome();
+    const to = o.at && (stageById(o.at) || PART_STAGE[o.at]) ? o.at : null;
+    if (!o.noHistory) { try { history[o.push ? 'pushState' : 'replaceState'](null, '', `?c=${encodeURIComponent(iso)}#${encodeURIComponent(to || S.stage)}`); } catch (e) { /* sandboxed frame */ } }
+    document.title = `${S.d.name} · Pocket Brief`;
+    renderHeader(); renderRail(); renderTabbar(); renderStage(false); renderAside();
+    if (PART_STAGE[to]) goPart(to); else if (to) goStage(to, { top: true }); else window.scrollTo({ top: 0, behavior: 'instant' });
+    return Promise.resolve();
+  }
+  const ensureWorld = () => (WORLD ? Promise.resolve(WORLD) : getJSON('data/geo/world.json').then(w => { WORLD = Object.assign(w, { paths: {} }); return WORLD; }));
+  function showHome(region, o = {}) {
+    return ensureWorld().then(() => {
+      if (S.overlay) closeOverlay();
+      const reg = WORLD.regions.find(r => r.id === region) || null;
+      HOME.region = reg ? reg.id : null; VIEW = 'home';
+      $('#app').hidden = true; $('#tabbar').hidden = true; $('#totop').hidden = true; $('#home').hidden = false;
+      if (!o.noHistory) { try { history[o.push ? 'pushState' : 'replaceState'](null, '', reg ? `?r=${encodeURIComponent(reg.id)}` : location.pathname); } catch (e) { /* sandboxed frame */ } }
+      document.title = reg ? `${reg.name} · Pocket Brief` : 'Pocket Brief · World overview';
+      renderHome(); window.scrollTo({ top: 0, behavior: 'instant' });
+      if (o.push) { const m = $('#homeMain'); if (m) m.focus({ preventScroll: true }); }
+    }).catch(err => {
+      VIEW = 'home'; $('#app').hidden = true; $('#tabbar').hidden = true; $('#home').hidden = false;
+      $('#home').innerHTML = `<div class="boot"><b>The world map could not be loaded</b>data/geo/world.json did not load (${esc(err.message)}). The briefs still open from <a href="?c=${esc(MANIFEST.default || '')}">here</a>.</div>`;
+    });
+  }
+  // Briefs in region order; ISO is the upper-case code the map uses, rid the region id the country file's region names.
+  function briefs() {
+    const order = WORLD.regions.map(r => r.name), rank = r => (order.indexOf(r) + 99) % 99;
+    return MANIFEST.countries.map(c => Object.assign({}, c, { ISO: c.iso3.toUpperCase(), rid: (WORLD.regions.find(r => r.name === c.region) || {}).id || null }))
+      .sort((a, b) => rank(a.region) - rank(b.region) || a.name.localeCompare(b.name));
+  }
+  // Dot rows are run-length coded: <token><count>, a token being an ISO3 code, '.' for sea or a region letter.
+  function mapPaths(key, rid) {
+    if (WORLD.paths[key]) return WORLD.paths[key];
+    const m = WORLD.maps[key], s = m.step, out = {}, r1 = v => Math.round(v * 10) / 10;
+    const live = new Set(MANIFEST.countries.map(c => c.iso3.toUpperCase())), letters = Object.fromEntries(WORLD.regions.map(r => [r.letter, r.id]));
+    const cls = t => { if (live.has(t)) return 'live'; const r = t.length === 3 ? WORLD.region_of[t] : letters[t]; return rid ? (r === rid ? 'in' : 'out') : (r || 'none'); };
+    m.rows.split('|').forEach((row, i) => {
+      const y = r1(s / 2 + i * s); let x = s / 2;
+      row.replace(/([A-Z]{3}|[a-z]|\.)(\d+)/g, (all, t, n) => {
+        if (t !== '.') { const c = cls(t); let d = out[c] || ''; for (let k = 0; k < +n; k++) d += `M${r1(x + k * s)} ${y}h0`; out[c] = d; }
+        x += +n * s; return '';
+      });
+    });
+    return (WORLD.paths[key] = out);
+  }
+  const pos = (m, p) => `left:${(p[0] / m.w * 100).toFixed(2)}%;top:${(p[1] / m.h * 100).toFixed(2)}%`;
+  const project = (m, lon, lat) => { const f = m.frame, c = Math.cos(f.phi0 * Math.PI / 180), k = m.w / ((f.lon1 - f.lon0) * c); return [(lon - f.lon0) * c * k, (f.lat1 - lat) * k]; };
+  // Singapore to a brief: the line bows upward, and its weight and dash follow the SAF engagement level.
+  function arcEl(a, b, lv) {
+    const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1], k = 0.22;
+    let cx = mx + dy * k, cy = my - dx * k; if (cy > my) { cx = mx - dy * k; cy = my + dx * k; }
+    return `<path class="arc${lv < 3 ? ' thin' : ''}" d="M${a[0].toFixed(1)} ${a[1].toFixed(1)}Q${cx.toFixed(1)} ${cy.toFixed(1)} ${b[0]} ${b[1]}" style="stroke-width:${(0.9 + lv * 0.45).toFixed(2)}px"/>`;
+  }
+  const sigWhen = s => {
+    if (!s.event_date) return MON[+String(s.date).split('-')[1] - 1] || s.date;
+    const a = s.event_date.split('-'), b = s.event_end ? s.event_end.split('-') : null;
+    return b ? (a[1] === b[1] ? `${+a[2]}–${+b[2]} ${MON[+a[1] - 1]}` : `${+a[2]} ${MON[+a[1] - 1]} – ${+b[2]} ${MON[+b[1] - 1]}`) : `${+a[2]} ${MON[+a[1] - 1]}`;
+  };
+  const sigChip = (c, s, up, flag) => `<button class="hm-sig${up ? ' up' : ''}" data-act="open-brief" data-v="${esc(c.iso3)}" data-part="signals">${flag ? cFlag(c) : '<i></i>'}<span><b>${esc(s.short)}</b><small>${esc(sigWhen(s))}${up ? '<span class="sr"> · coming up</span>' : ''}</small></span></button>`;
+  const shortName = (name, lang) => { const w = String(name).split(/\s+/).filter(x => x && !/\.$/.test(x) && !/^(gen|lt|maj|col|brig|adm|vadm|radm|cdr|capt|dr|prof)$/i.test(x)); return (['ja', 'zh', 'ko', 'hu', 'vi'].includes(lang) ? w[0] : w[w.length - 1]) || name; };
+  const LOGO = '<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="8" style="fill:var(--bg-raised-2);stroke:var(--line-strong)"/><path d="M16 5.5l4.2 10.5L16 26.5 11.8 16z" style="fill:var(--accent)"/><path d="M16 5.5l4.2 10.5h-8.4z" style="fill:var(--fg);opacity:.75"/></svg>';
+  const MAP_LEGEND = `<span class="hm-leg"><i class="lv-live"></i>Brief live</span><span class="hm-leg"><i class="lv-home"></i>Singapore</span><span class="hm-leg"><svg viewBox="0 0 40 10" aria-hidden="true"><path d="M2 8H18" class="arc thin" style="stroke-width:1.3px"/><path d="M22 5H38" class="arc" style="stroke-width:3.6px"/></svg>SAF engagement depth</span>`;
+
+  function renderHome() {
+    const reg = HOME.region ? WORLD.regions.find(r => r.id === HOME.region) : null;
+    let last = null; try { last = MANIFEST.countries.find(c => c.iso3 === localStorage.getItem('pb-country')); } catch (e) { /* storage blocked */ }
+    $('#home').innerHTML = `<header class="hm-hdr"><div class="hm-hdr-in">
+        <a class="hm-brand" href="./" data-act="home">${LOGO}<span><b>Pocket Brief</b><small>IREO · open sources only</small></span></a>
+        ${reg ? `<nav class="hm-crumbs" aria-label="Where you are"><a href="./" data-act="home">World</a>${icon('chevRight')}<span aria-current="page">${esc(reg.name)}</span></nav>` : ''}
+        <div class="hm-act">${last ? `<button class="hm-resume" data-act="open-brief" data-v="${esc(last.iso3)}" aria-label="Resume the ${esc(last.name)} brief">${cFlag(last)}<span>${esc(last.name)}</span>${icon('arrowRight')}</button>` : ''}
+          <button class="ibtn" data-act="library" aria-label="All briefs">${icon('layers')}<span class="lbl">All briefs</span></button>
+          <button class="ibtn" data-act="theme" aria-label="Switch to ${isDark() ? 'light' : 'dark'} mode">${icon(isDark() ? 'sun' : 'moon')}</button></div></div></header>
+      <main class="hm-main" id="homeMain" tabindex="-1">${reg ? regionHtml(reg) : worldHtml()}</main>`;
+    // On a phone the world map pans: start centred on the briefs and Singapore. Pulse starts at the current month.
+    const pan = $('#hmPan');
+    if (pan && pan.scrollWidth > pan.clientWidth) { const m = WORLD.maps.world, xs = briefs().map(c => m.points[c.ISO]).concat([m.points[WORLD.home.iso3]]).filter(Boolean).map(p => p[0] / m.w); if (xs.length) pan.scrollLeft = (Math.min(...xs) + Math.max(...xs)) / 2 * pan.scrollWidth - pan.clientWidth / 2; }
+    const pg = $('.hm-pg-w'); if (pg) pg.scrollLeft = pg.scrollWidth;
+  }
+  function worldHtml() {
+    const m = WORLD.maps.world, P = mapPaths('world'), B = briefs(), sgp = m.points[WORLD.home.iso3], sw = (m.step * 0.42).toFixed(2);
+    const has = new Set(B.map(c => c.rid)), shown = B.filter(c => m.points[c.ISO]);
+    const svg = `<svg viewBox="0 0 ${m.w} ${m.h}" role="img" aria-label="World map. Briefs live: ${esc(B.map(c => c.name).join(', '))}. Singapore is marked.">
+      <path class="dots none" d="${P.none || ''}" stroke-width="${sw}"/>${WORLD.regions.map(r => `<path class="dots${has.has(r.id) ? ' has' : ''}" data-r="${r.id}" d="${P[r.id] || ''}" stroke-width="${sw}"/>`).join('')}
+      <path class="dots live" d="${P.live || ''}" stroke-width="${(m.step * 0.5).toFixed(2)}"/>${sgp ? shown.map(c => arcEl(sgp, m.points[c.ISO], (c.engagement || {}).level || 0)).join('') : ''}</svg>`;
+    const pins = shown.map(c => { const p = m.points[c.ISO]; return `<span class="hm-halo" style="${pos(m, p)}"></span><button class="hm-pin${p[0] / m.w > 0.7 ? ' l' : ''}" style="${pos(m, p)}" data-act="home" data-v="${esc(c.rid || '')}" aria-label="${esc(c.name)}: open ${esc(c.region || 'the region')}">${cFlag(c)}${esc(c.ISO)}${c.engagement ? `<span class="lv">L${c.engagement.level}</span>` : ''}</button>`; }).join('');
+    const home = sgp ? `<span class="hm-sgp" style="${pos(m, sgp)}"></span><span class="hm-sgp-l" style="${pos(m, sgp)}">SGP</span>` : '';
+    const tiles = WORLD.regions.map(r => { const bs = B.filter(c => c.rid === r.id); return `<button class="hm-rt${bs.length ? '' : ' empty'}" data-act="home" data-v="${r.id}" data-hover="${r.id}" aria-label="${esc(r.name)}: ${bs.length ? plural(bs.length, 'brief') + ' live' : 'no brief yet'}">
+        <span class="t"><i class="sw"></i><span>${esc(r.name)}</span>${icon('arrowRight')}</span><span class="n"><b>${bs.length}</b><small>${bs.length ? (bs.length === 1 ? 'brief live' : 'briefs live') : 'not started'}</small></span><span class="fl">${bs.map(c => cFlag(c)).join('')}</span></button>`; }).join('');
+    return `<section class="hm-map" aria-labelledby="hmWorldH"><div class="hm-top"><h1 class="hm-k" id="hmWorldH">Global coverage</h1>${MAP_LEGEND}</div>
+      <div class="hm-pan" id="hmPan"><div class="hm-canvas" id="hmCanvas">${svg}${pins}${home}</div></div><p class="hm-note">${esc(WORLD.note)}</p></section>
+      <div class="hm-regions" role="group" aria-label="Regions">${tiles}</div>${pulseHtml(B)}`;
+  }
+  // Pulse: each brief's short signal headlines by month, the last five months to now (plus next month if something is due).
+  function pulseHtml(B) {
+    const iso = isoOf(today()), ym = s => { const p = String(s).split('-'); return +p[0] * 12 + (+p[1] - 1); }, cur = ym(iso), items = [];
+    B.forEach(c => (c.signals || []).forEach(s => items.push({ c, s, m: ym(s.event_date || s.date), up: !!s.event_date && s.event_date > iso })));
+    const cols = []; for (let k = cur - 4; k <= cur + (items.some(x => x.m === cur + 1) ? 1 : 0); k++) cols.push(k);
+    const mon = k => MON[k % 12], key = x => String(x.s.event_date || x.s.date);
+    const rows = B.map(c => `<button class="hm-rh" data-act="open-brief" data-v="${esc(c.iso3)}" data-part="signals">${cFlag(c)}${esc(c.name)}</button>${cols.map(k => `<div class="hm-cell${k === cur ? ' now' : ''}">${items.filter(x => x.c === c && x.m === k).sort((a, b) => key(a).localeCompare(key(b))).map(x => sigChip(c, x.s, x.up)).join('')}</div>`).join('')}`).join('');
+    return `<section class="hm-pulse" aria-labelledby="hmPulseH"><div class="hm-top"><h2 class="hm-k" id="hmPulseH">Pulse · ${mon(cols[0])}–${mon(cols[cols.length - 1])} ${Math.floor(cols[cols.length - 1] / 12)}</h2><span class="hm-leg"><i class="lv-past"></i>Happened</span><span class="hm-leg"><i class="lv-up"></i>Coming up</span></div>
+      <div class="hm-pg-w"><div class="hm-pg" style="--cols:${cols.length}"><span class="hm-corner"></span>${cols.map(k => `<span class="hm-mh${k === cur ? ' now' : ''}">${mon(k)}${k === cur ? ' · now' : ''}</span>`).join('')}${rows}</div></div>
+      <div class="hm-pl">${cols.slice().reverse().filter(k => items.some(x => x.m === k)).map(k => `<span class="hm-mh${k === cur ? ' now' : ''}">${mon(k)}${k === cur ? ' · now' : ''}</span>${items.filter(x => x.m === k).sort((a, b) => key(b).localeCompare(key(a))).map(x => sigChip(x.c, x.s, x.up, true)).join('')}`).join('')}</div></section>`;
+  }
+  function regionHtml(reg) {
+    const m = WORLD.maps[reg.id], P = mapPaths(reg.id, reg.id), B = briefs().filter(c => c.rid === reg.id), sw = (m.step * 0.42).toFixed(2);
+    const sgpIn = m.points[WORLD.home.iso3], sgp = sgpIn || project(m, WORLD.home.lon, WORLD.home.lat), shown = B.filter(c => m.points[c.ISO]);
+    const svg = `<svg viewBox="0 0 ${m.w} ${m.h}" role="img" aria-label="Map of ${esc(reg.name)}. ${B.length ? `Briefs live: ${esc(B.map(c => c.name).join(', '))}.` : 'No brief here yet.'}">
+      <path class="dots none" d="${P.out || ''}" stroke-width="${sw}"/><path class="dots has" d="${P.in || ''}" stroke-width="${sw}"/><path class="dots live" d="${P.live || ''}" stroke-width="${(m.step * 0.46).toFixed(2)}"/>
+      ${shown.map(c => arcEl(sgp, m.points[c.ISO], (c.engagement || {}).level || 0)).join('')}</svg>`;
+    const pins = shown.map(c => { const p = m.points[c.ISO]; return `<span class="hm-halo big" style="${pos(m, p)}"></span><button class="hm-pin big${p[0] / m.w > 0.62 ? ' l' : ''}" style="${pos(m, p)}" data-act="open-brief" data-v="${esc(c.iso3)}" aria-label="${esc(c.name)}: open the brief">${cFlag(c)}${esc(c.name)}${c.engagement ? `<span class="lv">L${c.engagement.level}</span>` : ''}</button>`; }).join('');
+    let home = '';
+    if (sgpIn) home = `<span class="hm-sgp" style="${pos(m, sgp)}"></span><span class="hm-sgp-l" style="${pos(m, sgp)}">Singapore</span>`;
+    else {
+      const x = Math.min(Math.max(sgp[0], m.w * 0.02), m.w * 0.98), y = Math.min(Math.max(sgp[1], m.h * 0.03), m.h * 0.97);
+      const tx = sgp[0] > m.w ? '-100%' : sgp[0] < 0 ? '0%' : '-50%', ty = sgp[1] > m.h ? '-100%' : sgp[1] < 0 ? '0%' : '-50%';
+      home = `<span class="hm-edge" style="${pos(m, [x, y])};transform:translate(${tx},${ty})"><i></i>Singapore</span>`;
+    }
+    const side = B.length ? B.map(homeCard).join('') : `<div class="hm-empty">${icon('globe')}<b>No brief here yet</b><p>IREO adds a country only after it has been researched in full.</p><button class="pbtn" data-act="library">All briefs ${icon('arrowRight')}</button></div>`;
+    return `<div class="hm-title"><a class="hm-back" href="./" data-act="home">${icon('arrowLeft')}World</a><h1>${esc(reg.name)}</h1>${B.length ? `<span class="hm-count"><i></i>${plural(B.length, 'brief')} live</span>` : ''}</div>
+      <div class="hm-reg"><section class="hm-map" aria-label="${esc(reg.name)} map"><div class="hm-canvas">${svg}${pins}${home}</div><p class="hm-note">${esc(WORLD.note)}</p></section><div class="hm-side">${side}</div></div>`;
+  }
+  // A brief's card in its region: photo, symbols, three measures, the key people and the latest signals. All from the manifest.
+  function homeCard(c) {
+    const sp = c.spend, pe = c.personnel, e = c.engagement, iso = isoOf(today()), sk = s => String(s.event_date || s.date);
+    const gauge = v => { const t = Math.PI * (1 - Math.min(v / 5, 1)); return `M10 60A50 50 0 0 1 ${(60 + 50 * Math.cos(t)).toFixed(1)} ${(60 - 50 * Math.sin(t)).toFixed(1)}`; };
+    const stats = [
+      sp ? `<div class="hm-stat"><svg viewBox="0 0 120 68" aria-hidden="true"><path class="g-bg" d="M10 60A50 50 0 0 1 110 60"/><path class="g-v" d="${gauge(sp.pct_gdp)}"/></svg><b>${esc(sp.pct_gdp)}%</b><small>of GDP · ${esc([sp.basis, sp.year].filter(Boolean).join(' '))}${sp.estimate ? ' est.' : ''}</small></div>` : '',
+      pe ? `<div class="hm-stat">${icon('user')}<b>${esc(fmtK(pe.value))}</b><small>personnel · ${esc(pe.year)}</small></div>` : '',
+      e ? `<div class="hm-stat"><span class="hm-bars" aria-hidden="true">${[1, 2, 3, 4, 5, 6].map(i => `<i class="${i <= e.level ? 'on' : ''}${e.target > e.level && i === e.target ? ' tg' : ''}" style="height:${(6 + i * 4.6).toFixed(1)}px"></i>`).join('')}</span><b>L${e.level}${e.target > e.level ? ` <span>→ L${e.target}</span>` : ''}</b><small>SAF · ${esc(e.label)}</small></div>` : '',
+    ].join('');
+    const faces = (c.leaders || []).map(L => `<button class="hm-face" data-act="open-brief" data-v="${esc(c.iso3)}" data-part="leaders" aria-label="${esc(L.name)}, ${esc(L.role || '')}" title="${esc(L.name)} · ${esc(L.role || '')}">${L.photo ? `<img src="data/${esc(L.photo)}" alt="" loading="lazy">` : `<span class="hm-mono" aria-hidden="true">${esc(initials(L.name))}</span>`}<span aria-hidden="true">${esc(shortName(L.name, c.lang))}</span></button>`).join('');
+    const sigs = (c.signals || []).slice().sort((a, b) => sk(b).localeCompare(sk(a))).slice(0, 3).map(s => sigChip(c, s, !!s.event_date && s.event_date > iso)).join('');
+    return `<article class="hm-card">${c.hero ? `<div class="hm-ph"><img src="data/${esc(c.hero.src)}" alt="${esc(c.hero.alt)}" loading="lazy"><span class="hm-badges">${cFlag(c)}${c.emblem ? `<img class="emb" src="data/${esc(c.emblem.src)}" alt="${esc(c.emblem.alt)}">` : ''}</span><span class="hm-credit">Photo: ${esc(c.hero.credit)}</span></div>` : ''}
+      <div class="hm-cb"><div class="hm-ch"><h2>${c.hero ? '' : cFlag(c)}${esc(c.name)}${c.name_local ? ` <span lang="${esc(c.lang || '')}">${esc(c.name_local)}</span>` : ''}<small>${esc(c.sub_region || c.region || '')}</small></h2>${cCurrency(c, true)}${cStatus(c)}</div>
+        ${stats ? `<div class="hm-stats">${stats}</div>` : ''}${faces ? `<div class="hm-faces">${faces}</div>` : ''}${sigs ? `<div class="hm-sigs">${sigs}</div>` : ''}
+        <button class="hm-open" data-act="open-brief" data-v="${esc(c.iso3)}">Open the brief ${icon('arrowRight')}</button></div></article>`;
+  }
+  // Hovering or focusing a region tile lights that region on the world map.
+  const hoverRegion = id => $$('#hmCanvas .dots[data-r]').forEach(p => p.classList.toggle('hi', p.dataset.r === id));
+  ['mouseover', 'focusin'].forEach(ev => $('#home').addEventListener(ev, e => { const t = e.target.closest('[data-hover]'); hoverRegion(t ? t.dataset.hover : null); }));
+  window.addEventListener('popstate', () => {
+    if (!MANIFEST.countries.length) return;
+    const rt = routeFromURL();
+    if (rt.view === 'home') showHome(rt.region, { noHistory: true });
+    else if (VIEW !== 'brief' || !S.d || S.d.iso3 !== rt.iso) openBrief(rt.iso, { noHistory: true, at: decodeURIComponent(location.hash.slice(1)) || null });
+  });
   function bootError(what, err) { $('#main').innerHTML = `<div class="boot"><b>Brief data could not be loaded</b>${esc(what)} did not load (${esc(err.message)}). The brief renders only from its data files, so nothing is shown rather than a stale copy.</div>`; }
-  function loadCountry(iso, first) {
+  // o.at opens a stage or part; o.fromHome opens at the start (no keep-my-place, no toast); o.push adds a history entry.
+  function loadCountry(iso, first, o = {}) {
     const entry = MANIFEST.countries.find(c => c.iso3 === iso);
     if (!entry) { bootError('The country list', new Error(`no country "${iso}"`)); return Promise.resolve(); }
     const file = 'data/' + entry.file, prev = first ? null : { stage: S.stage, part: S.part };
@@ -1846,24 +2146,25 @@ button.rail-country:hover { background: var(--bg-hover); }
       .then(([d, geo]) => {
         if (S.overlay) closeOverlay();
         if (!first) Object.assign(S, freshState(), { theme: S.theme });
-        S.d = d; S.geo = geo; prepare(d);
+        S.d = d; S.geo = geo; prepare(d); showBriefChrome();
         try { localStorage.setItem('pb-country', d.iso3); } catch (e) { /* storage blocked */ }
         LS.set('pb-recent', [d.iso3, ...recentList().filter(x => x !== d.iso3)].slice(0, 4));
         // Keep my place: open the same stage and part in the next country when it has them
-        let h = first ? location.hash.slice(1) : '';
-        if (prev && keepPlace() && stageById(prev.stage)) h = prev.part && PART_STAGE[prev.part] === prev.stage && stageParts(stageById(prev.stage)).some(p => p.id === prev.part) ? prev.part : prev.stage;
+        let h = first && !o.fromHome ? location.hash.slice(1) : '';
+        if (o.at && (stageById(o.at) || PART_STAGE[o.at])) h = o.at;
+        else if (prev && keepPlace() && !o.fromHome && stageById(prev.stage)) h = prev.part && PART_STAGE[prev.part] === prev.stage && stageParts(stageById(prev.stage)).some(p => p.id === prev.part) ? prev.part : prev.stage;
         if (stageById(h)) S.stage = h; else if (PART_STAGE[h]) S.stage = PART_STAGE[h];
         S.part = PART_STAGE[h] ? h : (stageParts(stageById(S.stage))[0] ? stageParts(stageById(S.stage))[0].id : null); wasDesk = isDesktop();
-        try { history.replaceState(null, '', `?c=${encodeURIComponent(d.iso3)}#${encodeURIComponent(h || S.stage)}`); } catch (e) { /* sandboxed frame */ }
+        if (!o.noHistory) { try { history[o.push ? 'pushState' : 'replaceState'](null, '', `?c=${encodeURIComponent(d.iso3)}#${encodeURIComponent(h || S.stage)}`); } catch (e) { /* sandboxed frame */ } }
         document.title = `${d.name} · Pocket Brief`;
         renderHeader(); renderRail(); renderTabbar(); renderStage(false); renderAside();
-        if (PART_STAGE[h]) requestAnimationFrame(() => scrollToPart(h)); else if (!first) window.scrollTo({ top: 0, behavior: 'instant' });
-        if (!first) toast(`Opened ${d.name} at ${PART_STAGE[h] ? PART_TITLE[h] : (stageById(S.stage) || {}).title || 'the start'}.`);
+        if (PART_STAGE[h]) requestAnimationFrame(() => scrollToPart(h)); else if (!first || o.fromHome) window.scrollTo({ top: 0, behavior: 'instant' });
+        if (!first && !o.fromHome) toast(`Opened ${d.name} at ${PART_STAGE[h] ? PART_TITLE[h] : (stageById(S.stage) || {}).title || 'the start'}.`);
       })
       .catch(err => bootError(file, err));
   }
   getJSON('data/countries.json')
-    .then(m => { MANIFEST = Object.assign({ countries: [] }, m); return loadCountry(pickCountry(), true); })
+    .then(m => { MANIFEST = Object.assign({ countries: [] }, m); const rt = routeFromURL(); return rt.view === 'brief' ? loadCountry(rt.iso, true) : showHome(rt.region); })
     .catch(err => bootError('data/countries.json', err));
 })();
 </script>
