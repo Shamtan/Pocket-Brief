@@ -10,10 +10,14 @@ Owner: Sham. Primary user: commanders (SAF). Built on **open sources only**.
 ## What this is (v1 scope)
 
 A **modern, responsive web app** (desktop-first that must read beautifully on a phone) covering **ONE
-country first: Poland**. Prove the experience and the data model on one country, then scale. Do NOT build
-the whole-world map/dashboard of the old prototype — depth on one country beats breadth.
+country first: Poland**. Prove the experience and the data model on one country, then scale.
 Japan was added in October 2026 at the owner's request, at the same depth; readers switch countries from the
 country card.
+
+**Home page (October 2026, owner's decision):** the app opens on a whole-world dot map with five region tiles and
+Pulse (each brief's short signal headlines by month). Region → country cards → the full brief. The map shows the
+whole world but lights up only countries IREO has researched in full. Do NOT research or add other countries yet:
+depth on each country still beats breadth, and new countries come only when the owner asks.
 
 The nine research areas IREO covers per country (this is the spine of the app):
 1. Army / Ground Forces **structure & organisation** — incl. annual **budget**
@@ -63,6 +67,10 @@ and `DESIGN-BRIEF.md`.
 ## Conventions
 
 - Country files keyed by ISO3 lowercase (`data/pol.json`, `data/jpn.json`); `data/countries.json` lists them and is
-  generated from them. A new country is a new data file plus its map and images: no code change.
+  generated from them (`python3 -I tools/build_manifest.py . pol`). A new country is a new data file plus its map and
+  images: no code change. The home page reads only `data/countries.json` and `data/geo/world.json`.
+- Maps come from Natural Earth via `tools/geo` (`npm ci`, then `node build-world.mjs ../../data/geo/world.json` or
+  `node build-country.mjs ISO3`). Every land cell carries its ISO3 code, so a new brief lights up without a rebuild.
+- URLs: no query = world overview, `?r=<region id>` = a region, `?c=<iso3>#<stage or part>` = a brief.
 - Dates ISO `YYYY-MM-DD`. Confidence is `claimed | assessed`. Status is `draft | validated`.
 - Keep commits small and labelled. Write tests for the data loader and the confidence/currency logic.

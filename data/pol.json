@@ -4280,6 +4280,8 @@
     {
       "date": "2026-10",
       "headline": "Gen. Kukuła reappointed Chief of the General Staff for a further three-year term from 10 Oct 2026.",
+      "short": "Kukuła reappointed CGS",
+      "event_date": "2026-10-10",
       "sowhat": "Continuity at the top for the next three years: a stable counterpart for any CDF-level contact.",
       "url": "https://portalobronny.se.pl/polityka-obronna/gen-wieslaw-kukula-ponownie-na-czele-wojska-polskiego-kolejna-kadencja-szefa-sztabu-generalnego-w-obliczu-wschodnich-wyzwan-aa-qaRJ-gajf-KUGw.html",
       "auto": true
@@ -4287,6 +4289,8 @@
     {
       "date": "2026-06",
       "headline": "Maj Gen Ireneusz Nowak replaces Gen. Maciej Klisz as Operational Commander from 2 Jun 2026.",
+      "short": "Nowak takes Operational Command",
+      "event_date": "2026-06-02",
       "sowhat": "New owner of Poland's ANAKONDA exercise series. Update contact plans that named Gen. Klisz.",
       "url": "https://www.gazetaprawna.pl/wiadomosci/kraj/artykuly/11255835,gen-ireneusz-nowak-dowodca-operacyjny-rodzajow-sil-zbrojnych.html",
       "auto": true
@@ -4294,6 +4298,8 @@
     {
       "date": "2026-10",
       "headline": "Gen. Kukuła listed to open the Italian-Polish Defence & Dual Use Forum (28 Oct 2026), themed on land warfare after Ukraine.",
+      "short": "Kukuła keynote, Italian-Polish forum",
+      "event_date": "2026-10-28",
       "sowhat": "A fresh primary-voice source on Polish counter-UAS/MDI thinking is imminent — refresh the leadership rail after the event.",
       "url": "https://italianpolishdefenceforum.com/",
       "auto": true
@@ -4840,8 +4846,22 @@
       "src": "img/sym-land-forces-eagle.png",
       "w": 250,
       "h": 354
+    },
+    {
+      "key": "hero-pol-k2",
+      "subject": "Polish Army K2 tank",
+      "kind": "hero",
+      "file_page": "https://commons.wikimedia.org/wiki/File:K2_Tank_Joins_the_Fight_with_eFP_Battle_Group_Poland_-_2.jpg",
+      "author": "Staff Sgt. Matthew Foster, U.S. Army",
+      "license": "Public domain",
+      "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "caption": "A Polish K2 tank on display at a live-fire demonstration, Bemowo Piskie, 31 March 2023",
+      "src": "img/hero-pol-k2.jpg",
+      "w": 1200,
+      "h": 800
     }
   ],
+  "hero_photo": "hero-pol-k2",
   "symbols": [
     {
       "key": "sym-flag-pol",

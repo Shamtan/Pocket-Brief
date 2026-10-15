@@ -16,9 +16,92 @@
       "coverage": 9,
       "engagement": {
         "level": 6,
-        "label": "Exercise participant"
+        "label": "Exercise participant",
+        "target": 6
       },
-      "bluf": "Japan is in its biggest military build-up since 1945: 2% of GDP reached two years early, its first long-range counterstrike missiles fielded in 2026, all three services under one joint command, and ground forces shifting to the Southwest Islands."
+      "bluf": "Japan is in its biggest military build-up since 1945: 2% of GDP reached two years early, its first long-range counterstrike missiles fielded in 2026, all three services under one joint command, and ground forces shifting to the Southwest Islands.",
+      "spend": {
+        "pct_gdp": 1.4,
+        "year": 2025,
+        "basis": "SIPRI",
+        "estimate": false
+      },
+      "personnel": {
+        "value": 217701,
+        "year": 2026
+      },
+      "hero": {
+        "src": "img/hero-jpn-type10.jpg",
+        "alt": "JGSDF Type 10 tank at Camp Kita-Chitose, Hokkaido, 30 June 2024",
+        "credit": "MIKI Yoshihito · CC BY 2.0"
+      },
+      "emblem": {
+        "src": "img/sym-jsdf-flag.svg",
+        "alt": "Self-Defense Forces flag"
+      },
+      "leaders": [
+        {
+          "name": "Koizumi Shinjiro",
+          "role": "Minister of Defense",
+          "photo": "img/kdl-koizumi.jpg"
+        },
+        {
+          "name": "Gen. Uchikura Hiroaki",
+          "role": "Chief of Staff, Joint Staff",
+          "photo": "img/kdl-uchikura.jpg"
+        },
+        {
+          "name": "Adm. Tawara Tateki",
+          "role": "JJOC Commander",
+          "photo": "img/kdl-tawara.jpg"
+        },
+        {
+          "name": "Gen. Arai Masayoshi",
+          "role": "GSDF Chief of Staff",
+          "photo": "img/kdl-arai.jpg"
+        },
+        {
+          "name": "Lt. Gen. Endo Makoto",
+          "role": "GCC Commander",
+          "photo": "img/kdl-endo.jpg"
+        },
+        {
+          "name": "Ichikawa Keiichi",
+          "role": "National Security Secretariat",
+          "photo": "img/kdl-ichikawa.jpg"
+        }
+      ],
+      "signals": [
+        {
+          "date": "2026-08",
+          "short": "Defense white paper 2026"
+        },
+        {
+          "date": "2026-08",
+          "short": "Record ¥8.89T budget request"
+        },
+        {
+          "date": "2026-09",
+          "short": "Koizumi kept in reshuffle",
+          "event_date": "2026-09-17"
+        },
+        {
+          "date": "2026-10",
+          "short": "Active cyber defence begins",
+          "event_date": "2026-10-01"
+        },
+        {
+          "date": "2026-10",
+          "short": "Type 25 missile shown in Kumamoto",
+          "event_date": "2026-10-03"
+        },
+        {
+          "date": "2026-10",
+          "short": "Keen Sword 2026",
+          "event_date": "2026-10-19",
+          "event_end": "2026-10-29"
+        }
+      ]
     },
     {
       "iso3": "pol",
@@ -35,9 +118,78 @@
       "coverage": 9,
       "engagement": {
         "level": 1,
-        "label": "Knowledge exchange"
+        "label": "Knowledge exchange",
+        "target": 5
       },
-      "bluf": "Poland is building the largest land army in the EU, funded at a record ~4.8% of GDP, postured for homeland and forward defence of NATO's eastern flank and absorbing Western and South Korean kit at exceptional speed."
+      "bluf": "Poland is building the largest land army in the EU, funded at a record ~4.8% of GDP, postured for homeland and forward defence of NATO's eastern flank and absorbing Western and South Korean kit at exceptional speed.",
+      "spend": {
+        "pct_gdp": 4.68,
+        "year": 2026,
+        "basis": "NATO",
+        "estimate": true
+      },
+      "personnel": {
+        "value": 220000,
+        "year": 2026
+      },
+      "hero": {
+        "src": "img/hero-pol-k2.jpg",
+        "alt": "A Polish K2 tank on display at a live-fire demonstration, Bemowo Piskie, 31 March 2023",
+        "credit": "Staff Sgt. Matthew Foster, U.S. Army · Public domain"
+      },
+      "emblem": {
+        "src": "img/sym-land-forces-eagle.png",
+        "alt": "Land Forces eagle"
+      },
+      "leaders": [
+        {
+          "name": "Władysław Kosiniak-Kamysz",
+          "role": "Minister of National Defence",
+          "photo": "img/kdl-kosiniak-kamysz.jpg"
+        },
+        {
+          "name": "Gen. Wiesław Kukuła",
+          "role": "Chief of the General Staff",
+          "photo": "img/kdl-kukula.jpg"
+        },
+        {
+          "name": "Lt Gen Marek Sokołowski",
+          "role": "General Commander",
+          "photo": "img/kdl-sokolowski.jpg"
+        },
+        {
+          "name": "Maj Gen Ireneusz Nowak",
+          "role": "Operational Commander",
+          "photo": "img/kdl-nowak.jpg"
+        },
+        {
+          "name": "Maj Gen Krzysztof Stańczyk",
+          "role": "Territorial Defence Forces",
+          "photo": "img/kdl-stanczyk.jpg"
+        },
+        {
+          "name": "Bartosz Grodecki",
+          "role": "National Security Bureau",
+          "photo": "img/kdl-grodecki.jpg"
+        }
+      ],
+      "signals": [
+        {
+          "date": "2026-10",
+          "short": "Kukuła reappointed CGS",
+          "event_date": "2026-10-10"
+        },
+        {
+          "date": "2026-06",
+          "short": "Nowak takes Operational Command",
+          "event_date": "2026-06-02"
+        },
+        {
+          "date": "2026-10",
+          "short": "Kukuła keynote, Italian-Polish forum",
+          "event_date": "2026-10-28"
+        }
+      ]
     }
   ]
 }

@@ -7532,6 +7532,7 @@
     {
       "date": "2026-08",
       "headline": "Defense of Japan 2026 white paper names China the primary concern among China, North Korea and Russia. It puts drones and domestic defence production at the centre of the build-up.",
+      "short": "Defense white paper 2026",
       "sowhat": "Sets the official threat picture and priorities the SAF will hear in Japanese briefings this year.",
       "url": "https://news.usni.org/2026/08/04/japans-2026-defense-white-paper-digest",
       "auto": true
@@ -7539,6 +7540,7 @@
     {
       "date": "2026-08",
       "headline": "MOD requests a record ¥8.89 trillion (about US$55.6B) for FY2027, prioritising unmanned systems, AI, long-range strike, air and missile defence, space and cyber.",
+      "short": "Record ¥8.89T budget request",
       "sowhat": "Shows where Japanese money and industry will go in 2027. Drones and stand-off fires are also the SAF's main learning areas.",
       "url": "https://news.usni.org/2026/09/01/japan-budget-requests-record-55-6b-for-unmanned-long-range-strike-capabilities",
       "auto": true
@@ -7546,6 +7548,8 @@
     {
       "date": "2026-09",
       "headline": "PM Takaichi reshuffles her cabinet on 17 September and keeps Defence Minister Koizumi Shinjiro to lead the security-document rewrite.",
+      "short": "Koizumi kept in reshuffle",
+      "event_date": "2026-09-17",
       "sowhat": "Continuity: Koizumi remains the ministerial counterpart through the strategy revision.",
       "url": "https://abcnews.com/International/wireStory/takaichi-shuffles-japans-cabinet-revive-sagging-support-key-136518441",
       "auto": true
@@ -7553,6 +7557,8 @@
     {
       "date": "2026-10",
       "headline": "Active cyber defence operations begin on 1 October. In serious cases the SDF and police may access and neutralise servers used in attacks.",
+      "short": "Active cyber defence begins",
+      "event_date": "2026-10-01",
       "sowhat": "A new legal model for peacetime cyber defence that is worth studying alongside Singapore's own arrangements.",
       "url": "https://english.adnkronos.com/2026/03/17/japan-to-begin-active-cyber-defense-operations-in-oct/",
       "auto": true
@@ -7560,6 +7566,8 @@
     {
       "date": "2026-10",
       "headline": "The Type 25 long-range anti-ship missile is shown to Kumamoto residents on 3 October, its first public display since deployment.",
+      "short": "Type 25 missile shown in Kumamoto",
+      "event_date": "2026-10-03",
       "sowhat": "Japan is working to win local consent for counterstrike basing. It is a case study in explaining sensitive deployments to communities.",
       "url": "https://www.nippon.com/en/news/yjj2026100300260/",
       "auto": true
@@ -7567,6 +7575,9 @@
     {
       "date": "2026-10",
       "headline": "Keen Sword 2026 (19-29 October) rehearses Southwest Islands defence. US Marines will bring NMESIS and MADIS to Yonaguni for the first time.",
+      "short": "Keen Sword 2026",
+      "event_date": "2026-10-19",
+      "event_end": "2026-10-29",
       "sowhat": "The alliance's distributed sea-denial concept in practice. Watch for lessons on island logistics and dispersal.",
       "url": "https://news.usni.org/2026/10/06/u-s-japanese-forces-to-rehearse-defense-of-japans-southwest-islands",
       "auto": true
@@ -8482,8 +8493,22 @@
       "src": "img/sym-jsdf-flag.svg",
       "w": 1089,
       "h": 914
+    },
+    {
+      "key": "hero-jpn-type10",
+      "subject": "JGSDF Type 10 tank",
+      "kind": "hero",
+      "file_page": "https://commons.wikimedia.org/wiki/File:10%E5%BC%8F%E6%88%A6%E8%BB%8A_%28Type_10_Tank%29_-_Japan_Ground_Self-Defense_Force._%2853825853789%29.jpg",
+      "author": "MIKI Yoshihito",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "caption": "JGSDF Type 10 tank at Camp Kita-Chitose, Hokkaido, 30 June 2024",
+      "src": "img/hero-jpn-type10.jpg",
+      "w": 1200,
+      "h": 801
     }
   ],
+  "hero_photo": "hero-jpn-type10",
   "symbols": [
     {
       "key": "sym-flag-jpn",

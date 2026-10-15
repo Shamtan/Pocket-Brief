@@ -1,17 +1,33 @@
 # IREO Country Schema (Pocket Brief data contract)
 
 `data/countries.json` lists the briefs the app offers: `{ default: "<iso3>", countries: [ { iso3, name, name_local?,
-lang?, region?, sub_region?, file, flag?, status, last_refresh, last_reviewed?, sources, coverage, engagement?, bluf? } ] }`.
-It is generated from the country files, so it never holds facts of its own:
+lang?, region?, sub_region?, file, flag?, status, last_refresh, last_reviewed?, sources, coverage, engagement?, bluf?,
+spend?, personnel?, hero?, emblem?, leaders?, signals? } ] }`.
+It is generated from the country files by `tools/build_manifest.py`, so it never holds facts of its own:
 - `coverage` counts the nine IREO areas the file covers: structure and organisation, budget, concept of operations,
   capabilities and emerging tech, key leadership and their words, news outlets and scholarship, how the SAF can learn,
   the engagement angle, and what we want and offer.
-- `engagement` is the highest `level_now` across `engagement.lines`, with its ladder label.
+- `engagement` is the highest `level_now` across `engagement.lines`, with its ladder label, and `target`, the highest
+  `level_target`.
 - `bluf` is `snapshot.bluf.text`.
+- `spend` is the latest `force.budget.trend` point with a `pct_gdp` (`{ pct_gdp, year, basis, estimate }`);
+  `personnel` the latest `trends.personnel` point (`{ value, year }`).
+- `hero` is the `hero_photo` (`{ src, alt: caption, credit: "author · licence" }`); `emblem` the last `forces` symbol.
+- `leaders` is the first six `leadership` entries (`{ name, role: role_short or appointment, photo }`).
+- `signals` is every signal with a `short` headline (`{ date, short, event_date?, event_end? }`), for Pulse.
 
-The app opens `?c=<iso3>`, else the last country the reader opened, else `default`. Readers switch from the country
-card (desktop), the header (phone), the `C` key or search; "Keep my place" opens the same section in the next country,
-and the library ("All briefs") shows every brief with its status, currency, coverage and engagement level.
+The app opens on the world overview: a dot map of the whole world lit only where a brief exists, five region tiles
+and Pulse. `?r=<region id>` opens a region (its map and a card per brief) and `?c=<iso3>#<stage or part>` a brief.
+The browser's back button moves between them. In a brief, readers switch from the country card (desktop), the header
+(phone), the `C` key or search; "Keep my place" opens the same section in the next country, and the library ("All
+briefs") shows every brief with its status, currency, coverage and engagement level.
+
+`data/geo/world.json` holds the home page's maps, built from Natural Earth by `tools/geo/build-world.mjs`:
+`{ source, note, home: { iso3, name, lon, lat }, regions: [ { id, name, letter } ], region_of: { <ISO3>: <region id> | null },
+maps: { world | <region id>: { frame: { lon0, lon1, lat0, lat1, phi0 }, w, h, step, dots, rows, points: { <ISO3>: [x, y] } } } }`.
+`rows` are run-length coded dot rows (`<token><count>`, the token an ISO3 code, `.` for sea, or a region letter for land
+without a code), so any country lights up once it has a brief. A country's region on the map comes from its own file's
+`region`, matched to `regions[].name`.
 
 One JSON object per country at `data/<iso3>.json`. Generate Zod types from this and validate at load.
 Every factual node carries `source` + `confidence`. Dates are ISO `YYYY-MM-DD`.
@@ -104,8 +120,11 @@ Claim       = { text: string, confidence: Confidence, sourceIds: string[], asOf?
   },
 
   // carry-forward: OSINT auto-sweep appends here; currency header reads latest
-  "signals": [ { "date": "YYYY-MM", "headline": string, "sowhat": string,
-                 "url": string, "auto": boolean } ]
+  "signals": [ { "date": "YYYY-MM", "headline": string,
+                 "short": string,                     // about five words, for Pulse on the home page
+                 "event_date"?: "YYYY-MM-DD",          // the day the headline names; later than today = "coming up"
+                 "event_end"?: "YYYY-MM-DD",           // last day of a multi-day event
+                 "sowhat": string, "url": string, "auto": boolean } ]
 }
 ```
 
