@@ -858,7 +858,8 @@ button.rail-country[aria-expanded="true"] { box-shadow: 0 0 0 1.5px var(--accent
 .rail-country { display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 12px; background: var(--bg-raised); box-shadow: 0 0 0 1px var(--line); }
 .rail-country div { display: flex; flex-direction: column; gap: 2px; }
 .rail-country strong { font: 700 17px/1 var(--font-display); }
-.rail-country small { font-size: 12px; color: var(--fg-3); }
+.rail-country small { font-size: 12px; color: var(--fg-3); white-space: nowrap; }
+.rail-country > div { min-width: 0; }
 .rail-country .flag { width: 40px; }
 .rail-country .emb { margin-left: auto; height: 34px; width: auto; max-width: 44px; object-fit: contain; flex: none; }
 button.rail-country { width: 100%; border: 0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
