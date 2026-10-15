@@ -5475,7 +5475,8 @@
           "sourceTier": "press"
         }
       ],
-      "note": "Second JJOC commander; succeeded Gen. Nagumo Kenichiro on 23 Mar 2026"
+      "note": "Second JJOC commander; succeeded Gen. Nagumo Kenichiro on 23 Mar 2026",
+      "photo": "kdl-tawara"
     },
     {
       "name": "Gen. Arai Masayoshi",
@@ -8386,6 +8387,19 @@
       "src": "img/kdl-koizumi.jpg",
       "w": 617,
       "h": 823
+    },
+    {
+      "key": "kdl-tawara",
+      "subject": "Tawara",
+      "kind": "kdl",
+      "file_page": "https://commons.wikimedia.org/wiki/File:Admiral_Tawara_Tateki%2C_Commander%2C_JSDF_Joint_Operations_Command_%28cropped%29.jpg",
+      "author": "JSDF Joint Operations Command, Ministry of Defense, Japan",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "caption": "Adm. Tawara Tateki, Commander, JSDF Joint Operations Command, March 2026",
+      "src": "img/kdl-tawara.jpg",
+      "w": 615,
+      "h": 820
     },
     {
       "key": "sym-flag-jpn",
