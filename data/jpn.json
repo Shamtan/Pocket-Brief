@@ -5009,7 +5009,8 @@
           "note": "The same press conference announced the SkyFall interceptor-drone contract."
         }
       ],
-      "note": "Retained in the September 2026 reshuffle"
+      "note": "Retained in the September 2026 reshuffle",
+      "photo": "kdl-koizumi"
     },
     {
       "name": "Gen. Uchikura Hiroaki",
@@ -8373,6 +8374,19 @@
     }
   ],
   "photos": [
+    {
+      "key": "kdl-koizumi",
+      "subject": "Koizumi",
+      "kind": "kdl",
+      "file_page": "https://commons.wikimedia.org/wiki/File:Shinjir%C5%8D_Koizumi_Ministry_of_Defence_portrait_%28cropped%29.jpg",
+      "author": "Ministry of Defense, Japan",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "caption": "Defense Minister Koizumi Shinjiro, official portrait, October 2025",
+      "src": "img/kdl-koizumi.jpg",
+      "w": 617,
+      "h": 823
+    },
     {
       "key": "sym-flag-jpn",
       "subject": "Japan",
